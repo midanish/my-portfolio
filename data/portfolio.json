@@ -1,0 +1,150 @@
+{
+  "personal": {
+    "name": "Muhammad Iqmal Danish bin Hasnan",
+    "title": "AI Engineer | Vision Engineer | Process Engineer",
+    "location": "Cheras, Selangor, Malaysia",
+    "email": "midanish2k@gmail.com",
+    "phone": "+60122948142",
+    "linkedin": "https://www.linkedin.com/in/iqmal-danish",
+    "summary": "Process Engineer with 1 year of experience in semiconductor manufacturing and 1 year of hands-on experience in Machine Vision and AI development, spanning industrial inspection systems and applied computer vision solutions. Strong background in Python, C/C++, C#, and AI/ML frameworks including PyTorch, TensorFlow, OpenCV, and Halcon, with practical exposure to defect detection, vision automation, and end-to-end system integration in production environments. Seeking to transition into an AI Engineer role, where industrial domain knowledge and applied AI expertise can be leveraged to deliver scalable, real-world intelligent systems."
+  },
+  "skills": {
+    "programming": [
+      "Python", "C/C++", "C#", "JavaScript", "Node.js", "PowerFX", "MATLAB",
+      "Assembly Language", "Arduino IDE", ".NET", "WPF", "WinForms", "MVVM", "Git"
+    ],
+    "databases": [
+      "Oracle SQL Database", "MySQL", "SQL Server", "Microsoft Graph API", "REST API Development"
+    ],
+    "aiml": [
+      "Pandas", "PyTorch", "TensorFlow", "Keras", "OpenCV", "Halcon",
+      "Computer Vision", "NLP", "Generative AI", "RAG", "LLM", "Prompt Engineering",
+      "YOLOv8", "Predictive Modeling", "Supervised/Unsupervised Learning", "CVAT", "Roboflow"
+    ],
+    "tools": [
+      "Microsoft Visual Studio 2022", "Visual Studio Code", "Microsoft Power Platform",
+      "Microsoft 365", "Android Studio", "Google Colab", "Jupyter Notebook",
+      "AutoCAD", "SolidWorks", "Adobe Illustrator", "IBM Watson", "Raspberry Pi 4", "SCADA", "PLC"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Test Back-End Process Engineer",
+      "company": "NXP Semiconductors Malaysia",
+      "location": "Petaling Jaya, Selangor",
+      "period": "Dec 2024 - Present",
+      "highlights": [
+        "Consistently achieved >99.6% QFN yield across key packages by proactively managing QFN and LGA quality issues using structured problem-solving methodologies",
+        "Optimized vision inspection recipes for foreign matter detection in HORIZON LGA vent holes, eliminating manual prebake inspection and delivering 0.4 FTE savings",
+        "Led cross-functional coordination on approximately 1.4M units of high-risk metal lid TPMS lots, ensuring full traceability and zero quality escape",
+        "Recognized with Bronze Award for Technical Excellence Award (TEA) Q3'25 and selected to represent TBE at Technical Symposium 2025"
+      ]
+    },
+    {
+      "title": "Vision Engineer",
+      "company": "Greatech Integration (M) Sdn. Bhd.",
+      "location": "Batu Kawan, Penang",
+      "period": "Feb 2024 - Nov 2024",
+      "highlights": [
+        "Designed and developed machine vision systems using C# and Python, leveraging HALCON and image processing libraries for pharmaceutical inspection requirements",
+        "Conducted R&D and feasibility studies on vision setups, including image evaluation, hardware-software selection, and solution proposals",
+        "Deployed, optimized, and supported PC-based vision inspection systems, covering software architecture, UI optimization, and system commissioning"
+      ]
+    },
+    {
+      "title": "AI Specialist Apprentice",
+      "company": "Aerodyne Group",
+      "location": "Cyberjaya, Selangor",
+      "period": "Aug 2023 - Jan 2024",
+      "highlights": [
+        "Deployed YOLOv8 computer vision models for real-time defect classification on electric poles using PyTorch",
+        "Curated and annotated datasets using CVAT and Roboflow for supervised learning model training",
+        "Implemented predictive modeling techniques and created Power BI dashboards for data visualization",
+        "Achieved superior accuracy in defect detection through advanced machine learning algorithms"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering (Mechatronics)",
+      "institution": "International Islamic University Malaysia (IIUM)",
+      "period": "Oct 2019 - Aug 2023",
+      "details": "Elective in Computer and Control: Machine Vision, Software Engineering, Intelligent Systems"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Biometric Fingerprint Login System on Vision Scanner",
+      "date": "Dec 2025",
+      "description": "Independent biometric authentication system for production vision scanners",
+      "highlights": [
+        "Designed and deployed using C++ and DigitalPersona SDK, achieving USD 5,000 cost savings per machine",
+        "Implemented event-driven auto-pop authentication and automatic credential autofill with keyboard input disablement",
+        "Integrated Oracle SQL-based credential management and historical access logging for full user traceability",
+        "Converted system architecture from 64-bit to 32-bit for legacy scanner compatibility, fully MES-integrated"
+      ],
+      "technologies": ["C++", "DigitalPersona SDK", "Oracle SQL", "MES Integration"]
+    },
+    {
+      "title": "Engineering Room Storage Management System",
+      "date": "Dec 2025",
+      "description": "Full-stack inventory management system with barcode-based asset tracking",
+      "highlights": [
+        "Developed using Microsoft Power Apps and PowerFX with barcode-based asset tracking",
+        "Implemented closed-loop borrow/return workflows via Power Automate with automated alerts",
+        "Integrated SharePoint as backend, reducing manual data entry errors by ~90%"
+      ],
+      "technologies": ["Power Apps", "PowerFX", "Power Automate", "SharePoint"]
+    },
+    {
+      "title": "CNN Deep Learning Portable Dental Caries Detection",
+      "date": "Jul 2023",
+      "description": "Award-winning portable dental caries detection system using deep learning",
+      "highlights": [
+        "Awarded Best Overall Final Year Project in Mechatronics Department",
+        "Developed using CNN deep learning (MobileNetV2), achieving 80% detection accuracy",
+        "Engineered Android application for real-time dental analysis via endoscopic camera"
+      ],
+      "technologies": ["Python", "TensorFlow", "MobileNetV2", "Android", "CNN"]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "AI Engineering Professional Certificate",
+      "issuer": "IBM",
+      "date": "Aug 2024"
+    },
+    {
+      "name": "AI and Data Specialist Program Industry Joint Certificate",
+      "issuer": "Aerodyne Group - Yayasan Peneraju",
+      "date": "Jan 2024"
+    },
+    {
+      "name": "Certification of Registration of Graduate Engineer",
+      "issuer": "BEM",
+      "date": "Dec 2023"
+    },
+    {
+      "name": "Deep Learning & Computer Vision (Proficient)",
+      "issuer": "Ministry of Education Malaysia",
+      "date": "Sep 2022"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Technical Excellence Award (TEA) Q3'2025 - Bronze",
+      "issuer": "NXP Semiconductors",
+      "year": "2025"
+    },
+    {
+      "name": "Best Overall Final Year Project",
+      "issuer": "Department of Mechatronics IIUM",
+      "year": "2022/2023"
+    },
+    {
+      "name": "Dean's List Awards",
+      "issuer": "Department of Mechatronics IIUM",
+      "year": "2019/2020, 2022/2023"
+    }
+  ]
+}

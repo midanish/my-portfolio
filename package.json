@@ -1,0 +1,20 @@
+{
+  "name": "iqmal-danish-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio for Muhammad Iqmal Danish bin Hasnan - AI/Vision Engineer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "ai-engineer",
+    "computer-vision"
+  ],
+  "author": "Muhammad Iqmal Danish bin Hasnan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
