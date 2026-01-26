@@ -8,7 +8,7 @@ const hf = new HfInference();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const PORTFOLIO_PATH = path.join(__dirname, 'data', 'portfolio.json');
+const PORTFOLIO_PATH = path.join(__dirname, 'public', 'data', 'portfolio.json');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -1027,7 +1027,7 @@ function generateResponseFromChunks(query, relevantChunks, intent, history = [])
 
 // API endpoints
 app.get('/api/portfolio', (req, res) => {
-  const data = require('./data/portfolio.json');
+  const data = require('./public/data/portfolio.json');
   res.json(data);
 });
 

@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "dev:cloudflare": "npx wrangler pages dev public --compatibility-date=2024-01-01",
+    "deploy": "npx wrangler pages deploy public --project-name=my-portfolio"
   },
   "keywords": [
     "portfolio",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@ljharb/tsconfig": "^0.3.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.60.0"
   }
 }
