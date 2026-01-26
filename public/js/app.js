@@ -167,10 +167,10 @@
   // Render skills by category
   function renderSkills(skills) {
     const categories = [
-      { title: 'Programming', skills: skills.programming, icon: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-8 9z"/></svg>' },
-      { title: 'Databases & APIs', skills: skills.databases, icon: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>' },
-      { title: 'AI / Machine Learning', skills: skills.aiml, icon: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>' },
-      { title: 'Tools & Platforms', skills: skills.tools, icon: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>' }
+      { title: 'Programming', skills: skills.programming },
+      { title: 'Databases & APIs', skills: skills.databases },
+      { title: 'AI / Machine Learning', skills: skills.aiml },
+      { title: 'Tools & Platforms', skills: skills.tools }
     ];
 
     let html = '';
@@ -179,22 +179,11 @@
 
       html += `
         <div class="skills-category fade-in" style="animation-delay: ${0.1 * catIndex}s">
-          <div class="skills-category-header">
-            <div class="skills-category-icon">
-              ${category.icon}
-            </div>
-            <h3 class="skills-category-title">${category.title}</h3>
-          </div>
+          <h3 class="skills-category-title">${category.title}</h3>
           <div class="skills-category-grid">
             ${category.skills.map((skill, index) => {
-              const skillInfo = skillData[skill] || { icon: '', color: '#666' };
               return `
-                <div class="skill-card fade-in" style="animation-delay: ${0.05 * index}s">
-                  <div class="skill-card-icon" style="background-color: ${skillInfo.color}">
-                    ${skillInfo.icon}
-                  </div>
-                  <span class="skill-card-name">${skill}</span>
-                </div>
+                <span class="skill-tag fade-in" style="animation-delay: ${0.05 * index}s">${skill}</span>
               `;
             }).join('')}
           </div>
@@ -391,5 +380,190 @@
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+})();
+
+// Chat Widget Functionality
+(function() {
+  'use strict';
+
+  const chatWidget = document.getElementById('chatWidget');
+  const chatToggle = document.getElementById('chatToggle');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatClose = document.getElementById('chatClose');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+
+  let isOpen = false;
+  let isTyping = false;
+
+  // Session management
+  let sessionId = localStorage.getItem('chatSessionId') || generateSessionId();
+  localStorage.setItem('chatSessionId', sessionId);
+
+  function generateSessionId() {
+    return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  }
+
+  // Toggle chat window
+  function toggleChat() {
+    isOpen = !isOpen;
+    chatWindow.classList.toggle('open', isOpen);
+    chatToggle.style.display = isOpen ? 'none' : 'flex';
+    
+    if (isOpen) {
+      setTimeout(() => chatInput.focus(), 300);
+    }
+  }
+
+  // Close chat
+  function closeChat() {
+    isOpen = false;
+    chatWindow.classList.remove('open');
+    chatToggle.style.display = 'flex';
+  }
+
+  // Simple markdown parser for chat messages
+  function parseMarkdown(text) {
+    // Escape HTML to prevent XSS
+    const escapeHtml = (str) => {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    };
+
+    // Escape the text first
+    let html = escapeHtml(text);
+
+    // Parse bold text: **text** -> <strong>text</strong> (do this first)
+    html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+
+    // Parse italic text: *text* -> <em>text</em> (single asterisks only)
+    // Use negative lookbehind/lookahead to avoid matching **
+    html = html.replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>');
+
+    // Convert newlines to <br> tags
+    html = html.replace(/\n/g, '<br>');
+
+    return html;
+  }
+
+  // Add message to chat
+  function addMessage(content, type = 'user') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}`;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+
+    // Use markdown parsing for assistant messages, plain text for user messages
+    if (type === 'assistant') {
+      contentDiv.innerHTML = parseMarkdown(content);
+    } else {
+      contentDiv.textContent = content;
+    }
+
+    messageDiv.appendChild(contentDiv);
+    chatMessages.appendChild(messageDiv);
+
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    return messageDiv;
+  }
+
+  // Show typing indicator
+  function showTyping() {
+    isTyping = true;
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message assistant message-typing';
+    typingDiv.id = 'typingIndicator';
+    
+    typingDiv.innerHTML = `
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    `;
+    
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // Hide typing indicator
+  function hideTyping() {
+    isTyping = false;
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+      typingIndicator.remove();
+    }
+  }
+
+  // Send message
+  async function sendMessage() {
+    const message = chatInput.value.trim();
+
+    if (!message || isTyping) return;
+
+    // Add user message
+    addMessage(message, 'user');
+    chatInput.value = '';
+
+    // Show typing indicator
+    showTyping();
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message,
+          sessionId
+        }),
+      });
+
+      const data = await response.json();
+
+      // Update sessionId if server provides one
+      if (data.sessionId) {
+        sessionId = data.sessionId;
+        localStorage.setItem('chatSessionId', sessionId);
+      }
+
+      // Hide typing indicator
+      hideTyping();
+
+      // Add assistant response
+      if (data.response) {
+        addMessage(data.response, 'assistant');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      hideTyping();
+      addMessage('Sorry, I encountered an error. Please try again.', 'assistant');
+    }
+  }
+
+  // Event listeners
+  if (chatToggle) {
+    chatToggle.addEventListener('click', toggleChat);
+  }
+
+  if (chatClose) {
+    chatClose.addEventListener('click', closeChat);
+  }
+
+  if (chatSend) {
+    chatSend.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
   }
 })();
