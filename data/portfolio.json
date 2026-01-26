@@ -74,6 +74,18 @@
   ],
   "projects": [
     {
+      "title": "Portfolio RAG Chatbot with AI Assistant",
+      "date": "Jan 2026",
+      "description": "Intelligent chatbot integrated into portfolio website using RAG architecture for contextual Q&A",
+      "highlights": [
+        "Implemented Retrieval-Augmented Generation (RAG) system using GLM-4.7-Flash model for accurate, context-aware responses",
+        "Built full-stack chatbot with Node.js backend, session management, and real-time conversation handling",
+        "Designed macOS-style glassmorphic chat widget with smooth animations and markdown support",
+        "Integrated TF-IDF vector-based knowledge retrieval from portfolio data with semantic search capabilities"
+      ],
+      "technologies": ["Node.js", "GLM-4.7-Flash", "RAG", "Transformers.js", "Express", "LLM"]
+    },
+    {
       "title": "Biometric Fingerprint Login System on Vision Scanner",
       "date": "Dec 2025",
       "description": "Independent biometric authentication system for production vision scanners",

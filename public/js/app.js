@@ -164,13 +164,13 @@
     'PLC': { icon: '<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#34495E"/><path fill="#fff" d="M12 7l-5 5 5 5 5-5-5-5z"/></svg>', color: '#34495E' }
   };
 
-  // Render skills by category
+  // Render skills by category with icons
   function renderSkills(skills) {
     const categories = [
-      { title: 'Programming', skills: skills.programming },
-      { title: 'Databases & APIs', skills: skills.databases },
-      { title: 'AI / Machine Learning', skills: skills.aiml },
-      { title: 'Tools & Platforms', skills: skills.tools }
+      { title: 'Programming', skills: skills.programming, icon: '<svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" fill="currentColor"/></svg>' },
+      { title: 'Databases & APIs', skills: skills.databases, icon: '<svg viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4zM4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4zm0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z" fill="currentColor"/></svg>' },
+      { title: 'AI / Machine Learning', skills: skills.aiml, icon: '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z" fill="currentColor"/></svg>' },
+      { title: 'Tools & Platforms', skills: skills.tools, icon: '<svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" fill="currentColor"/></svg>' }
     ];
 
     let html = '';
@@ -179,11 +179,22 @@
 
       html += `
         <div class="skills-category fade-in" style="animation-delay: ${0.1 * catIndex}s">
-          <h3 class="skills-category-title">${category.title}</h3>
+          <h3 class="skills-category-title">
+            <span class="category-icon">${category.icon}</span>
+            ${category.title}
+            <span class="skill-count">${category.skills.length}</span>
+          </h3>
           <div class="skills-category-grid">
             ${category.skills.map((skill, index) => {
+              const skillInfo = skillData[skill];
+              const icon = skillInfo ? skillInfo.icon : '';
+              const color = skillInfo ? skillInfo.color : 'var(--accent)';
+
               return `
-                <span class="skill-tag fade-in" style="animation-delay: ${0.05 * index}s">${skill}</span>
+                <span class="skill-tag fade-in" style="animation-delay: ${0.02 * index}s" data-skill="${skill}">
+                  ${icon ? `<span class="skill-icon">${icon}</span>` : ''}
+                  <span class="skill-name">${skill}</span>
+                </span>
               `;
             }).join('')}
           </div>

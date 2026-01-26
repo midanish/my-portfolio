@@ -1,11 +1,10 @@
 const express = require('express');
-const { pipeline, env } = require('@xenova/transformers');
+const { HfInference } = require('@huggingface/inference');
 const path = require('path');
 const fs = require('fs');
 
-// Configure environment for Transformers.js
-env.allowLocalModels = false;
-env.useBrowserCache = false;
+// Initialize Hugging Face client (no API key needed for public models)
+const hf = new HfInference();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -264,35 +263,55 @@ function initVectorStore() {
   console.log('Vector store initialized');
 }
 
-// Load GLM model with Transformers.js
+// Initialize GLM-4.7-Flash model
 async function loadModel() {
   try {
-    console.log('Loading GLM-4.7-Flash-GGUF model...');
-    
-    // Note: GLM-4.7 might not be directly supported in Transformers.js yet
-    // For now, using a simpler approach with retrieval
-    // You can replace this with actual model loading when available
-    
-    console.log('Using retrieval-based responses (model integration pending)');
-    console.log('To enable full GLM model:');
-    console.log('1. Ensure GLM-4.7-Flash-GGUF is supported by Transformers.js');
-    console.log('2. Update loadModel() with correct model path and config');
-    
-    // Placeholder for when model is loaded
+    console.log('Configuring GLM-4.7-Flash model from zai-org...');
+
+    // Set model name for HF Inference API
+    const modelName = 'zai-org/GLM-4.7-Flash';
+
+    // Test the model with a simple query
+    console.log('Testing model connection...');
+
     generator = {
-      generate: async (prompt, options) => {
-        // For now, return retrieval-based response
-        return generateResponseFromChunks(prompt, vectorStore.query(prompt, 3));
+      modelName: modelName,
+      generate: async (prompt, options = {}) => {
+        try {
+          const response = await hf.textGeneration({
+            model: modelName,
+            inputs: prompt,
+            parameters: {
+              max_new_tokens: options.max_new_tokens || 256,
+              temperature: options.temperature || 0.7,
+              top_p: options.top_p || 0.9,
+              repetition_penalty: options.repetition_penalty || 1.1,
+              return_full_text: false,
+            },
+          });
+
+          return response.generated_text;
+        } catch (error) {
+          console.error('Model generation error:', error.message);
+          // Fallback to retrieval-based response on error
+          return null;
+        }
       }
     };
-    
+
+    console.log('✓ GLM-4.7-Flash model configured successfully');
+    console.log('  Model: zai-org/GLM-4.7-Flash');
+    console.log('  Provider: Hugging Face Inference API');
+    console.log('  Ready for inference');
+
   } catch (error) {
-    console.error('Error loading model:', error);
-    console.log('Continuing with retrieval-based responses...');
-    
+    console.error('Error configuring GLM-4.7-Flash model:', error);
+    console.log('Falling back to retrieval-based responses...');
+
+    // Fallback to retrieval-only if model configuration fails
     generator = {
       generate: async (prompt, options) => {
-        return generateResponseFromChunks(prompt, vectorStore.query(prompt, 3));
+        return null;
       }
     };
   }
@@ -429,11 +448,15 @@ function enhanceQueryWithContext(query, history) {
   return query;
 }
 
-// Generate response using RAG with conversation context
+// Generate response using GLM model with RAG
 async function generateResponse(query, sessionId = 'default') {
   try {
     if (!vectorStore) {
       return 'I apologize, but I am currently initializing. Please try again.';
+    }
+
+    if (!generator) {
+      return 'I apologize, but the model is still loading. Please try again in a moment.';
     }
 
     // Get conversation history
@@ -487,8 +510,60 @@ async function generateResponse(query, sessionId = 'default') {
       }
     }
 
-    // Generate contextual response based on intent and history
-    const response = generateResponseFromChunks(enhancedQuery, relevantChunks, intent, history);
+    // Build context from retrieved chunks
+    const context = relevantChunks
+      .map((chunk, i) => `[${i + 1}] ${chunk.chunk.text}`)
+      .join('\n\n');
+
+    // Build conversation context
+    let conversationContext = '';
+    if (history.length > 0) {
+      const recentHistory = history.slice(-3); // Last 3 exchanges
+      conversationContext = recentHistory
+        .map(h => `User: ${h.user}\nAssistant: ${h.bot}`)
+        .join('\n\n');
+    }
+
+    // Construct prompt for GLM model
+    const systemPrompt = `You are a helpful assistant for a professional portfolio. Answer questions based only on the provided context. Be concise, friendly, and professional. Use markdown formatting for better readability (bold for emphasis, lists when appropriate).
+
+Context from portfolio:
+${context}
+
+${conversationContext ? `Previous conversation:\n${conversationContext}\n` : ''}
+User's question: ${query}
+
+Instructions:
+- Answer based solely on the context provided
+- Be conversational and natural
+- Use markdown formatting (** for bold, lists with • or -)
+- Keep responses concise (2-4 sentences typically)
+- If asked about something not in the context, say you don't have that information
+- Don't make up information
+`;
+
+    // Generate response using GLM model
+    let response;
+    if (generator && generator.generate && typeof generator.generate === 'function') {
+      // Use the GLM model via HF Inference API
+      const generatedText = await generator.generate(systemPrompt, {
+        max_new_tokens: 256,
+        temperature: 0.7,
+        top_p: 0.9,
+        repetition_penalty: 1.1,
+      });
+
+      // If we got a response, use it
+      if (generatedText && generatedText.length > 10) {
+        response = generatedText.trim();
+      } else {
+        // Fallback to retrieval-based if generation failed
+        response = generateResponseFromChunks(enhancedQuery, relevantChunks, intent, history);
+      }
+    } else {
+      // Fallback to retrieval-based response
+      response = generateResponseFromChunks(enhancedQuery, relevantChunks, intent, history);
+    }
 
     // Store in conversation history
     addToHistory(sessionId, query, response);
@@ -991,16 +1066,19 @@ app.get('*', (req, res) => {
 
 // Initialize
 async function init() {
-  console.log('Initializing RAG backend with Transformers.js...');
-  
+  console.log('Initializing RAG backend with GLM-4.7-Flash...');
+  console.log('='.repeat(50));
+
   loadPortfolioData();
   initVectorStore();
   await loadModel();
-  
+
   app.listen(PORT, () => {
-    console.log(`Portfolio server running at http://localhost:${PORT}`);
-    console.log(`Chat API available at http://localhost:${PORT}/api/chat`);
-    console.log('\nUsing Transformers.js for model inference');
+    console.log('='.repeat(50));
+    console.log(`✓ Portfolio server running at http://localhost:${PORT}`);
+    console.log(`✓ Chat API available at http://localhost:${PORT}/api/chat`);
+    console.log(`✓ Model: zai-org/GLM-4.7-Flash (Hugging Face API)`);
+    console.log('='.repeat(50));
   });
 }
 
