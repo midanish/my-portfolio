@@ -228,7 +228,17 @@
 
   // Render projects section
   function renderProjects(projects) {
-    const html = projects.map((project, index) => `
+    const html = projects.map((project, index) => {
+      // Check if this is the RAG chatbot project
+      const isRagChatbot = project.title.toLowerCase().includes('rag chatbot');
+      // Check if this is the dental caries project
+      const isDentalProject = project.title.toLowerCase().includes('dental caries');
+      // Check if this is the food classification project
+      const isFoodClassification = project.title.toLowerCase().includes('food image classification');
+      // Check if this is the biometric fingerprint project
+      const isBiometricProject = project.title.toLowerCase().includes('biometric fingerprint');
+
+      return `
       <div class="project-card fade-in" style="animation-delay: ${0.1 * index}s">
         <div class="project-header">
           <div class="project-icon">
@@ -245,9 +255,50 @@
           <div class="project-tech">
             ${project.technologies.slice(0, 4).map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
           </div>
+          ${isRagChatbot ? `
+          <div class="project-preview">
+            <button class="preview-button" onclick="openChatFromProject()" title="Try the chatbot">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+              </svg>
+              <span>Try Live Demo</span>
+            </button>
+          </div>
+          ` : ''}
+          ${isFoodClassification ? `
+          <div class="project-preview">
+            <a href="https://food-image-classification.streamlit.app" target="_blank" rel="noopener noreferrer" class="preview-button preview-link-btn" title="Open Streamlit app">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" fill="currentColor"/>
+              </svg>
+              <span>Open Live App</span>
+            </a>
+          </div>
+          ` : ''}
+          ${isBiometricProject ? `
+          <div class="project-preview">
+            <button class="preview-button preview-video-btn" onclick="openVideoPreview('face-recognition')" title="Watch demo video">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M8 5v14l11-7z" fill="currentColor"/>
+              </svg>
+              <span>Watch Demo Video</span>
+            </button>
+          </div>
+          ` : ''}
+          ${isDentalProject ? `
+          <div class="project-preview">
+            <button class="preview-button preview-video-btn" onclick="openVideoPreview('dental-caries')" title="Watch demo video">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M8 5v14l11-7z" fill="currentColor"/>
+              </svg>
+              <span>Watch Demo Video</span>
+            </button>
+          </div>
+          ` : ''}
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
     elements.projectsGrid.innerHTML = html;
   }
 
@@ -393,6 +444,101 @@
     init();
   }
 })();
+
+// Global function to open chat from project card
+function openChatFromProject() {
+  const chatToggle = document.getElementById('chatToggle');
+  const chatWindow = document.getElementById('chatWindow');
+
+  if (chatWindow && !chatWindow.classList.contains('open')) {
+    chatWindow.classList.add('open');
+    if (chatToggle) {
+      chatToggle.style.display = 'none';
+    }
+
+    const chatInput = document.getElementById('chatInput');
+    if (chatInput) {
+      setTimeout(() => chatInput.focus(), 400);
+    }
+
+    // Add a welcome message for the demo
+    setTimeout(() => {
+      const chatMessages = document.getElementById('chatMessages');
+      if (chatMessages && chatMessages.children.length === 1) {
+        const demoMessage = document.createElement('div');
+        demoMessage.className = 'message system';
+        demoMessage.innerHTML = '<div class="message-content">👋 Thanks for trying the live demo! Ask me anything about the portfolio.</div>';
+        chatMessages.appendChild(demoMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    }, 500);
+  }
+}
+
+// Global function to open video preview modal
+function openVideoPreview(videoType) {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('demoVideo');
+  const videoSource = document.getElementById('videoSource');
+  const videoTitle = document.getElementById('videoModalTitle');
+
+  // Video configurations
+  const videos = {
+    'dental-caries': {
+      url: 'https://pub-0396d1c2d9f348bb8a9fb783dcf9df54.r2.dev/demo/dental-caries.mp4',
+      title: 'Dental Caries Detection Demo'
+    },
+    'face-recognition': {
+      url: 'https://pub-0396d1c2d9f348bb8a9fb783dcf9df54.r2.dev/demo/face-recognition.mp4',
+      title: 'Face Recognition Demo'
+    }
+  };
+
+  const selectedVideo = videos[videoType] || videos['dental-caries'];
+
+  if (modal && video && videoSource) {
+    // Set video source and title
+    videoSource.src = selectedVideo.url;
+    if (videoTitle) {
+      videoTitle.textContent = selectedVideo.title;
+    }
+
+    // Reload video with new source
+    video.load();
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+
+    // Play video after modal animation
+    setTimeout(() => {
+      video.play().catch(err => console.log('Video autoplay prevented:', err));
+    }, 300);
+  }
+}
+
+// Global function to close video preview modal
+function closeVideoPreview() {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('demoVideo');
+
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+
+    // Pause and reset video
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeVideoPreview();
+  }
+});
 
 // Chat Widget Functionality
 (function() {

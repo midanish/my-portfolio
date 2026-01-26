@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio of Muhammad Iqmal Danish - AI Engineer, Vision Engineer, and Process Engineer specializing in computer vision and machine learning.">
   <title>Iqmal Danish | AI & Vision Engineer</title>
-  <link rel="stylesheet" href="/css/styles.css?v=7">
+  <link rel="stylesheet" href="/css/styles.css?v=11">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -275,6 +275,27 @@
       </div>
     </div>
 
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="video-modal">
+      <div class="video-modal-overlay" onclick="closeVideoPreview()"></div>
+      <div class="video-modal-content">
+        <div class="video-modal-header">
+          <h3 class="video-modal-title" id="videoModalTitle">Demo Video</h3>
+          <button class="video-modal-close" onclick="closeVideoPreview()" aria-label="Close">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+        <div class="video-modal-body">
+          <video id="demoVideo" class="demo-video" controls preload="metadata">
+            <source id="videoSource" src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
     <!-- Dock Navigation -->
     <nav class="dock" id="dock">
       <div class="dock-container">
@@ -323,6 +344,6 @@
     <p>&copy; <span id="currentYear"></span> Muhammad Iqmal Danish</p>
   </footer>
 
-  <script src="/js/app.js?v=6"></script>
+  <script src="/js/app.js?v=10"></script>
 </body>
 </html>

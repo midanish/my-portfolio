@@ -86,6 +86,18 @@
       "technologies": ["Node.js", "GLM-4.7-Flash", "RAG", "Transformers.js", "Express", "LLM"]
     },
     {
+      "title": "Food Image Classification",
+      "date": "Dec 2024",
+      "description": "A Streamlit application that uses a MobileNetV2 model to classify food images into 6 categories with 95% accuracy",
+      "highlights": [
+        "Real-time food image classification with confidence scores and three-page navigation: Model Info, Dataset Analysis, and Prediction",
+        "Visualizations of dataset distribution and sample images with performance metrics and training configuration details",
+        "Support for both file uploads and URL inputs with clean, responsive UI and custom styling",
+        "Achieved 95% classification accuracy across 6 food categories using fine-tuned MobileNetV2 architecture"
+      ],
+      "technologies": ["Streamlit", "PyTorch", "MobileNetV2", "Transformers", "PIL", "Python"]
+    },
+    {
       "title": "Biometric Fingerprint Login System on Vision Scanner",
       "date": "Dec 2025",
       "description": "Independent biometric authentication system for production vision scanners",
