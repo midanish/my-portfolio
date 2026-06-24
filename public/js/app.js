@@ -306,7 +306,7 @@
       const confidenceTag = meta.confidence ? `<span class="confidence-tag mono">${meta.confidence}</span>` : '';
 
       return `
-        <div class="project-card${meta.featured ? ' featured' : ''}">
+        <div class="project-card">
           ${corners}
           <div class="project-header">
             <span class="status-pill mono" data-status="${meta.status}">${meta.status}</span>

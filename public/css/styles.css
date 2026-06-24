@@ -909,11 +909,16 @@ body::after {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 1fr;        /* every row the same height */
+  align-items: stretch;
   gap: 20px;
 }
 
 .project-card {
   position: relative;
+  display: flex;
+  flex-direction: column;     /* header + body stack; body flexes to fill */
+  height: 100%;               /* fill the equal-height grid cell */
   background: var(--glass-bg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
@@ -1026,11 +1031,18 @@ body::after {
 }
 .project-icon svg { width: 22px; height: 22px; fill: #fff; position: relative; z-index: 1; }
 
-.project-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.01em; }
+.project-title {
+  font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.01em;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  min-height: 2.5em;          /* reserve 2 lines so headers align across cards */
+}
 .project-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
 
-.project-body { position: relative; z-index: 1; padding: 18px 20px 20px; }
-.project-description { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+.project-body { position: relative; z-index: 1; padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+.project-description {
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
 
 .project-highlights { list-style: none; margin-bottom: 16px; }
 .project-highlights li {
@@ -1042,7 +1054,7 @@ body::after {
   font-family: var(--font-mono); font-weight: 500;
 }
 
-.project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 .tech-tag {
   font-family: var(--font-mono);
   font-size: 0.7rem;
