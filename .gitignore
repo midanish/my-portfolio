@@ -19,9 +19,10 @@ yarn-error.log*
 .wrangler/
 wrangler.toml
 
-# IDE
+# IDE / tooling
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 *~

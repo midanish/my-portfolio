@@ -1,17 +1,17 @@
 {
   "personal": {
     "name": "Muhammad Iqmal Danish bin Hasnan",
-    "title": "AI Specialist Apprentice | Vision Engineer | Process Engineer",
+    "title": "AI & Vision Engineer | Process Engineer",
     "location": "Cheras, Selangor, Malaysia",
     "email": "midanish2k@gmail.com",
     "phone": "+60122948142",
     "linkedin": "https://www.linkedin.com/in/iqmal-danish",
-    "summary": "Process Engineer with 1 year of experience in semiconductor manufacturing and 1 year of hands-on experience in Machine Vision and AI development, spanning industrial inspection systems and applied computer vision solutions. Strong background in Python, C/C++, C#, and AI/ML frameworks including PyTorch, TensorFlow, OpenCV, and Halcon, with practical exposure to defect detection, vision automation, and end-to-end system integration in production environments. Seeking to transition into an AI Engineer role, where industrial domain knowledge and applied AI expertise can be leveraged to deliver scalable, real-world intelligent systems."
+    "summary": "Engineer with 3 years of experience spanning semiconductor manufacturing and Machine Vision/AI. Proficient in Python, C/C++, C#, and frameworks including PyTorch, TensorFlow, OpenCV, and Halcon. Proven track record in deploying defect detection and vision automation systems within production environments. Seeking an Engineer role to leverage industrial domain knowledge and applied AI expertise for scalable, intelligent solutions."
   },
   "skills": {
     "programming": [
       "Python", "C/C++", "C#", "JavaScript", "Node.js", "PowerFX", "MATLAB",
-      "Assembly Language", "Arduino IDE", ".NET", "WPF", "WinForms", "MVVM", "Git"
+      "Assembly Language", "Arduino IDE", ".NET", "WPF", "WinForms", "MVVM", "Git", "Streamlit"
     ],
     "databases": [
       "Oracle SQL Database", "MySQL", "SQL Server", "Microsoft Graph API", "REST API Development"
@@ -22,9 +22,9 @@
       "YOLOv8", "Predictive Modeling", "Supervised/Unsupervised Learning", "CVAT", "Roboflow"
     ],
     "tools": [
-      "Microsoft Visual Studio 2022", "Visual Studio Code", "Microsoft Power Platform",
+      "Cloudflare", "Microsoft Visual Studio 2022", "Visual Studio Code", "Microsoft Power Platform",
       "Microsoft 365", "Android Studio", "Google Colab", "Jupyter Notebook",
-      "AutoCAD", "SolidWorks", "Adobe Illustrator", "IBM Watson", "Raspberry Pi 4", "SCADA", "PLC"
+      "AutoCAD", "SolidWorks", "Adobe Illustrator", "IBM Watson", "Raspberry Pi 4"
     ]
   },
   "experience": [
@@ -34,10 +34,9 @@
       "location": "Petaling Jaya, Selangor",
       "period": "Dec 2024 - Present",
       "highlights": [
-        "Consistently achieved >99.6% QFN yield across key packages by proactively managing QFN and LGA quality issues using structured problem-solving methodologies",
-        "Optimized vision inspection recipes for foreign matter detection in HORIZON LGA vent holes, eliminating manual prebake inspection and delivering 0.4 FTE savings",
-        "Led cross-functional coordination on approximately 1.4M units of high-risk metal lid TPMS lots, ensuring full traceability and zero quality escape",
-        "Recognized with Bronze Award for Technical Excellence Award (TEA) Q3'25 and selected to represent TBE at Technical Symposium 2025"
+        "Consistently achieved >99.6% QFN yield across key packages by proactively managing QFN and LGA quality issues using structured problem-solving methodologies, ensuring high unit quality and process integrity",
+        "Led cross-functional coordination on approximately 1.4M units of high-risk metal lid TPMS lots, ensuring full traceability, controlled execution, and zero quality escape",
+        "Recognized with Bronze Award for Technical Excellence Award (TEA) Q3'25 and selected to represent TBE at Technical Symposium 2025, while maintaining zero safety incidents across all activities"
       ]
     },
     {
@@ -46,9 +45,9 @@
       "location": "Batu Kawan, Penang",
       "period": "Feb 2024 - Nov 2024",
       "highlights": [
-        "Designed and developed machine vision systems using C# and Python, leveraging HALCON and image processing libraries for pharmaceutical inspection requirements",
-        "Conducted R&D and feasibility studies on vision setups, including image evaluation, hardware-software selection, and solution proposals",
-        "Deployed, optimized, and supported PC-based vision inspection systems, covering software architecture, UI optimization, and system commissioning"
+        "Designed and developed machine vision systems using C# and Python, leveraging HALCON and image processing libraries to meet project and pharmaceutical inspection requirements",
+        "Conducted R&D and feasibility studies on vision setups, including image evaluation, hardware-software selection, and solution proposal to ensure robust, compliant inspection performance",
+        "Deployed, optimized, and supported PC-based vision inspection systems, covering software architecture, UI optimization, system commissioning at factory/customer sites, and ongoing support in accordance with ISO standards"
       ]
     },
     {
@@ -74,49 +73,44 @@
   ],
   "projects": [
     {
+      "title": "Biometric Fingerprint Login System on Vision Scanner",
+      "date": "Jun 2026",
+      "description": "Independent multi-modal biometric authentication system (fingerprint + facial recognition) for production vision scanners",
+      "highlights": [
+        "Designed and deployed a multi-modal biometric authentication system (fingerprint + facial recognition) in C++ and C#/.NET using the DigitalPersona SDK and OpenCV, eliminating vendor dependency and achieving ~USD 5,000 cost savings per machine",
+        "Implemented automatic login-window detection that locks keyboard input and auto-fills credentials only after a successful biometric match, preventing unauthorized manual entry",
+        "Built an embedded SQLite credential store with full access/audit logging for user traceability and audit readiness"
+      ],
+      "technologies": ["C++", "C#/.NET", "DigitalPersona SDK", "OpenCV", "SQLite"]
+    },
+    {
       "title": "Portfolio RAG Chatbot with AI Assistant",
       "date": "Jan 2026",
       "description": "Intelligent chatbot integrated into portfolio website using RAG architecture for contextual Q&A",
       "highlights": [
-        "Implemented Retrieval-Augmented Generation (RAG) system using GLM-4.7-Flash model for accurate, context-aware responses",
-        "Built full-stack chatbot with Node.js backend, session management, and real-time conversation handling",
-        "Designed macOS-style glassmorphic chat widget with smooth animations and markdown support",
-        "Integrated TF-IDF vector-based knowledge retrieval from portfolio data with semantic search capabilities"
+        "Implemented a Retrieval-Augmented Generation (RAG) system using the GLM-4.7-Flash model for accurate, context-aware responses",
+        "Built a full-stack chatbot with Node.js backend, session management, and real-time conversation handling"
       ],
       "technologies": ["Node.js", "GLM-4.7-Flash", "RAG", "Transformers.js", "Express", "LLM"]
     },
     {
       "title": "Food Image Classification",
-      "date": "Dec 2024",
+      "date": "Dec 2025",
       "description": "A Streamlit application that uses a MobileNetV2 model to classify food images into 6 categories with 95% accuracy",
       "highlights": [
         "Real-time food image classification with confidence scores and three-page navigation: Model Info, Dataset Analysis, and Prediction",
-        "Visualizations of dataset distribution and sample images with performance metrics and training configuration details",
-        "Support for both file uploads and URL inputs with clean, responsive UI and custom styling",
-        "Achieved 95% classification accuracy across 6 food categories using fine-tuned MobileNetV2 architecture"
+        "Streamlit application using a fine-tuned MobileNetV2 model to classify food images into 6 categories with 95% accuracy"
       ],
       "technologies": ["Streamlit", "PyTorch", "MobileNetV2", "Transformers", "PIL", "Python"]
-    },
-    {
-      "title": "Biometric Fingerprint Login System on Vision Scanner",
-      "date": "Dec 2025",
-      "description": "Independent biometric authentication system for production vision scanners",
-      "highlights": [
-        "Designed and deployed using C++ and DigitalPersona SDK, achieving USD 5,000 cost savings per machine",
-        "Implemented event-driven auto-pop authentication and automatic credential autofill with keyboard input disablement",
-        "Integrated Oracle SQL-based credential management and historical access logging for full user traceability",
-        "Converted system architecture from 64-bit to 32-bit for legacy scanner compatibility, fully MES-integrated"
-      ],
-      "technologies": ["C++", "DigitalPersona SDK", "Oracle SQL", "MES Integration"]
     },
     {
       "title": "Engineering Room Storage Management System",
       "date": "Dec 2025",
       "description": "Full-stack inventory management system with barcode-based asset tracking",
       "highlights": [
-        "Developed using Microsoft Power Apps and PowerFX with barcode-based asset tracking",
-        "Implemented closed-loop borrow/return workflows via Power Automate with automated alerts",
-        "Integrated SharePoint as backend, reducing manual data entry errors by ~90%"
+        "Developed a full-stack inventory management system using Microsoft Power Apps and PowerFX with barcode-based asset tracking",
+        "Implemented closed-loop borrow/return workflows via Power Automate, including automated alerts for overdue items and low-stock conditions",
+        "Integrated SharePoint as the backend repository, reducing manual data entry errors by ~90% and improving asset traceability through role-based access control"
       ],
       "technologies": ["Power Apps", "PowerFX", "Power Automate", "SharePoint"]
     },
@@ -125,9 +119,9 @@
       "date": "Jul 2023",
       "description": "Award-winning portable dental caries detection system using deep learning",
       "highlights": [
-        "Awarded Best Overall Final Year Project in Mechatronics Department",
+        "Awarded Best Overall Final Year Project in the Mechatronics Department for innovation and technical excellence",
         "Developed using CNN deep learning (MobileNetV2), achieving 80% detection accuracy",
-        "Engineered Android application for real-time dental analysis via endoscopic camera"
+        "Engineered an Android application for real-time dental analysis via endoscopic camera, validated in collaboration with dental professionals"
       ],
       "technologies": ["Python", "TensorFlow", "MobileNetV2", "Android", "CNN"]
     }
