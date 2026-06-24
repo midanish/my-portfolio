@@ -3,8 +3,36 @@ const { HfInference } = require('@huggingface/inference');
 const path = require('path');
 const fs = require('fs');
 
-// Initialize Hugging Face client (no API key needed for public models)
-const hf = new HfInference();
+// Load environment variables from a local .env file (zero-dependency loader).
+// .env is gitignored — keep secrets like HF_TOKEN here for local development.
+// Real env vars (e.g. set by the shell or Cloudflare) always take precedence.
+(function loadDotEnv() {
+  try {
+    const envPath = path.join(__dirname, '.env');
+    if (!fs.existsSync(envPath)) return;
+    for (const rawLine of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+      const eq = line.indexOf('=');
+      if (eq === -1) continue;
+      const key = line.slice(0, eq).trim();
+      let val = line.slice(eq + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (key && !(key in process.env)) process.env[key] = val;
+    }
+  } catch (err) {
+    console.warn('Could not read .env file:', err.message);
+  }
+})();
+
+// Initialize Hugging Face client. Provide a token via HF_TOKEN (or
+// HUGGINGFACE_API_KEY / HF_API_KEY) to enable the LLM; without one the bot
+// gracefully falls back to grounded retrieval responses.
+const HF_TOKEN = process.env.HF_TOKEN || process.env.HUGGINGFACE_API_KEY || process.env.HF_API_KEY || undefined;
+const CHAT_MODEL = process.env.CHAT_MODEL || 'zai-org/GLM-4.7-Flash';
+const hf = new HfInference(HF_TOKEN);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 let generator = null;
 let portfolioData = null;
 let chunks = [];
+let knowledgeBase = ''; // full portfolio compiled into grounded context for the LLM
 
 // Conversation history management (stores last 10 exchanges per session)
 const conversationHistory = new Map();
@@ -61,12 +90,72 @@ function loadPortfolioData() {
   try {
     portfolioData = JSON.parse(fs.readFileSync(PORTFOLIO_PATH, 'utf8'));
     console.log('Portfolio data loaded successfully');
-    
-    // Create text chunks from portfolio
+
+    // Create text chunks (used by the retrieval fallback)
     createChunks();
+    // Compile the whole portfolio into a single grounded context for the LLM
+    knowledgeBase = buildKnowledgeBase();
   } catch (error) {
     console.error('Error loading portfolio data:', error);
   }
+}
+
+// Compile the entire portfolio into a compact, well-structured knowledge base.
+// The portfolio is small, so we give the model everything (no lossy retrieval)
+// — this lets it answer synthesis questions (fit, strengths, comparisons) accurately.
+function buildKnowledgeBase() {
+  if (!portfolioData) return '';
+  const p = portfolioData.personal || {};
+  const s = portfolioData.skills || {};
+  const out = [];
+
+  out.push('# Profile');
+  if (p.name) out.push(`Name: ${p.name}`);
+  if (p.title) out.push(`Title: ${p.title}`);
+  if (p.location) out.push(`Location: ${p.location}`);
+  out.push(`Contact: ${[p.email && `email ${p.email}`, p.phone && `phone ${p.phone}`, p.linkedin && `LinkedIn ${p.linkedin}`].filter(Boolean).join(' | ')}`);
+  if (p.summary) out.push(`\nProfessional summary: ${p.summary}`);
+
+  out.push('\n# Skills');
+  if (s.programming) out.push(`Programming languages & frameworks: ${s.programming.join(', ')}`);
+  if (s.databases) out.push(`Databases & APIs: ${s.databases.join(', ')}`);
+  if (s.aiml) out.push(`AI / Machine Learning: ${s.aiml.join(', ')}`);
+  if (s.tools) out.push(`Tools & Platforms: ${s.tools.join(', ')}`);
+
+  if (Array.isArray(portfolioData.experience) && portfolioData.experience.length) {
+    out.push('\n# Work Experience');
+    portfolioData.experience.forEach(e => {
+      out.push(`\n## ${e.title} — ${e.company} (${e.period})${e.location ? `, ${e.location}` : ''}`);
+      (e.highlights || []).forEach(h => out.push(`- ${h}`));
+    });
+  }
+
+  if (Array.isArray(portfolioData.projects) && portfolioData.projects.length) {
+    out.push('\n# Projects');
+    portfolioData.projects.forEach(pr => {
+      out.push(`\n## ${pr.title} (${pr.date})`);
+      if (pr.description) out.push(pr.description);
+      (pr.highlights || []).forEach(h => out.push(`- ${h}`));
+      if (pr.technologies) out.push(`Technologies: ${pr.technologies.join(', ')}`);
+    });
+  }
+
+  if (Array.isArray(portfolioData.education) && portfolioData.education.length) {
+    out.push('\n# Education');
+    portfolioData.education.forEach(ed => out.push(`- ${ed.degree}, ${ed.institution} (${ed.period}).${ed.details ? ' ' + ed.details : ''}`));
+  }
+
+  if (Array.isArray(portfolioData.certificates) && portfolioData.certificates.length) {
+    out.push('\n# Certificates');
+    portfolioData.certificates.forEach(c => out.push(`- ${c.name} — ${c.issuer} (${c.date})`));
+  }
+
+  if (Array.isArray(portfolioData.awards) && portfolioData.awards.length) {
+    out.push('\n# Awards');
+    portfolioData.awards.forEach(a => out.push(`- ${a.name} — ${a.issuer} (${a.year})`));
+  }
+
+  return out.join('\n');
 }
 
 // Create chunks from portfolio data
@@ -263,58 +352,66 @@ function initVectorStore() {
   console.log('Vector store initialized');
 }
 
-// Initialize GLM-4.7-Flash model
+// Configure the chat model (chat-completions API via Hugging Face router)
 async function loadModel() {
   try {
-    console.log('Configuring GLM-4.7-Flash model from zai-org...');
-
-    // Set model name for HF Inference API
-    const modelName = 'zai-org/GLM-4.7-Flash';
-
-    // Test the model with a simple query
-    console.log('Testing model connection...');
+    console.log(`Configuring chat model: ${CHAT_MODEL}`);
+    console.log(`  Auth: ${HF_TOKEN ? 'HF token detected' : 'no token (LLM disabled — using grounded retrieval fallback)'}`);
 
     generator = {
-      modelName: modelName,
-      generate: async (prompt, options = {}) => {
+      modelName: CHAT_MODEL,
+      // messages: [{ role, content }]  →  returns assistant text, or null on failure
+      generate: async (messages, options = {}) => {
         try {
-          const response = await hf.textGeneration({
-            model: modelName,
-            inputs: prompt,
-            parameters: {
-              max_new_tokens: options.max_new_tokens || 256,
-              temperature: options.temperature || 0.7,
-              top_p: options.top_p || 0.9,
-              repetition_penalty: options.repetition_penalty || 1.1,
-              return_full_text: false,
-            },
+          const res = await hf.chatCompletion({
+            model: CHAT_MODEL,
+            messages,
+            max_tokens: options.max_tokens || 600,
+            temperature: options.temperature ?? 0.6,
+            top_p: options.top_p ?? 0.9,
+            // GLM-4.x is a reasoning model: without this it spends the whole
+            // token budget "thinking" and returns empty content. Disable it so
+            // the answer lands directly in message.content (faster + cheaper).
+            chat_template_kwargs: { enable_thinking: false },
           });
-
-          return response.generated_text;
+          const msg = res?.choices?.[0]?.message || {};
+          return (msg.content && msg.content.trim()) || null;
         } catch (error) {
-          console.error('Model generation error:', error.message);
-          // Fallback to retrieval-based response on error
+          console.error('Chat completion error:', error.message);
           return null;
         }
       }
     };
 
-    console.log('✓ GLM-4.7-Flash model configured successfully');
-    console.log('  Model: zai-org/GLM-4.7-Flash');
-    console.log('  Provider: Hugging Face Inference API');
+    console.log('✓ Chat model configured');
+    console.log(`  Model: ${CHAT_MODEL}`);
+    console.log('  Provider: Hugging Face router (chat completions)');
     console.log('  Ready for inference');
-
   } catch (error) {
-    console.error('Error configuring GLM-4.7-Flash model:', error);
+    console.error('Error configuring chat model:', error);
     console.log('Falling back to retrieval-based responses...');
-
-    // Fallback to retrieval-only if model configuration fails
-    generator = {
-      generate: async (prompt, options) => {
-        return null;
-      }
-    };
+    generator = { generate: async () => null };
   }
+}
+
+// System prompt: persona, grounding rules, allowed synthesis, scope, and style.
+function buildSystemPrompt() {
+  const name = (portfolioData && portfolioData.personal && portfolioData.personal.name) || 'the portfolio owner';
+  const first = name.split(' ').includes('Iqmal') ? 'Iqmal' : name.split(' ')[0];
+  return `You are the AI assistant on ${name}'s personal portfolio website. You help visitors (often recruiters and hiring managers) learn about ${first}, an AI / machine-vision engineer and semiconductor process engineer.
+
+Ground every answer ONLY in the PROFILE DATA below. You MAY reason over and synthesize those facts — summarize strengths, assess fit for a role, compare projects, infer transferable skills — but never invent specifics that aren't supported (no fabricated employers, dates, metrics, titles, or technologies). If a detail genuinely isn't in the data, say you don't have that information and offer what you can cover instead.
+
+Style:
+- Warm, confident, and professional. Refer to him as "${first}" (third person).
+- Concise by default (2–5 sentences). Use light markdown: **bold** for key terms and bullet lists when enumerating skills, roles, or projects.
+- For recruiter-style questions (fit, strengths, "why hire him", summary), give a direct, grounded, persuasive answer drawn from the data.
+- For follow-ups, use the conversation so far to resolve references like "it", "that role", "more".
+
+Scope: only discuss ${first}, his background, and his work. If asked something clearly unrelated (weather, math, general trivia, coding help, world facts), briefly and politely decline and redirect to what you can help with. Greetings and small pleasantries are fine.
+
+PROFILE DATA:
+${knowledgeBase}`;
 }
 
 // Classify question intent
@@ -403,171 +500,48 @@ function classifyIntent(query) {
   return { intent: 'unknown', confidence: 'low' };
 }
 
-// Enhance query with conversation context
-function enhanceQueryWithContext(query, history) {
-  if (history.length === 0) {
-    return query;
-  }
-
-  const queryLower = query.toLowerCase();
-
-  // Check for follow-up indicators
-  const followUpIndicators = [
-    'tell me more', 'what about', 'and', 'also', 'more details', 'specifically',
-    'how about', 'what else', 'any other', 'elaborate', 'explain'
-  ];
-
-  const isFollowUp = followUpIndicators.some(indicator => queryLower.includes(indicator));
-
-  // Check for pronouns that reference previous context
-  const hasReference = /\b(that|those|them|it|this|these)\b/i.test(query);
-
-  if (isFollowUp || hasReference || query.length < 20) {
-    // Get last exchange for context
-    const lastExchange = history[history.length - 1];
-
-    // Extract topic from last user question or bot response
-    let contextTopic = '';
-
-    if (lastExchange.user.toLowerCase().includes('skill')) {
-      contextTopic = 'skills';
-    } else if (lastExchange.user.toLowerCase().includes('experience') || lastExchange.user.toLowerCase().includes('work')) {
-      contextTopic = 'experience';
-    } else if (lastExchange.user.toLowerCase().includes('project')) {
-      contextTopic = 'projects';
-    } else if (lastExchange.user.toLowerCase().includes('education') || lastExchange.user.toLowerCase().includes('study')) {
-      contextTopic = 'education';
-    }
-
-    // Add context to query if it seems like a follow-up
-    if (contextTopic && !queryLower.includes(contextTopic)) {
-      return `${query} (regarding ${contextTopic})`;
-    }
-  }
-
-  return query;
-}
-
-// Generate response using GLM model with RAG
+// Generate a response: full-context chat completion with multi-turn history,
+// and a grounded retrieval fallback when the LLM is unavailable.
 async function generateResponse(query, sessionId = 'default') {
   try {
-    if (!vectorStore) {
-      return 'I apologize, but I am currently initializing. Please try again.';
-    }
-
     if (!generator) {
-      return 'I apologize, but the model is still loading. Please try again in a moment.';
+      return 'I apologize, but the assistant is still starting up. Please try again in a moment.';
     }
 
-    // Get conversation history
     const history = getSessionHistory(sessionId);
+    const { intent } = classifyIntent(query);
 
-    // Enhance query with context from previous conversation
-    const enhancedQuery = enhanceQueryWithContext(query, history);
-
-    // Classify the intent FIRST before vector search
-    const { intent, confidence } = classifyIntent(enhancedQuery);
-
-    // Handle greetings
-    if (intent === 'greeting' && confidence === 'high') {
-      const response = "Hello! I'm here to help you learn about this portfolio. Feel free to ask about skills, work experience, projects, education, or anything else you'd like to know!";
-      addToHistory(sessionId, query, response);
-      return response;
-    }
-
-    // If clearly off-topic, reject immediately without searching
-    if (intent === 'off-topic' && confidence === 'high') {
-      const response = "I appreciate your question, but I'm specifically designed to discuss this portfolio. I can help you learn about skills, work experience, projects, education, or other professional qualifications. What would you like to know?";
-      addToHistory(sessionId, query, response);
-      return response;
-    }
-
-    // Retrieve relevant chunks using enhanced query
-    const relevantChunks = vectorStore.query(enhancedQuery, 3);
-
-    // If no chunks found
-    if (relevantChunks.length === 0) {
-      let response;
-      // Check if question seems unrelated
-      if (intent === 'unknown' && (confidence === 'medium' || confidence === 'low')) {
-        response = "I'm not sure I understand your question, or it may not be related to this portfolio. I can answer questions about professional skills, work experience, education, projects, and qualifications. Could you rephrase your question or ask about one of these topics?";
-      } else {
-        // Intent recognized but no matches - provide helpful guidance
-        response = `I understand you're asking about ${intent}, but I couldn't find specific information matching your query. Try asking more directly, such as "What are the skills?" or "Tell me about the work experience."`;
-      }
-      addToHistory(sessionId, query, response);
-      return response;
-    }
-
-    // Additional relevance check - even if we found chunks
-    // If intent is unknown and chunks have low scores, likely off-topic
-    if (intent === 'unknown' && relevantChunks.length > 0) {
-      const maxScore = Math.max(...relevantChunks.map(c => c.score || 0));
-      if (maxScore < 1.5) {
-        const response = "Your question doesn't seem to be related to this portfolio. I can help you learn about skills, work experience, projects, education, certificates, and awards. What would you like to know?";
-        addToHistory(sessionId, query, response);
-        return response;
-      }
-    }
-
-    // Build context from retrieved chunks
-    const context = relevantChunks
-      .map((chunk, i) => `[${i + 1}] ${chunk.chunk.text}`)
-      .join('\n\n');
-
-    // Build conversation context
-    let conversationContext = '';
-    if (history.length > 0) {
-      const recentHistory = history.slice(-3); // Last 3 exchanges
-      conversationContext = recentHistory
-        .map(h => `User: ${h.user}\nAssistant: ${h.bot}`)
-        .join('\n\n');
-    }
-
-    // Construct prompt for GLM model
-    const systemPrompt = `You are a helpful assistant for a professional portfolio. Answer questions based only on the provided context. Be concise, friendly, and professional. Use markdown formatting for better readability (bold for emphasis, lists when appropriate).
-
-Context from portfolio:
-${context}
-
-${conversationContext ? `Previous conversation:\n${conversationContext}\n` : ''}
-User's question: ${query}
-
-Instructions:
-- Answer based solely on the context provided
-- Be conversational and natural
-- Use markdown formatting (** for bold, lists with • or -)
-- Keep responses concise (2-4 sentences typically)
-- If asked about something not in the context, say you don't have that information
-- Don't make up information
-`;
-
-    // Generate response using GLM model
-    let response;
-    if (generator && generator.generate && typeof generator.generate === 'function') {
-      // Use the GLM model via HF Inference API
-      const generatedText = await generator.generate(systemPrompt, {
-        max_new_tokens: 256,
-        temperature: 0.7,
-        top_p: 0.9,
-        repetition_penalty: 1.1,
+    // Try the LLM first: full portfolio context + recent conversation as turns.
+    let response = null;
+    if (typeof generator.generate === 'function') {
+      const messages = [{ role: 'system', content: buildSystemPrompt() }];
+      history.slice(-5).forEach(h => {
+        messages.push({ role: 'user', content: h.user });
+        messages.push({ role: 'assistant', content: h.bot });
       });
+      messages.push({ role: 'user', content: query });
 
-      // If we got a response, use it
-      if (generatedText && generatedText.length > 10) {
-        response = generatedText.trim();
-      } else {
-        // Fallback to retrieval-based if generation failed
-        response = generateResponseFromChunks(enhancedQuery, relevantChunks, intent, history);
+      const generated = await generator.generate(messages, { max_tokens: 512, temperature: 0.6 });
+      if (generated && generated.trim().length > 1) {
+        response = generated.trim();
       }
-    } else {
-      // Fallback to retrieval-based response
-      response = generateResponseFromChunks(enhancedQuery, relevantChunks, intent, history);
     }
 
-    // Store in conversation history
-    addToHistory(sessionId, query, response);
+    // Fallback: grounded retrieval when the LLM is unavailable or errored.
+    if (!response) {
+      if (intent === 'greeting') {
+        response = "Hi! I'm Iqmal's portfolio assistant. Ask me about his skills, experience, projects, education, or whether he'd fit a role you have in mind.";
+      } else if (vectorStore) {
+        const relevantChunks = vectorStore.query(query, 4);
+        response = relevantChunks.length
+          ? generateResponseFromChunks(query, relevantChunks, intent, history)
+          : "I can tell you about Iqmal's skills, work experience, projects, education, certificates, and awards — what would you like to know?";
+      } else {
+        response = "I can tell you about Iqmal's skills, work experience, projects, and education — what would you like to know?";
+      }
+    }
 
+    addToHistory(sessionId, query, response);
     return response;
   } catch (error) {
     console.error('Error generating response:', error);

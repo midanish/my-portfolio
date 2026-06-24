@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio of Muhammad Iqmal Danish - AI Engineer, Vision Engineer, and Process Engineer specializing in computer vision and machine learning.">
   <title>Iqmal Danish | AI & Vision Engineer</title>
-  <link rel="stylesheet" href="/css/styles.css?v=11">
+  <link rel="stylesheet" href="/css/styles.css?v=14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
   </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+  <!-- Animated detection-grid background (Layer 3, capability-gated by JS) -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
   <!-- Desktop Background with Dynamic Gradient -->
   <div class="macos-desktop">
     <!-- Menu Bar -->
@@ -52,10 +56,22 @@
         </div>
         <div class="window-content hero-content">
           <div class="hero-avatar">
+            <svg class="telemetry-arcs" viewBox="0 0 340 340" aria-hidden="true">
+              <circle class="t-arc t-arc-1" cx="170" cy="170" r="104"/>
+              <circle class="t-arc t-arc-2" cx="170" cy="170" r="128"/>
+              <circle class="t-arc t-arc-3" cx="170" cy="170" r="152"/>
+            </svg>
             <div class="avatar-ring">
               <div class="avatar-icon">
-                <img src="/profile-picture.jpeg" alt="Profile" class="avatar-image">
+                <img src="/profile-picture.jpeg" alt="Muhammad Iqmal Danish" class="avatar-image">
               </div>
+              <span class="detect-box" aria-hidden="true">
+                <i class="db-corner tl"></i>
+                <i class="db-corner tr"></i>
+                <i class="db-corner bl"></i>
+                <i class="db-corner br"></i>
+              </span>
+              <span class="confidence-chip" aria-hidden="true">person&nbsp;·&nbsp;0.99</span>
             </div>
           </div>
           <h1 class="hero-name" id="heroName">Loading...</h1>
@@ -237,8 +253,8 @@
 
     <!-- AI Chat Widget -->
     <div id="chatWidget" class="chat-widget">
-      <button id="chatToggle" class="chat-toggle">
-        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>
+      <button id="chatToggle" class="chat-toggle" aria-label="Open resume assistant chat">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>
       </button>
       
       <div id="chatWindow" class="chat-window macos-window">
@@ -252,7 +268,7 @@
         <div class="chat-messages" id="chatMessages">
           <div class="message system">
             <div class="message-content">
-              👋 Hi! I can help you learn about the portfolio. Ask me anything about skills, experience, projects, or education.
+              👋 Hi! I'm Iqmal's AI assistant. Ask about his skills, experience, and projects — or things like <em>"Is he a good fit for an AI engineer role?"</em> or <em>"What's his strongest project?"</em>
             </div>
           </div>
         </div>
@@ -266,11 +282,11 @@
               placeholder="Ask about the portfolio..."
               autocomplete="off"
             />
-            <button id="chatSend" class="chat-send">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
+            <button id="chatSend" class="chat-send" aria-label="Send message">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
             </button>
           </div>
-          <div class="chat-hint">Only answers questions related to portfolio</div>
+          <div class="chat-hint">Answers questions about Iqmal's background &amp; fit</div>
         </div>
       </div>
     </div>
@@ -297,41 +313,41 @@
     </div>
 
     <!-- Dock Navigation -->
-    <nav class="dock" id="dock">
+    <nav class="dock" id="dock" aria-label="Section navigation">
       <div class="dock-container">
-        <a href="#hero" class="dock-item active" data-tooltip="Home">
-          <div class="dock-icon">
+        <a href="#hero" class="dock-item active" data-tooltip="Home" aria-label="Home">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/></svg>
           </div>
         </a>
-        <a href="#about" class="dock-item" data-tooltip="About">
-          <div class="dock-icon">
+        <a href="#about" class="dock-item" data-tooltip="About" aria-label="About">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/></svg>
           </div>
         </a>
-        <a href="#skills" class="dock-item" data-tooltip="Skills">
-          <div class="dock-icon">
+        <a href="#skills" class="dock-item" data-tooltip="Skills" aria-label="Skills">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/></svg>
           </div>
         </a>
-        <a href="#experience" class="dock-item" data-tooltip="Experience">
-          <div class="dock-icon">
+        <a href="#experience" class="dock-item" data-tooltip="Experience" aria-label="Experience">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/></svg>
           </div>
         </a>
-        <div class="dock-separator"></div>
-        <a href="#projects" class="dock-item" data-tooltip="Projects">
-          <div class="dock-icon">
+        <div class="dock-separator" aria-hidden="true"></div>
+        <a href="#projects" class="dock-item" data-tooltip="Projects" aria-label="Projects">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" fill="currentColor"/></svg>
           </div>
         </a>
-        <a href="#education" class="dock-item" data-tooltip="Education">
-          <div class="dock-icon">
+        <a href="#education" class="dock-item" data-tooltip="Education" aria-label="Education">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/></svg>
           </div>
         </a>
-        <a href="#contact" class="dock-item" data-tooltip="Contact">
-          <div class="dock-icon">
+        <a href="#contact" class="dock-item" data-tooltip="Contact" aria-label="Contact">
+          <div class="dock-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
           </div>
         </a>
@@ -344,6 +360,7 @@
     <p>&copy; <span id="currentYear"></span> Muhammad Iqmal Danish</p>
   </footer>
 
-  <script src="/js/app.js?v=10"></script>
+  <script src="/js/skill-icons.js?v=1"></script>
+  <script src="/js/app.js?v=15"></script>
 </body>
 </html>

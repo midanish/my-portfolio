@@ -26,110 +26,71 @@ A macOS Sequoia-styled portfolio website with an AI-powered chatbot that answers
    npm install
    ```
 
-2. **Start the server**:
+2. **(Optional) Enable the AI assistant** — set a Hugging Face token so the
+   chatbot can use the LLM. Without it, the bot still answers using a grounded
+   fallback, but the LLM gives much smarter, synthesized answers:
+   ```bash
+   # PowerShell:  $env:HF_TOKEN = "hf_xxx"
+   # bash:        export HF_TOKEN=hf_xxx
+   # Optional:    set CHAT_MODEL to override the default (zai-org/GLM-4.7-Flash)
+   ```
+   Get a free token at https://huggingface.co/settings/tokens.
+
+3. **Start the server**:
    ```bash
    npm start
    ```
+   On boot it logs whether a token was detected (`Auth: HF token detected` vs
+   `no token … using grounded retrieval fallback`).
 
-3. **Open in browser**:
+4. **Open in browser**:
    ```
    http://localhost:3000
    ```
 
-## RAG Chat System
+## Deployment (Cloudflare Pages — Git auto-build)
 
-The chat system uses an advanced semantic RAG approach with Transformers.js:
+Deployed on Cloudflare Pages with **Git integration**: pushing to `main`
+triggers an automatic Cloudflare build & deploy — no GitHub Action needed.
 
-### Current Implementation
+Cloudflare Pages project settings:
+- **Production branch:** `main`
+- **Build command:** *(none — static site)*
+- **Build output directory:** `public`
+- **Functions:** auto-detected from the `/functions` directory
 
-- **Semantic Intent Classification**: Intelligent pattern matching to understand question intent (skills, experience, projects, education, etc.)
-- **TF-IDF Vector Retrieval**: Efficient vector similarity search for retrieving relevant chunks with stopword filtering
-- **Smart Guardrails**: Multi-layer filtering system that:
-  - Detects and politely rejects off-topic questions (weather, jokes, general knowledge, etc.)
-  - Handles greetings appropriately
-  - Provides context-aware responses based on question intent
-  - Validates relevance even after vector search
-- **Context-Aware Response Generation**: Introduces responses based on detected intent (e.g., "Here are the relevant skills:" for skills questions)
+**Chatbot token (runtime):** the chat Function reads `HF_TOKEN` from the Pages
+environment. Set it in Cloudflare → Workers & Pages → **my-portfolio → Settings
+→ Environment variables → Production** → add `HF_TOKEN` (and optionally
+`CHAT_MODEL`), then redeploy. Without it, the bot uses its grounded fallback.
 
-### To Enable Full GLM-4.7-Flash-GGUF Model
+For local dev, the token comes from your `.env` instead (see Setup).
 
-To use the unsloth/GLM-4.7-Flash-GGUF model for more sophisticated responses:
+## AI Chat System
 
-#### Option 1: Using Transformers.js (When GLM is Supported)
+The assistant answers questions about the portfolio using a grounded LLM:
 
-Transformers.js (@xenova/transformers) is a JavaScript port of Hugging Face Transformers. It supports many models, but GLM-4.7 support may be limited.
+### How it works
 
-Update `server.js` `loadModel()` function:
+1. **Full-portfolio grounding** — the entire `portfolio.json` is compiled into a
+   compact knowledge base and passed to the model as context. Because the
+   portfolio is small, there's no lossy retrieval step, so the bot never "misses"
+   a fact and can answer synthesis questions ("Is he a fit for an AI role?",
+   "What's his strongest project?", "Summarize his experience").
+2. **Chat completions** — uses the Hugging Face chat-completions API
+   (`hf.chatCompletion`, model `CHAT_MODEL`, default `zai-org/GLM-4.7-Flash`)
+   with a system prompt that enforces grounding (no fabrication), an inviting
+   recruiter-friendly tone, markdown formatting, and on-topic scope.
+3. **Multi-turn memory** — the last few exchanges per session are sent as real
+   message turns, so follow-ups like "tell me more" resolve naturally.
+4. **Grounded fallback** — if no `HF_TOKEN` is set or the API errors, it falls
+   back to a TF-IDF retrieval response built from the same data, so the chat
+   always works.
 
-```javascript
-const { pipeline } = require('@xenova/transformers');
-
-async function loadModel() {
-  try {
-    // Load text generation pipeline
-    generator = await pipeline('text-generation', 'unsloth/GLM-4.7-Flash-GGUF', {
-      quantized: true,
-      dtype: 'q4',  // Use quantized version
-    });
-    
-    console.log('GLM model loaded successfully');
-  } catch (error) {
-    console.error('Error loading model:', error);
-    console.log('Falling back to retrieval-based responses...');
-  }
-}
-```
-
-#### Option 2: Using Python Backend with llama-cpp-python
-
-If Transformers.js doesn't support GLM-4.7, use Python:
-
-1. **Install Python dependencies**:
-   ```bash
-   pip install llama-cpp-python flask flask-cors
-   ```
-
-2. **Create Python backend** (`backend.py`):
-   ```python
-   from flask import Flask, request, jsonify
-   from flask_cors import CORS
-   from llama_cpp import Llama
-   
-   app = Flask(__name__)
-   CORS(app)
-   
-   # Load GLM model
-   llm = Llama.from_pretrained(
-       repo_id="unsloth/GLM-4.7-Flash-GGUF",
-       filename="BF16/GLM-4.7-Flash-BF16-00001-of-00002.gguf",
-   )
-   
-   @app.route('/api/generate', methods=['POST'])
-   def generate():
-       data = request.json
-       prompt = data.get('prompt')
-       
-       # Generate response
-       output = llm(prompt, max_tokens=300)
-       
-       return jsonify({'response': output})
-   
-   if __name__ == '__main__':
-       app.run(port=5000)
-   ```
-
-3. **Update Node.js server** to call Python backend for generation:
-   ```javascript
-   async function generateWithPython(prompt) {
-     const response = await fetch('http://localhost:5000/api/generate', {
-       method: 'POST',
-       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify({ prompt }),
-     });
-     const data = await response.json();
-     return data.response;
-   }
-   ```
+> Set `HF_TOKEN` to enable the LLM (see Setup). Override the model with
+> `CHAT_MODEL` if you prefer a different served model (e.g. `zai-org/GLM-4.6`).
+> The Cloudflare function (`functions/api/chat.js`) mirrors this and reads
+> `HF_TOKEN` from the Pages environment.
 
 ## Chat API
 
