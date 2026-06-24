@@ -189,6 +189,18 @@ body::after {
 }
 #bgCanvas.on { opacity: 1; }
 
+/* Mouse-tracking spotlight — a soft glow that follows the cursor (added by JS) */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(560px circle at var(--sx, 50%) var(--sy, 30%), rgba(0, 229, 199, 0.10), transparent 60%);
+}
+[data-theme="light"] .spotlight {
+  background: radial-gradient(560px circle at var(--sx, 50%) var(--sy, 30%), rgba(0, 150, 130, 0.12), transparent 60%);
+}
+
 /* ---------------------------------------------------------------------------
    5. DESKTOP SHELL
    --------------------------------------------------------------------------- */
@@ -1380,26 +1392,76 @@ body::after {
   position: fixed;
   bottom: calc(108px + env(safe-area-inset-bottom));
   right: 24px;
-  width: 400px;
-  max-width: calc(100vw - 48px);
-  height: 550px;
-  max-height: calc(100vh - 130px);
+  width: 400px; height: 560px;
+  max-width: calc(100vw - 48px); max-height: calc(100vh - 120px);
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-lg)); -webkit-backdrop-filter: blur(var(--blur-lg));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow-lg), var(--glass-inner-shadow);
+  transform-origin: bottom right;
   display: none;
-  flex-direction: column;
-  overflow: hidden;
-  animation: slideUp 0.25s ease-out;
+  transition:
+    width 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    height 0.42s cubic-bezier(0.32, 0.72, 0, 1);
 }
-.chat-window.open { display: flex; }
-/* chat header detection frame */
-.chat-window .window-header { position: relative; }
+.chat-window.open { display: flex; animation: chatIn 0.32s cubic-bezier(0.34, 1.3, 0.64, 1); }
+/* while dragging the corner, don't animate size (follow the cursor 1:1) */
+.chat-window.resizing { transition: none; }
+@keyframes chatIn { from { opacity: 0; transform: translateY(16px) scale(0.96); } to { opacity: 1; transform: none; } }
+/* Expanded = a clean centered panel with margins from the menu bar & dock
+   (instead of growing out of the corner under the menu bar). */
+.chat-window.maximized {
+  top: 46px;
+  bottom: calc(94px + env(safe-area-inset-bottom));
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: min(880px, calc(100vw - 48px));
+  height: auto;
+  max-width: none;
+  max-height: none;
+  border-radius: var(--radius-xl);
+  animation: none; /* keep the centering transform; no entrance morph here */
+}
+.chat-window.minimized .chat-messages,
+.chat-window.minimized .chat-input-container { opacity: 0; pointer-events: none; }
+.chat-window.minimized .window-header { cursor: pointer; }
+
+/* header + titlebar */
+.chat-window .window-header { position: relative; gap: 10px; }
 .chat-window.open .window-header::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: var(--accent-gradient);
 }
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.chat-titlebar { display: flex; align-items: center; gap: 9px; flex: 1; }
+.chat-avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent-gradient); color: #04201C;
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px var(--glow);
+}
+.chat-title-text { display: flex; flex-direction: column; line-height: 1.15; }
+.chat-title-text b { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+.chat-presence { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 0.58rem; color: #30D158; }
+.chat-presence::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #30D158; box-shadow: 0 0 6px #30D158; }
+
+/* macOS traffic-light glyphs reveal on header hover */
+.chat-window .window-controls .control { position: relative; }
+.chat-window .window-header:hover .control::after {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; line-height: 1; color: rgba(0, 0, 0, 0.5);
+}
+.chat-window .window-header:hover .control.close::after { content: '\00D7'; }
+.chat-window .window-header:hover .control.minimize::after { content: '\2013'; }
+.chat-window .window-header:hover .control.maximize::after { content: '\002B'; }
+
+/* drag-to-resize grip (top-left corner) */
+.chat-resize { position: absolute; top: 0; left: 0; width: 20px; height: 20px; cursor: nwse-resize; z-index: 6; touch-action: none; }
+.chat-resize::before { content: ''; position: absolute; top: 7px; left: 7px; width: 7px; height: 7px; border-top: 2px solid var(--text-muted); border-left: 2px solid var(--text-muted); border-radius: 3px 0 0 0; opacity: 0.5; transition: opacity 0.2s, border-color 0.2s; }
+.chat-resize:hover::before { opacity: 1; border-color: var(--accent); }
 
 .chat-messages {
   flex: 1; overflow-y: auto; padding: 16px;
@@ -1462,6 +1524,23 @@ body::after {
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
+
+/* interactive starter chips */
+.chat-suggest { display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+.chat-suggest.gone { display: none; }
+.suggest-chip {
+  text-align: left; font-family: inherit; font-size: 0.8rem;
+  padding: 9px 13px; border-radius: 12px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  color: var(--text-secondary); cursor: pointer;
+  transition: transform 0.2s var(--transition-fast), background 0.2s, border-color 0.2s, color 0.2s;
+  animation: messageIn 0.35s ease-out backwards;
+}
+.suggest-chip:nth-child(2) { animation-delay: 0.06s; }
+.suggest-chip:nth-child(3) { animation-delay: 0.12s; }
+.suggest-chip::before { content: '↗'; color: var(--accent); margin-right: 7px; opacity: 0.7; }
+.suggest-chip:hover { color: var(--text-primary); border-color: var(--glass-border-hot); background: rgba(0, 229, 199, 0.1); transform: translateX(3px); }
+[data-theme="light"] .suggest-chip:hover { background: rgba(0, 150, 130, 0.1); }
 
 /* ---------------------------------------------------------------------------
    19. RESPONSIVE

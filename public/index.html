@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio of Muhammad Iqmal Danish - AI Engineer, Vision Engineer, and Process Engineer specializing in computer vision and machine learning.">
   <title>Iqmal Danish | AI & Vision Engineer</title>
-  <link rel="stylesheet" href="/css/styles.css?v=14">
+  <link rel="stylesheet" href="/css/styles.css?v=22">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -257,36 +257,50 @@
         <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>
       </button>
       
-      <div id="chatWindow" class="chat-window macos-window">
-        <div class="window-header">
+      <div id="chatWindow" class="chat-window">
+        <span class="chat-resize" id="chatResize" aria-hidden="true" title="Drag to resize"></span>
+        <div class="window-header" id="chatHeader">
           <div class="window-controls">
-            <span class="control close" id="chatClose"></span>
+            <span class="control close" id="chatClose" role="button" tabindex="0" aria-label="Close chat"></span>
+            <span class="control minimize" id="chatMin" role="button" tabindex="0" aria-label="Minimize chat"></span>
+            <span class="control maximize" id="chatMax" role="button" tabindex="0" aria-label="Expand chat"></span>
           </div>
-          <span class="window-title">Ask About Resume</span>
+          <span class="chat-titlebar">
+            <span class="chat-avatar" aria-hidden="true">AI</span>
+            <span class="chat-title-text">
+              <b>Iqmal&rsquo;s Assistant</b>
+              <span class="chat-presence">online</span>
+            </span>
+          </span>
         </div>
-        
+
         <div class="chat-messages" id="chatMessages">
           <div class="message system">
             <div class="message-content">
-              👋 Hi! I'm Iqmal's AI assistant. Ask about his skills, experience, and projects — or things like <em>"Is he a good fit for an AI engineer role?"</em> or <em>"What's his strongest project?"</em>
+              👋 Hi! I'm Iqmal's AI assistant — ask me anything about his skills, experience, and projects.
             </div>
           </div>
+          <div class="chat-suggest" id="chatSuggest">
+            <button class="suggest-chip" type="button">What are his strongest skills?</button>
+            <button class="suggest-chip" type="button">Is he a good fit for an AI Engineer role?</button>
+            <button class="suggest-chip" type="button">Tell me about the RAG chatbot project</button>
+          </div>
         </div>
-        
+
         <div class="chat-input-container">
           <div class="chat-input-wrapper">
-            <input 
-              type="text" 
-              id="chatInput" 
-              class="chat-input" 
-              placeholder="Ask about the portfolio..."
+            <input
+              type="text"
+              id="chatInput"
+              class="chat-input"
+              placeholder="Ask about Iqmal…"
               autocomplete="off"
             />
             <button id="chatSend" class="chat-send" aria-label="Send message">
               <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
             </button>
           </div>
-          <div class="chat-hint">Answers questions about Iqmal's background &amp; fit</div>
+          <div class="chat-hint">⤡ drag corner to resize · ⊕ expand · answers about Iqmal</div>
         </div>
       </div>
     </div>
@@ -361,6 +375,6 @@
   </footer>
 
   <script src="/js/skill-icons.js?v=1"></script>
-  <script src="/js/app.js?v=15"></script>
+  <script src="/js/app.js?v=22"></script>
 </body>
 </html>

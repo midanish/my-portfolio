@@ -615,6 +615,48 @@
     });
   }
 
+  // ---- Mouse-tracking spotlight (whole-page, follows cursor) ---------------
+  function setupGlobalSpotlight() {
+    if (prefersReducedMotion || !finePointer) return;
+    const spot = document.createElement('div');
+    spot.className = 'spotlight';
+    spot.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(spot);
+    let raf = null, x = window.innerWidth / 2, y = window.innerHeight * 0.3;
+    window.addEventListener('mousemove', (e) => {
+      x = e.clientX; y = e.clientY;
+      if (!raf) raf = requestAnimationFrame(() => {
+        raf = null;
+        spot.style.setProperty('--sx', x + 'px');
+        spot.style.setProperty('--sy', y + 'px');
+      });
+    }, { passive: true });
+  }
+
+  // ---- 3D tilt-on-hover for cards ------------------------------------------
+  function bindTilt(el) {
+    const isProject = el.classList.contains('project-card');
+    const max = isProject ? 6 : 8;          // degrees
+    const lift = isProject ? 6 : 4;         // px
+    let raf = null, rx = 0, ry = 0;
+    el.style.transformStyle = 'preserve-3d';
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      const cx = (e.clientX - r.left) / r.width - 0.5;
+      const cy = (e.clientY - r.top) / r.height - 0.5;
+      rx = -cy * max; ry = cx * max;
+      if (!raf) raf = requestAnimationFrame(() => {
+        raf = null;
+        el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-${lift}px)`;
+      });
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  }
+  function setupTilt() {
+    if (prefersReducedMotion || !finePointer) return;
+    document.querySelectorAll('.project-card, .stat-card, .contact-item').forEach(bindTilt);
+  }
+
   // ---- Init ----------------------------------------------------------------
   async function init() {
     const data = await fetchPortfolioData();
@@ -638,6 +680,8 @@
     initSmoothScroll();
     setupReveal();
     setupSpotlight();
+    setupGlobalSpotlight();
+    setupTilt();
     setupTouchProjectReveal();
     initBgCanvas();
   }
@@ -651,24 +695,7 @@
 
 // Global function to open chat from project card
 function openChatFromProject() {
-  const chatToggle = document.getElementById('chatToggle');
-  const chatWindow = document.getElementById('chatWindow');
-  if (chatWindow && !chatWindow.classList.contains('open')) {
-    chatWindow.classList.add('open');
-    if (chatToggle) chatToggle.style.display = 'none';
-    const chatInput = document.getElementById('chatInput');
-    if (chatInput) setTimeout(() => chatInput.focus(), 400);
-    setTimeout(() => {
-      const chatMessages = document.getElementById('chatMessages');
-      if (chatMessages && chatMessages.children.length === 1) {
-        const demoMessage = document.createElement('div');
-        demoMessage.className = 'message system';
-        demoMessage.innerHTML = '<div class="message-content">👋 Thanks for trying the live demo! Ask me anything about the portfolio.</div>';
-        chatMessages.appendChild(demoMessage);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-    }, 500);
-  }
+  if (window.openChatWidget) window.openChatWidget();
 }
 
 // Global function to open video preview modal
@@ -708,103 +735,148 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeVideoPreview();
 });
 
-// Chat Widget Functionality
+// Chat Widget — expandable (drag-resize / minimize / maximize), animated, interactive
 (function() {
   'use strict';
 
-  const chatToggle = document.getElementById('chatToggle');
-  const chatWindow = document.getElementById('chatWindow');
-  const chatClose = document.getElementById('chatClose');
+  const toggle = document.getElementById('chatToggle');
+  const win = document.getElementById('chatWindow');
+  const header = document.getElementById('chatHeader');
+  const closeBtn = document.getElementById('chatClose');
+  const minBtn = document.getElementById('chatMin');
+  const maxBtn = document.getElementById('chatMax');
+  const resizeH = document.getElementById('chatResize');
   const chatMessages = document.getElementById('chatMessages');
   const chatInput = document.getElementById('chatInput');
   const chatSend = document.getElementById('chatSend');
+  const suggest = document.getElementById('chatSuggest');
+  if (!win || !toggle) return;
 
-  let isOpen = false;
-  let isTyping = false;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let isOpen = false, isTyping = false, state = 'compact';
 
-  let sessionId = localStorage.getItem('chatSessionId') || generateSessionId();
+  // ---- size / state -------------------------------------------------------
+  const MINW = 320, MINH = 380;
+  const maxW = () => Math.min(960, window.innerWidth - 40);
+  const maxH = () => window.innerHeight - 120;
+  let userSize = loadSize();
+  function loadSize() { try { const s = JSON.parse(localStorage.getItem('chatSize') || 'null'); if (s && s.w && s.h) return s; } catch (e) {} return { w: 400, h: 560 }; }
+  function saveSize() { localStorage.setItem('chatSize', JSON.stringify(userSize)); }
+  function clampUser() { userSize.w = Math.max(MINW, Math.min(userSize.w, maxW())); userSize.h = Math.max(MINH, Math.min(userSize.h, maxH())); }
+
+  function applySize() {
+    win.classList.toggle('maximized', state === 'max');
+    win.classList.toggle('minimized', state === 'min');
+    if (state === 'max') {
+      // centered modal — CSS (.maximized) owns position + size
+      win.style.removeProperty('width');
+      win.style.removeProperty('height');
+    } else if (state === 'min') {
+      win.style.width = userSize.w + 'px';
+      win.style.height = (header.offsetHeight || 49) + 'px';
+    } else {
+      clampUser();
+      win.style.width = userSize.w + 'px';
+      win.style.height = userSize.h + 'px';
+    }
+    maxBtn.setAttribute('aria-label', state === 'max' ? 'Restore chat' : 'Expand chat');
+  }
+  function setState(s) {
+    state = (state === s && s !== 'compact') ? 'compact' : s;
+    applySize();
+    if (state !== 'min' && !reduce) setTimeout(() => chatInput && chatInput.focus(), 60);
+  }
+
+  function open() {
+    isOpen = true; state = 'compact';
+    win.classList.add('open');   // display:flex via CSS
+    applySize();
+    toggle.style.display = 'none';
+    setTimeout(() => chatInput && chatInput.focus(), reduce ? 0 : 320);
+  }
+  function close() {
+    isOpen = false;
+    win.classList.remove('open'); // display:none via CSS
+    toggle.style.display = 'flex';
+  }
+
+  toggle.addEventListener('click', open);
+  closeBtn.addEventListener('click', (e) => { e.stopPropagation(); close(); });
+  minBtn.addEventListener('click', (e) => { e.stopPropagation(); setState('min'); });
+  maxBtn.addEventListener('click', (e) => { e.stopPropagation(); setState('max'); });
+  header.addEventListener('click', () => { if (state === 'min') setState('compact'); });
+  window.addEventListener('resize', () => { if (isOpen) applySize(); });
+  window.openChatWidget = open;
+
+  // ---- drag-to-resize (top-left corner) -----------------------------------
+  if (resizeH) {
+    let sx, sy, sw, sh, dragging = false;
+    resizeH.addEventListener('pointerdown', (e) => {
+      if (state !== 'compact') return;
+      dragging = true; sx = e.clientX; sy = e.clientY; sw = win.offsetWidth; sh = win.offsetHeight;
+      win.classList.add('resizing'); resizeH.setPointerCapture(e.pointerId); e.preventDefault();
+    });
+    resizeH.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      userSize.w = Math.max(MINW, Math.min(sw + (sx - e.clientX), maxW()));
+      userSize.h = Math.max(MINH, Math.min(sh + (sy - e.clientY), maxH()));
+      win.style.width = userSize.w + 'px'; win.style.height = userSize.h + 'px';
+    });
+    const endDrag = () => { if (!dragging) return; dragging = false; win.classList.remove('resizing'); saveSize(); };
+    resizeH.addEventListener('pointerup', endDrag);
+    resizeH.addEventListener('pointercancel', endDrag);
+  }
+
+  // ---- messaging ----------------------------------------------------------
+  let sessionId = localStorage.getItem('chatSessionId') || ('session_' + Date.now() + '_' + Math.random().toString(36).slice(2, 11));
   localStorage.setItem('chatSessionId', sessionId);
 
-  function generateSessionId() {
-    return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-  }
-
-  function toggleChat() {
-    isOpen = !isOpen;
-    chatWindow.classList.toggle('open', isOpen);
-    chatToggle.style.display = isOpen ? 'none' : 'flex';
-    if (isOpen) setTimeout(() => chatInput.focus(), 300);
-  }
-
-  function closeChat() {
-    isOpen = false;
-    chatWindow.classList.remove('open');
-    chatToggle.style.display = 'flex';
-  }
-
   function parseMarkdown(text) {
-    const escapeHtml = (str) => { const div = document.createElement('div'); div.textContent = str; return div.innerHTML; };
-    let html = escapeHtml(text);
+    const esc = (str) => { const d = document.createElement('div'); d.textContent = str; return d.innerHTML; };
+    let html = esc(text);
     html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>');
     html = html.replace(/\n/g, '<br>');
     return html;
   }
-
   function addMessage(content, type = 'user') {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${type}`;
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content';
-    if (type === 'assistant') contentDiv.innerHTML = parseMarkdown(content);
-    else contentDiv.textContent = content;
-    messageDiv.appendChild(contentDiv);
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    return messageDiv;
+    const m = document.createElement('div'); m.className = `message ${type}`;
+    const c = document.createElement('div'); c.className = 'message-content';
+    if (type === 'assistant') c.innerHTML = parseMarkdown(content); else c.textContent = content;
+    m.appendChild(c); chatMessages.appendChild(m); chatMessages.scrollTop = chatMessages.scrollHeight;
+    return m;
   }
-
   function showTyping() {
     isTyping = true;
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'message assistant message-typing';
-    typingDiv.id = 'typingIndicator';
-    typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-    chatMessages.appendChild(typingDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    const t = document.createElement('div'); t.className = 'message assistant message-typing'; t.id = 'typingIndicator';
+    t.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    chatMessages.appendChild(t); chatMessages.scrollTop = chatMessages.scrollHeight;
   }
+  function hideTyping() { isTyping = false; const t = document.getElementById('typingIndicator'); if (t) t.remove(); }
+  function hideSuggest() { if (suggest) suggest.classList.add('gone'); }
 
-  function hideTyping() {
-    isTyping = false;
-    const typingIndicator = document.getElementById('typingIndicator');
-    if (typingIndicator) typingIndicator.remove();
-  }
-
-  async function sendMessage() {
-    const message = chatInput.value.trim();
+  async function sendMessage(text) {
+    const message = (text != null ? text : chatInput.value).trim();
     if (!message || isTyping) return;
+    if (state === 'min') setState('compact');
     addMessage(message, 'user');
     chatInput.value = '';
+    hideSuggest();
     showTyping();
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, sessionId })
-      });
-      const data = await response.json();
+      const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message, sessionId }) });
+      const data = await r.json();
       if (data.sessionId) { sessionId = data.sessionId; localStorage.setItem('chatSessionId', sessionId); }
       hideTyping();
       if (data.response) addMessage(data.response, 'assistant');
-    } catch (error) {
-      console.error('Error sending message:', error);
+    } catch (err) {
+      console.error('Error sending message:', err);
       hideTyping();
-      addMessage('Sorry, I encountered an error. Please try again.', 'assistant');
+      addMessage('Sorry, I hit an error reaching the assistant. Please try again.', 'assistant');
     }
   }
 
-  if (chatToggle) chatToggle.addEventListener('click', toggleChat);
-  if (chatClose) chatClose.addEventListener('click', closeChat);
-  if (chatSend) chatSend.addEventListener('click', sendMessage);
-  if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+  if (suggest) suggest.querySelectorAll('.suggest-chip').forEach((b) => b.addEventListener('click', () => sendMessage(b.textContent)));
+  if (chatSend) chatSend.addEventListener('click', () => sendMessage());
+  if (chatInput) chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
 })();
