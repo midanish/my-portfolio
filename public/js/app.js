@@ -276,10 +276,6 @@
               <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/></svg>
               <span>Try Live Demo</span>
             </button>
-            <a href="/compare" class="preview-button ghost preview-link-btn" title="Compare standard RAG with structure-aware RAG">
-              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M10 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h6V3zm10 0h-6v18h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" fill="currentColor"/></svg>
-              <span>Compare Two Bots</span>
-            </a>
           </div>`;
       } else if (isFoodClassification) {
         button = `
@@ -868,16 +864,30 @@ document.addEventListener('keydown', (e) => {
     hideSuggest();
     showTyping();
     try {
-      const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message, sessionId }) });
-      const data = await r.json();
-      if (data.sessionId) { sessionId = data.sessionId; localStorage.setItem('chatSessionId', sessionId); }
+      const r = await fetch('/api/compare', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question: message }) });
+      const data = await r.json().catch(() => ({}));
       hideTyping();
-      if (data.response) addMessage(data.response, 'assistant');
+      if (!r.ok || !data.results) addMessage(data.error || 'Sorry, I hit an error reaching the assistant. Please try again.', 'assistant');
+      else addAnswers(data.results);
     } catch (err) {
       console.error('Error sending message:', err);
       hideTyping();
       addMessage('Sorry, I hit an error reaching the assistant. Please try again.', 'assistant');
     }
+  }
+
+  // One reply, two answers: A = standard search, B = searches by section.
+  function addAnswers(results) {
+    const m = document.createElement('div'); m.className = 'message assistant message-ab';
+    const part = (label, how, r) => {
+      const ids = r.selected_leaf_ids || r.retrieved_ids || [];
+      const html = parseMarkdown(r.answer || '').replace(/\[([a-z0-9_]+(?:\.[a-z0-9_]+)+)\]/g, '<span class="ab-cite" title="Source section">$1</span>');
+      return `<div class="ab-answer"><div class="ab-label"><b>${label}</b> · ${how}</div>` +
+        `<div class="message-content">${html}</div>` +
+        `<div class="ab-meta">${(r.latency_ms / 1000).toFixed(1)} s · ${ids.length} sections used</div></div>`;
+    };
+    m.innerHTML = part('Answer A', 'standard search', results.hybrid_rag) + part('Answer B', 'searches by section', results.structure_rag);
+    chatMessages.appendChild(m); chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
   if (suggest) suggest.querySelectorAll('.suggest-chip').forEach((b) => b.addEventListener('click', () => sendMessage(b.textContent)));

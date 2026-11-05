@@ -1509,6 +1509,12 @@ body::after {
 }
 [data-theme="light"] .message.system .message-content { background: rgba(0, 150, 130, 0.1); }
 
+/* Two answers (A and B) in one reply */
+.message.message-ab { max-width: 100%; align-self: stretch; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+.ab-label { font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-muted); margin: 0 0 4px 4px; }
+.ab-label b { color: var(--accent); font-weight: 600; }
+.ab-meta { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); margin: 4px 0 0 4px; }
+.ab-cite { display: inline-block; font-family: var(--font-mono); font-size: 0.62rem; padding: 0 5px; border-radius: 5px; border: 1px solid var(--glass-border); color: var(--text-muted); white-space: nowrap; }
 .chat-input-container { border-top: 1px solid var(--glass-border); padding: 16px; background: var(--glass-header); }
 .chat-input-wrapper { display: flex; gap: 10px; align-items: center; }
 .chat-input {

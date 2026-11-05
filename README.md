@@ -3,7 +3,7 @@
 A macOS-styled portfolio site with two AI features:
 
 1. **Portfolio assistant (v1, `/api/chat`)** — answers questions about Iqmal by giving the model the *whole* profile every time. There is no retrieval step; the profile is small enough to fit.
-2. **Two-bot comparison (v2, `/compare.html` + `/api/compare`)** — one question, two answers side by side, from the same knowledge base:
+2. **Two-bot comparison (v2, `/api/compare`)** — the chat window now shows two answers to every question, labelled Answer A and Answer B, from the same knowledge base (`/compare` shows the same thing with the evidence each bot used):
    - **Bot A · Standard RAG:** BM25 keyword search + embedding search over short passages, merged with Reciprocal Rank Fusion, top 5 passages.
    - **Bot B · Structure-aware RAG (STAIR-inspired):** a model chooses up to 3 sections from the knowledge base's table of contents; the IDs are checked against the real list (embedding fallback if none are valid); those sections are read (max 5 passages).
    - Both use the same answer model (Llama 3.1 8B on Cloudflare Workers AI), prompt, evidence budget and citation check. **Only retrieval differs.**
