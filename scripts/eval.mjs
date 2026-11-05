@@ -83,14 +83,16 @@ for (const q of questions) {
   const tB = Date.now();
   const route = await retry(() => routeLeaves(idx, q.question, qvec, env));
   const bPassages = passagesForLeaves(idx, route.leafIds, q.question, qvec);
+  // Score the sections Bot B actually hands to the answerer: router picks first, then any sibling sections.
+  const bRanked = uniq([...route.leafIds, ...bPassages.map(p => p.section_id)]);
   row.b = {
-    ranked: route.leafIds, router: route.router, invalid_ids: route.invalid,
+    ranked: bRanked, router: route.router, invalid_ids: route.invalid,
     router_tokens: route.tokens, retrieval_ms: embedMs + Date.now() - tB,
   };
 
   if (q.gold.length) {
     row.a.scores = retrievalScores(aRanked, q.gold);
-    row.b.scores = retrievalScores(route.leafIds, q.gold);
+    row.b.scores = retrievalScores(bRanked, q.gold);
   }
 
   if (withAnswers) {

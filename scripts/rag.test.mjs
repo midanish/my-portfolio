@@ -95,5 +95,12 @@ test('Bot B never passes more evidence than Bot A (same budget)', () => {
   const many = leaves.slice(0, 3).map(l => l.id);
   const got = passagesForLeaves(fakeIndex, many, 'question', [1, 0]);
   assert.ok(got.length <= EVIDENCE_BUDGET);
-  assert.ok(got.every(p => many.includes(p.section_id)));
+  // Chosen sections come first; any extra passage is from a sibling (same parent) section.
+  const parent = id => id.split('.').slice(0, -1).join('.');
+  const parents = new Set(many.map(parent));
+  const firstExtra = got.findIndex(p => !many.includes(p.section_id));
+  if (firstExtra !== -1) {
+    assert.ok(got.slice(firstExtra).every(p => !many.includes(p.section_id)));
+    assert.ok(got.slice(firstExtra).every(p => parents.has(parent(p.section_id))));
+  }
 });
