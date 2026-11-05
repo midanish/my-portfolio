@@ -1,25 +1,27 @@
 {
   "summary": {
     "split": "dev",
-    "source_version": "public_v1",
+    "source_version": "public_v2",
     "embed_model": "@cf/baai/bge-small-en-v1.5",
-    "run_at": "2026-11-05T07:13:17.939Z",
+    "chat_model": "@cf/meta/llama-3.1-8b-instruct-fast",
+    "prompt_version": "v2",
+    "run_at": "2026-11-05T11:24:40.411Z",
     "overall": {
       "bot_a_standard_rag": {
         "n": 60,
         "retrieval_scored": 50,
-        "recall_at_1": 0.72,
-        "recall_at_3": 0.92,
+        "recall_at_1": 0.74,
+        "recall_at_3": 0.9,
         "all_gold_in_top3": 0.82,
-        "mrr_at_3": 0.817
+        "mrr_at_3": 0.82
       },
       "bot_b_structure_aware": {
         "n": 60,
         "retrieval_scored": 50,
-        "recall_at_1": 0.84,
-        "recall_at_3": 0.94,
-        "all_gold_in_top3": 0.9,
-        "mrr_at_3": 0.89,
+        "recall_at_1": 0.82,
+        "recall_at_3": 0.98,
+        "all_gold_in_top3": 0.96,
+        "mrr_at_3": 0.897,
         "router_fallbacks": 0,
         "invalid_ids_generated": 0
       }
@@ -29,18 +31,18 @@
         "bot_a": {
           "n": 12,
           "retrieval_scored": 12,
-          "recall_at_1": 0.917,
+          "recall_at_1": 1,
           "recall_at_3": 1,
-          "all_gold_in_top3": 0.917,
-          "mrr_at_3": 0.958
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 1
         },
         "bot_b": {
           "n": 12,
           "retrieval_scored": 12,
-          "recall_at_1": 1,
+          "recall_at_1": 0.917,
           "recall_at_3": 1,
           "all_gold_in_top3": 1,
-          "mrr_at_3": 1,
+          "mrr_at_3": 0.958,
           "router_fallbacks": 0,
           "invalid_ids_generated": 0
         }
@@ -59,7 +61,7 @@
           "retrieval_scored": 12,
           "recall_at_1": 0.917,
           "recall_at_3": 1,
-          "all_gold_in_top3": 0.917,
+          "all_gold_in_top3": 1,
           "mrr_at_3": 0.958,
           "router_fallbacks": 0,
           "invalid_ids_generated": 0
@@ -70,17 +72,17 @@
           "n": 10,
           "retrieval_scored": 10,
           "recall_at_1": 0.4,
-          "recall_at_3": 0.8,
-          "all_gold_in_top3": 0.6,
-          "mrr_at_3": 0.583
+          "recall_at_3": 0.7,
+          "all_gold_in_top3": 0.5,
+          "mrr_at_3": 0.55
         },
         "bot_b": {
           "n": 10,
           "retrieval_scored": 10,
           "recall_at_1": 0.6,
-          "recall_at_3": 0.7,
-          "all_gold_in_top3": 0.6,
-          "mrr_at_3": 0.65,
+          "recall_at_3": 0.9,
+          "all_gold_in_top3": 0.9,
+          "mrr_at_3": 0.733,
           "router_fallbacks": 0,
           "invalid_ids_generated": 0
         }
@@ -97,10 +99,10 @@
         "bot_b": {
           "n": 8,
           "retrieval_scored": 8,
-          "recall_at_1": 0.75,
+          "recall_at_1": 0.875,
           "recall_at_3": 1,
           "all_gold_in_top3": 1,
-          "mrr_at_3": 0.875,
+          "mrr_at_3": 0.938,
           "router_fallbacks": 0,
           "invalid_ids_generated": 0
         }
@@ -137,10 +139,10 @@
         "bot_b": {
           "n": 5,
           "retrieval_scored": 5,
-          "recall_at_1": 1,
+          "recall_at_1": 0.8,
           "recall_at_3": 1,
-          "all_gold_in_top3": 1,
-          "mrr_at_3": 1,
+          "all_gold_in_top3": 0.8,
+          "mrr_at_3": 0.9,
           "router_fallbacks": 0,
           "invalid_ids_generated": 0
         }
@@ -184,7 +186,7 @@
           "projects.food.experiments",
           "projects.food.model"
         ],
-        "retrieval_ms": 817,
+        "retrieval_ms": 1488,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -194,12 +196,16 @@
       },
       "b": {
         "ranked": [
-          "projects.food.dataset"
+          "projects.food.dataset",
+          "projects.food.results",
+          "projects.food.model",
+          "projects.food.app",
+          "projects.food.experiments"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 997,
-        "retrieval_ms": 1446,
+        "router_tokens": 1950,
+        "retrieval_ms": 2116,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -224,7 +230,7 @@
           "projects.iqmetric.login_control",
           "projects.dental.limitations"
         ],
-        "retrieval_ms": 276,
+        "retrieval_ms": 519,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -234,12 +240,15 @@
       },
       "b": {
         "ranked": [
-          "projects.iqmetric.biometrics"
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.cost"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1001,
-        "retrieval_ms": 5112,
+        "router_tokens": 1954,
+        "retrieval_ms": 1222,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -264,7 +273,7 @@
           "projects.iqmetric.login_control",
           "experience.nxp.vent_hole"
         ],
-        "retrieval_ms": 223,
+        "retrieval_ms": 182,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -275,12 +284,14 @@
       "b": {
         "ranked": [
           "projects.iqmetric.cost",
-          "projects.iqmetric.overview"
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 770,
+        "router_tokens": 1953,
+        "retrieval_ms": 652,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -300,18 +311,18 @@
       "must_refuse": false,
       "a": {
         "ranked": [
-          "profile.summary",
           "experience.aerodyne.data",
-          "education.certificates",
+          "profile.summary",
           "experience.aerodyne.detection",
+          "education.certificates",
           "skills.ai_ml"
         ],
-        "retrieval_ms": 245,
+        "retrieval_ms": 160,
         "scores": {
-          "hit1": 0,
+          "hit1": 1,
           "hit3": 1,
-          "all3": 0,
-          "rr": 0.5
+          "all3": 1,
+          "rr": 1
         }
       },
       "b": {
@@ -321,8 +332,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1012,
-        "retrieval_ms": 814,
+        "router_tokens": 1965,
+        "retrieval_ms": 674,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -347,7 +358,7 @@
           "experience.nxp.ocr",
           "profile.contact"
         ],
-        "retrieval_ms": 238,
+        "retrieval_ms": 253,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -363,8 +374,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1005,
-        "retrieval_ms": 795,
+        "router_tokens": 1948,
+        "retrieval_ms": 1359,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -387,9 +398,9 @@
           "experience.aerodyne.detection",
           "projects.coursework.classification",
           "projects.food.results",
-          "projects.portfolio_bot.v1"
+          "projects.dental.limitations"
         ],
-        "retrieval_ms": 309,
+        "retrieval_ms": 181,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -399,12 +410,13 @@
       },
       "b": {
         "ranked": [
-          "projects.coursework.yolov5"
+          "projects.coursework.yolov5",
+          "projects.coursework.classification"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1009,
-        "retrieval_ms": 876,
+        "router_tokens": 1962,
+        "retrieval_ms": 618,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -427,9 +439,9 @@
           "projects.dental.mobile",
           "projects.portfolio_bot.v1",
           "projects.dental.overview",
-          "projects.food.app"
+          "projects.portfolio_bot.two_bots"
         ],
-        "retrieval_ms": 190,
+        "retrieval_ms": 205,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -443,8 +455,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1006,
-        "retrieval_ms": 682,
+        "router_tokens": 1952,
+        "retrieval_ms": 747,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -469,7 +481,7 @@
           "projects.food.results",
           "projects.food.experiments"
         ],
-        "retrieval_ms": 208,
+        "retrieval_ms": 139,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -479,12 +491,16 @@
       },
       "b": {
         "ranked": [
-          "projects.food.app"
+          "projects.food.app",
+          "projects.food.dataset",
+          "projects.food.results",
+          "projects.food.model",
+          "projects.food.experiments"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 999,
-        "retrieval_ms": 740,
+        "router_tokens": 1952,
+        "retrieval_ms": 574,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -509,7 +525,7 @@
           "projects.storage.overview",
           "education.degree"
         ],
-        "retrieval_ms": 227,
+        "retrieval_ms": 126,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -519,12 +535,14 @@
       },
       "b": {
         "ranked": [
-          "education.certificates"
+          "education.certificates",
+          "education.degree",
+          "education.awards"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 999,
-        "retrieval_ms": 661,
+        "router_tokens": 1952,
+        "retrieval_ms": 833,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -549,7 +567,7 @@
           "experience.nxp.vent_hole",
           "education.awards"
         ],
-        "retrieval_ms": 228,
+        "retrieval_ms": 185,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -559,12 +577,14 @@
       },
       "b": {
         "ranked": [
-          "experience.nxp.quality"
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1001,
-        "retrieval_ms": 657,
+        "router_tokens": 1954,
+        "retrieval_ms": 636,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -589,7 +609,7 @@
           "projects.iqmetric.biometrics",
           "projects.food.model"
         ],
-        "retrieval_ms": 192,
+        "retrieval_ms": 125,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -599,17 +619,19 @@
       },
       "b": {
         "ranked": [
-          "projects.dental.mobile"
+          "projects.dental.overview",
+          "projects.dental.mobile",
+          "projects.dental.limitations"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1001,
-        "retrieval_ms": 699,
+        "router_tokens": 1955,
+        "retrieval_ms": 563,
         "scores": {
-          "hit1": 1,
+          "hit1": 0,
           "hit3": 1,
           "all3": 1,
-          "rr": 1
+          "rr": 0.5
         }
       }
     },
@@ -626,10 +648,10 @@
           "projects.storage.overview",
           "projects.food.experiments",
           "projects.iqmetric.cost",
-          "projects.portfolio_bot.v1",
-          "projects.food.results"
+          "projects.food.results",
+          "projects.iqmetric.overview"
         ],
-        "retrieval_ms": 168,
+        "retrieval_ms": 142,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -645,8 +667,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1015,
-        "retrieval_ms": 756,
+        "router_tokens": 1959,
+        "retrieval_ms": 593,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -671,7 +693,7 @@
           "projects.food.app",
           "projects.food.results"
         ],
-        "retrieval_ms": 207,
+        "retrieval_ms": 145,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -683,12 +705,14 @@
         "ranked": [
           "projects.food.dataset",
           "projects.food.model",
-          "projects.food.experiments"
+          "projects.food.experiments",
+          "projects.food.results",
+          "projects.food.app"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 820,
+        "router_tokens": 1955,
+        "retrieval_ms": 644,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -713,7 +737,7 @@
           "projects.iqmetric.cost",
           "projects.tcp_chat.overview"
         ],
-        "retrieval_ms": 157,
+        "retrieval_ms": 188,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -723,18 +747,20 @@
       },
       "b": {
         "ranked": [
+          "projects.iqmetric.login_control",
           "projects.iqmetric.biometrics",
-          "projects.iqmetric.login_control"
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1011,
-        "retrieval_ms": 754,
+        "router_tokens": 1964,
+        "retrieval_ms": 697,
         "scores": {
-          "hit1": 0,
+          "hit1": 1,
           "hit3": 1,
           "all3": 1,
-          "rr": 0.5
+          "rr": 1
         }
       }
     },
@@ -754,7 +780,7 @@
           "experience.aerodyne.detection",
           "experience.aerodyne.data"
         ],
-        "retrieval_ms": 168,
+        "retrieval_ms": 184,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -765,12 +791,14 @@
       "b": {
         "ranked": [
           "projects.iqmetric.login_control",
-          "projects.portfolio_bot.evaluation"
+          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1009,
-        "retrieval_ms": 499,
+        "router_tokens": 1962,
+        "retrieval_ms": 700,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -795,7 +823,7 @@
           "projects.iqmetric.login_control",
           "projects.food.experiments"
         ],
-        "retrieval_ms": 175,
+        "retrieval_ms": 143,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -806,12 +834,14 @@
       "b": {
         "ranked": [
           "projects.iqmetric.cost",
-          "projects.iqmetric.biometrics"
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1010,
-        "retrieval_ms": 681,
+        "router_tokens": 1955,
+        "retrieval_ms": 574,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -833,10 +863,10 @@
           "experience.aerodyne.data",
           "projects.coursework.yolov5",
           "projects.food.model",
-          "projects.food.experiments",
-          "skills.data_platforms"
+          "skills.data_platforms",
+          "projects.food.experiments"
         ],
-        "retrieval_ms": 173,
+        "retrieval_ms": 186,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -848,12 +878,14 @@
         "ranked": [
           "experience.aerodyne.data",
           "projects.food.dataset",
-          "projects.coursework.classification"
+          "projects.food.model",
+          "projects.food.experiments",
+          "projects.food.app"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1014,
-        "retrieval_ms": 830,
+        "router_tokens": 1960,
+        "retrieval_ms": 659,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -878,7 +910,7 @@
           "experience.greatech.commissioning",
           "experience.aerodyne.data"
         ],
-        "retrieval_ms": 168,
+        "retrieval_ms": 164,
         "scores": {
           "hit1": 0,
           "hit3": 0,
@@ -888,18 +920,18 @@
       },
       "b": {
         "ranked": [
-          "experience.greatech.commissioning",
-          "experience.greatech.vision_systems"
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1014,
-        "retrieval_ms": 476,
+        "router_tokens": 1967,
+        "retrieval_ms": 644,
         "scores": {
-          "hit1": 1,
+          "hit1": 0,
           "hit3": 1,
           "all3": 1,
-          "rr": 1
+          "rr": 0.5
         }
       }
     },
@@ -919,7 +951,7 @@
           "projects.dental.limitations",
           "projects.dental.overview"
         ],
-        "retrieval_ms": 189,
+        "retrieval_ms": 156,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -929,12 +961,14 @@
       },
       "b": {
         "ranked": [
-          "experience.nxp.vent_hole"
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr",
+          "experience.nxp.quality"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1004,
-        "retrieval_ms": 616,
+        "router_tokens": 1957,
+        "retrieval_ms": 612,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -960,7 +994,7 @@
           "projects.storage.overview",
           "projects.dental.limitations"
         ],
-        "retrieval_ms": 244,
+        "retrieval_ms": 192,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -971,16 +1005,17 @@
       "b": {
         "ranked": [
           "projects.dental.mobile",
-          "projects.dental.limitations"
+          "projects.dental.limitations",
+          "projects.dental.overview"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1006,
-        "retrieval_ms": 697,
+        "router_tokens": 1959,
+        "retrieval_ms": 652,
         "scores": {
           "hit1": 1,
           "hit3": 1,
-          "all3": 0,
+          "all3": 1,
           "rr": 1
         }
       }
@@ -1001,7 +1036,7 @@
           "projects.food.model",
           "projects.food.app"
         ],
-        "retrieval_ms": 209,
+        "retrieval_ms": 172,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1012,12 +1047,15 @@
       "b": {
         "ranked": [
           "projects.food.experiments",
-          "projects.food.results"
+          "projects.food.model",
+          "projects.food.results",
+          "projects.food.dataset",
+          "projects.food.app"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1007,
-        "retrieval_ms": 749,
+        "router_tokens": 1960,
+        "retrieval_ms": 656,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1042,7 +1080,7 @@
           "skills.data_platforms",
           "skills.ai_ml"
         ],
-        "retrieval_ms": 153,
+        "retrieval_ms": 145,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1056,8 +1094,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1007,
-        "retrieval_ms": 689,
+        "router_tokens": 1960,
+        "retrieval_ms": 585,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1082,7 +1120,7 @@
           "projects.iqmetric.login_control",
           "projects.dental.mobile"
         ],
-        "retrieval_ms": 164,
+        "retrieval_ms": 180,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1093,13 +1131,13 @@
       "b": {
         "ranked": [
           "projects.portfolio_bot.v1",
-          "skills.ai_ml",
-          "skills.data_platforms"
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1016,
-        "retrieval_ms": 614,
+        "router_tokens": 1958,
+        "retrieval_ms": 597,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1120,11 +1158,11 @@
         "ranked": [
           "projects.tcp_chat.overview",
           "projects.portfolio_bot.v1",
-          "projects.iqmetric.login_control",
           "projects.portfolio_bot.two_bots",
-          "profile.contact"
+          "projects.iqmetric.login_control",
+          "education.degree"
         ],
-        "retrieval_ms": 223,
+        "retrieval_ms": 137,
         "scores": {
           "hit1": 0,
           "hit3": 0,
@@ -1134,12 +1172,13 @@
       },
       "b": {
         "ranked": [
-          "profile.contact"
+          "profile.contact",
+          "profile.summary"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 995,
-        "retrieval_ms": 678,
+        "router_tokens": 1948,
+        "retrieval_ms": 641,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1165,7 +1204,7 @@
           "projects.food.model",
           "projects.food.results"
         ],
-        "retrieval_ms": 144,
+        "retrieval_ms": 185,
         "scores": {
           "hit1": 0,
           "hit3": 0,
@@ -1176,12 +1215,15 @@
       "b": {
         "ranked": [
           "projects.food.dataset",
-          "projects.iqmetric.overview"
+          "projects.iqmetric.overview",
+          "projects.food.app",
+          "projects.food.results",
+          "projects.food.model"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 548,
+        "router_tokens": 1961,
+        "retrieval_ms": 570,
         "scores": {
           "hit1": 0,
           "hit3": 0,
@@ -1207,7 +1249,7 @@
           "projects.dental.overview",
           "skills.ai_ml"
         ],
-        "retrieval_ms": 214,
+        "retrieval_ms": 139,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1218,16 +1260,19 @@
       "b": {
         "ranked": [
           "projects.food.model",
-          "projects.coursework.classification"
+          "projects.dental.overview",
+          "projects.coursework.classification",
+          "projects.food.results",
+          "projects.dental.mobile"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1004,
-        "retrieval_ms": 775,
+        "router_tokens": 1964,
+        "retrieval_ms": 559,
         "scores": {
           "hit1": 1,
           "hit3": 1,
-          "all3": 0,
+          "all3": 1,
           "rr": 1
         }
       }
@@ -1249,7 +1294,7 @@
           "skills.ai_ml",
           "projects.coursework.classification"
         ],
-        "retrieval_ms": 226,
+        "retrieval_ms": 154,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1260,12 +1305,14 @@
       "b": {
         "ranked": [
           "experience.aerodyne.detection",
-          "projects.coursework.yolov5"
+          "projects.coursework.yolov5",
+          "experience.aerodyne.data",
+          "projects.coursework.classification"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1019,
-        "retrieval_ms": 687,
+        "router_tokens": 1972,
+        "retrieval_ms": 737,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1291,7 +1338,7 @@
           "projects.tcp_chat.overview",
           "profile.contact"
         ],
-        "retrieval_ms": 203,
+        "retrieval_ms": 146,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1301,14 +1348,14 @@
       },
       "b": {
         "ranked": [
+          "projects.portfolio_bot.v1",
           "projects.portfolio_bot.two_bots",
-          "projects.portfolio_bot.evaluation",
-          "projects.portfolio_bot.v1"
+          "projects.portfolio_bot.evaluation"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1022,
-        "retrieval_ms": 692,
+        "router_tokens": 1975,
+        "retrieval_ms": 734,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1329,33 +1376,34 @@
         "ranked": [
           "projects.dental.overview",
           "profile.summary",
-          "projects.dental.mobile",
-          "experience.aerodyne.data",
-          "projects.portfolio_bot.evaluation"
-        ],
-        "retrieval_ms": 189,
-        "scores": {
-          "hit1": 0,
-          "hit3": 1,
-          "all3": 1,
-          "rr": 0.3333333333333333
-        }
-      },
-      "b": {
-        "ranked": [
           "projects.portfolio_bot.v1",
-          "projects.portfolio_bot.two_bots",
-          "projects.food.app"
+          "projects.dental.mobile",
+          "experience.aerodyne.data"
         ],
-        "router": "llm",
-        "invalid_ids": [],
-        "router_tokens": 1016,
-        "retrieval_ms": 673,
+        "retrieval_ms": 163,
         "scores": {
           "hit1": 0,
           "hit3": 0,
           "all3": 0,
           "rr": 0
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.overview",
+          "projects.tcp_chat.overview",
+          "projects.dental.mobile",
+          "projects.dental.limitations"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1961,
+        "retrieval_ms": 1225,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.3333333333333333
         }
       }
     },
@@ -1376,7 +1424,7 @@
           "projects.iqmetric.biometrics",
           "experience.nxp.ocr"
         ],
-        "retrieval_ms": 185,
+        "retrieval_ms": 146,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1386,19 +1434,21 @@
       },
       "b": {
         "ranked": [
-          "experience.nxp.ocr",
-          "experience.nxp.vent_hole",
-          "experience.nxp.quality"
+          "projects.iqmetric.overview",
+          "projects.storage.overview",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost",
+          "projects.iqmetric.login_control"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1020,
-        "retrieval_ms": 625,
+        "router_tokens": 1965,
+        "retrieval_ms": 675,
         "scores": {
           "hit1": 0,
-          "hit3": 0,
-          "all3": 0,
-          "rr": 0
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
         }
       }
     },
@@ -1419,7 +1469,7 @@
           "experience.aerodyne.data",
           "education.certificates"
         ],
-        "retrieval_ms": 152,
+        "retrieval_ms": 150,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1430,12 +1480,14 @@
       "b": {
         "ranked": [
           "experience.greatech.vision_systems",
-          "experience.aerodyne.detection"
+          "experience.aerodyne.detection",
+          "experience.greatech.commissioning",
+          "experience.aerodyne.data"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1018,
-        "retrieval_ms": 769,
+        "router_tokens": 1971,
+        "retrieval_ms": 608,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1460,7 +1512,7 @@
           "projects.dental.limitations",
           "projects.coursework.classification"
         ],
-        "retrieval_ms": 187,
+        "retrieval_ms": 192,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1472,12 +1524,14 @@
         "ranked": [
           "projects.food.results",
           "projects.dental.limitations",
-          "projects.coursework.classification"
+          "projects.food.experiments",
+          "projects.dental.overview",
+          "projects.food.dataset"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1013,
-        "retrieval_ms": 713,
+        "router_tokens": 1959,
+        "retrieval_ms": 625,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1502,7 +1556,7 @@
           "experience.greatech.vision_systems",
           "projects.coursework.yolov5"
         ],
-        "retrieval_ms": 238,
+        "retrieval_ms": 156,
         "scores": {
           "hit1": 0,
           "hit3": 0,
@@ -1513,12 +1567,15 @@
       "b": {
         "ranked": [
           "experience.greatech.vision_systems",
-          "experience.nxp.vent_hole"
+          "experience.nxp.vent_hole",
+          "experience.greatech.commissioning",
+          "experience.nxp.ocr",
+          "experience.nxp.quality"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1016,
-        "retrieval_ms": 668,
+        "router_tokens": 1969,
+        "retrieval_ms": 652,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1539,11 +1596,11 @@
         "ranked": [
           "projects.coursework.classification",
           "projects.food.experiments",
-          "projects.coursework.yolov5",
           "projects.food.results",
-          "projects.food.app"
+          "projects.coursework.yolov5",
+          "projects.food.dataset"
         ],
-        "retrieval_ms": 174,
+        "retrieval_ms": 138,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1554,12 +1611,15 @@
       "b": {
         "ranked": [
           "projects.coursework.classification",
+          "projects.food.model",
+          "projects.food.experiments",
+          "projects.food.results",
           "projects.coursework.yolov5"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1016,
-        "retrieval_ms": 580,
+        "router_tokens": 1965,
+        "retrieval_ms": 523,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1585,7 +1645,7 @@
           "projects.food.dataset",
           "projects.food.results"
         ],
-        "retrieval_ms": 211,
+        "retrieval_ms": 198,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1596,12 +1656,15 @@
       "b": {
         "ranked": [
           "projects.food.model",
-          "projects.food.results"
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.food.app",
+          "projects.food.dataset"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1006,
-        "retrieval_ms": 588,
+        "router_tokens": 1959,
+        "retrieval_ms": 704,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1627,7 +1690,7 @@
           "projects.iqmetric.login_control",
           "projects.food.experiments"
         ],
-        "retrieval_ms": 201,
+        "retrieval_ms": 130,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1637,19 +1700,20 @@
       },
       "b": {
         "ranked": [
-          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics",
           "projects.iqmetric.cost",
-          "projects.iqmetric.biometrics"
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1019,
-        "retrieval_ms": 684,
+        "router_tokens": 1964,
+        "retrieval_ms": 651,
         "scores": {
-          "hit1": 0,
+          "hit1": 1,
           "hit3": 1,
           "all3": 1,
-          "rr": 0.5
+          "rr": 1
         }
       }
     },
@@ -1670,7 +1734,7 @@
           "projects.dental.mobile",
           "skills.data_platforms"
         ],
-        "retrieval_ms": 193,
+        "retrieval_ms": 133,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1681,12 +1745,13 @@
       "b": {
         "ranked": [
           "projects.dental.overview",
-          "projects.dental.mobile"
+          "projects.dental.mobile",
+          "projects.dental.limitations"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1011,
-        "retrieval_ms": 667,
+        "router_tokens": 1964,
+        "retrieval_ms": 536,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1712,7 +1777,7 @@
           "projects.coursework.classification",
           "projects.food.experiments"
         ],
-        "retrieval_ms": 222,
+        "retrieval_ms": 190,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1723,12 +1788,15 @@
       "b": {
         "ranked": [
           "projects.food.dataset",
-          "projects.food.model"
+          "projects.food.model",
+          "projects.food.experiments",
+          "projects.food.app",
+          "projects.food.results"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 650,
+        "router_tokens": 1961,
+        "retrieval_ms": 623,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1754,7 +1822,7 @@
           "projects.coursework.classification",
           "projects.iqmetric.overview"
         ],
-        "retrieval_ms": 160,
+        "retrieval_ms": 139,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1765,13 +1833,15 @@
       "b": {
         "ranked": [
           "experience.nxp.quality",
+          "education.awards",
           "experience.nxp.ocr",
-          "education.awards"
+          "experience.nxp.vent_hole",
+          "education.certificates"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1017,
-        "retrieval_ms": 740,
+        "router_tokens": 1963,
+        "retrieval_ms": 637,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1797,7 +1867,7 @@
           "experience.aerodyne.data",
           "projects.dental.overview"
         ],
-        "retrieval_ms": 150,
+        "retrieval_ms": 163,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1813,8 +1883,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1020,
-        "retrieval_ms": 585,
+        "router_tokens": 1973,
+        "retrieval_ms": 871,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -1840,7 +1910,7 @@
           "projects.food.app",
           "projects.food.results"
         ],
-        "retrieval_ms": 202,
+        "retrieval_ms": 141,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1856,8 +1926,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1021,
-        "retrieval_ms": 668,
+        "router_tokens": 1967,
+        "retrieval_ms": 556,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1880,10 +1950,10 @@
           "education.certificates",
           "education.degree",
           "experience.aerodyne.data",
-          "skills.ai_ml",
+          "projects.coursework.yolov5",
           "profile.summary"
         ],
-        "retrieval_ms": 186,
+        "retrieval_ms": 123,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1894,12 +1964,13 @@
       "b": {
         "ranked": [
           "education.degree",
-          "education.certificates"
+          "education.certificates",
+          "education.awards"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1006,
-        "retrieval_ms": 608,
+        "router_tokens": 1959,
+        "retrieval_ms": 515,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1922,16 +1993,18 @@
           "education.awards",
           "education.certificates"
         ],
-        "retrieval_ms": 159
+        "retrieval_ms": 132
       },
       "b": {
         "ranked": [
-          "experience.nxp.quality"
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1000,
-        "retrieval_ms": 617
+        "router_tokens": 1953,
+        "retrieval_ms": 550
       }
     },
     {
@@ -1950,7 +2023,7 @@
           "education.certificates",
           "projects.portfolio_bot.v1"
         ],
-        "retrieval_ms": 152,
+        "retrieval_ms": 187,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1965,8 +2038,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1013,
-        "retrieval_ms": 590,
+        "router_tokens": 1958,
+        "retrieval_ms": 615,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1989,17 +2062,19 @@
           "projects.iqmetric.cost",
           "projects.dental.overview"
         ],
-        "retrieval_ms": 312
+        "retrieval_ms": 141
       },
       "b": {
         "ranked": [
           "projects.iqmetric.biometrics",
-          "projects.iqmetric.login_control"
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1015,
-        "retrieval_ms": 856
+        "router_tokens": 1968,
+        "retrieval_ms": 900
       }
     },
     {
@@ -2016,18 +2091,20 @@
           "experience.aerodyne.detection",
           "projects.dental.overview"
         ],
-        "retrieval_ms": 160
+        "retrieval_ms": 144
       },
       "b": {
         "ranked": [
           "profile.summary",
           "experience.nxp.quality",
-          "projects.iqmetric.cost"
+          "experience.nxp.ocr",
+          "profile.contact",
+          "experience.nxp.vent_hole"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1007,
-        "retrieval_ms": 693
+        "router_tokens": 1953,
+        "retrieval_ms": 634
       }
     },
     {
@@ -2042,20 +2119,21 @@
           "projects.iqmetric.cost",
           "experience.aerodyne.detection",
           "profile.summary",
-          "projects.iqmetric.login_control"
+          "projects.iqmetric.biometrics"
         ],
-        "retrieval_ms": 244
+        "retrieval_ms": 132
       },
       "b": {
         "ranked": [
           "projects.iqmetric.overview",
+          "projects.iqmetric.cost",
           "projects.iqmetric.login_control",
-          "projects.iqmetric.cost"
+          "projects.iqmetric.biometrics"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1015,
-        "retrieval_ms": 665
+        "router_tokens": 1960,
+        "retrieval_ms": 659
       }
     },
     {
@@ -2072,17 +2150,18 @@
           "projects.dental.overview",
           "experience.greatech.vision_systems"
         ],
-        "retrieval_ms": 165
+        "retrieval_ms": 155
       },
       "b": {
         "ranked": [
           "skills.data_platforms",
-          "experience.nxp.quality"
+          "skills.ai_ml",
+          "skills.programming"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1002,
-        "retrieval_ms": 569
+        "router_tokens": 1949,
+        "retrieval_ms": 512
       }
     },
     {
@@ -2101,7 +2180,7 @@
           "skills.ai_ml",
           "projects.dental.mobile"
         ],
-        "retrieval_ms": 194,
+        "retrieval_ms": 197,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2111,12 +2190,14 @@
       },
       "b": {
         "ranked": [
-          "experience.nxp.ocr"
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole",
+          "experience.nxp.quality"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1001,
-        "retrieval_ms": 605,
+        "router_tokens": 1954,
+        "retrieval_ms": 585,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2141,7 +2222,7 @@
           "projects.food.results",
           "projects.food.app"
         ],
-        "retrieval_ms": 192,
+        "retrieval_ms": 169,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2152,12 +2233,13 @@
       "b": {
         "ranked": [
           "projects.dental.overview",
-          "projects.dental.limitations"
+          "projects.dental.limitations",
+          "projects.dental.mobile"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1005,
-        "retrieval_ms": 781,
+        "router_tokens": 1958,
+        "retrieval_ms": 664,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -2178,12 +2260,12 @@
       "a": {
         "ranked": [
           "projects.portfolio_bot.v1",
-          "projects.portfolio_bot.evaluation",
           "projects.portfolio_bot.two_bots",
-          "profile.contact",
-          "skills.ai_ml"
+          "projects.portfolio_bot.evaluation",
+          "skills.ai_ml",
+          "projects.tcp_chat.overview"
         ],
-        "retrieval_ms": 156,
+        "retrieval_ms": 145,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2194,17 +2276,16 @@
       "b": {
         "ranked": [
           "projects.portfolio_bot.two_bots",
-          "projects.portfolio_bot.evaluation",
-          "projects.portfolio_bot.v1"
+          "projects.portfolio_bot.evaluation"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1015,
-        "retrieval_ms": 600,
+        "router_tokens": 1960,
+        "retrieval_ms": 540,
         "scores": {
           "hit1": 1,
           "hit3": 1,
-          "all3": 1,
+          "all3": 0,
           "rr": 1
         }
       }
@@ -2225,7 +2306,7 @@
           "skills.ai_ml",
           "projects.iqmetric.biometrics"
         ],
-        "retrieval_ms": 196,
+        "retrieval_ms": 205,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2235,19 +2316,19 @@
       },
       "b": {
         "ranked": [
+          "projects.dental.overview",
           "projects.dental.mobile",
-          "projects.dental.limitations",
-          "projects.dental.overview"
+          "projects.dental.limitations"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1012,
-        "retrieval_ms": 695,
+        "router_tokens": 1958,
+        "retrieval_ms": 626,
         "scores": {
-          "hit1": 1,
+          "hit1": 0,
           "hit3": 1,
           "all3": 1,
-          "rr": 1
+          "rr": 0.5
         }
       }
     },
@@ -2267,7 +2348,7 @@
           "projects.food.model",
           "projects.food.experiments"
         ],
-        "retrieval_ms": 168,
+        "retrieval_ms": 198,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2279,12 +2360,14 @@
         "ranked": [
           "projects.food.results",
           "projects.food.model",
-          "projects.food.dataset"
+          "projects.food.experiments",
+          "projects.food.dataset",
+          "projects.food.app"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 592,
+        "router_tokens": 1956,
+        "retrieval_ms": 892,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2305,12 +2388,12 @@
       "a": {
         "ranked": [
           "projects.dental.overview",
-          "projects.dental.limitations",
           "projects.dental.mobile",
+          "projects.dental.limitations",
           "projects.food.app",
           "projects.food.results"
         ],
-        "retrieval_ms": 194,
+        "retrieval_ms": 152,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2320,14 +2403,14 @@
       },
       "b": {
         "ranked": [
-          "projects.dental.limitations",
           "projects.dental.overview",
+          "projects.dental.limitations",
           "projects.dental.mobile"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1010,
-        "retrieval_ms": 638,
+        "router_tokens": 1957,
+        "retrieval_ms": 633,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2352,7 +2435,7 @@
           "projects.coursework.classification",
           "experience.aerodyne.detection"
         ],
-        "retrieval_ms": 221,
+        "retrieval_ms": 133,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2363,12 +2446,15 @@
       "b": {
         "ranked": [
           "experience.nxp.vent_hole",
-          "skills.ai_ml"
+          "skills.ai_ml",
+          "experience.nxp.ocr",
+          "experience.nxp.quality",
+          "skills.data_platforms"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1006,
-        "retrieval_ms": 676,
+        "router_tokens": 1959,
+        "retrieval_ms": 617,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -2391,18 +2477,20 @@
           "skills.ai_ml",
           "projects.portfolio_bot.evaluation"
         ],
-        "retrieval_ms": 155
+        "retrieval_ms": 135
       },
       "b": {
         "ranked": [
-          "projects.iqmetric.overview",
           "projects.food.dataset",
-          "projects.dental.overview"
+          "projects.food.model",
+          "projects.food.results",
+          "projects.food.app",
+          "projects.food.experiments"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 589
+        "router_tokens": 1951,
+        "retrieval_ms": 554
       }
     },
     {
@@ -2419,17 +2507,20 @@
           "projects.food.experiments",
           "projects.dental.limitations"
         ],
-        "retrieval_ms": 270
+        "retrieval_ms": 176
       },
       "b": {
         "ranked": [
           "projects.food.results",
-          "projects.iqmetric.cost"
+          "projects.dental.limitations",
+          "projects.food.experiments",
+          "projects.dental.overview",
+          "projects.food.dataset"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1000,
-        "retrieval_ms": 1414
+        "router_tokens": 1953,
+        "retrieval_ms": 605
       }
     },
     {
@@ -2446,18 +2537,17 @@
           "experience.nxp.quality",
           "education.awards"
         ],
-        "retrieval_ms": 173
+        "retrieval_ms": 163
       },
       "b": {
         "ranked": [
-          "projects.food.dataset",
-          "projects.food.model",
-          "projects.food.experiments"
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1008,
-        "retrieval_ms": 571
+        "router_tokens": 1962,
+        "retrieval_ms": 712
       }
     },
     {
@@ -2474,18 +2564,20 @@
           "skills.ai_ml",
           "experience.aerodyne.data"
         ],
-        "retrieval_ms": 180
+        "retrieval_ms": 125
       },
       "b": {
         "ranked": [
-          "skills.ai_ml",
-          "projects.iqmetric.overview",
-          "projects.iqmetric.biometrics"
+          "projects.food.model",
+          "projects.food.app",
+          "projects.dental.mobile",
+          "projects.dental.overview",
+          "projects.dental.limitations"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1011,
-        "retrieval_ms": 497
+        "router_tokens": 1959,
+        "retrieval_ms": 600
       }
     },
     {
@@ -2502,17 +2594,20 @@
           "projects.portfolio_bot.evaluation",
           "experience.greatech.commissioning"
         ],
-        "retrieval_ms": 155
+        "retrieval_ms": 190
       },
       "b": {
         "ranked": [
           "projects.iqmetric.cost",
-          "projects.food.results"
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1003,
-        "retrieval_ms": 455
+        "router_tokens": 1956,
+        "retrieval_ms": 756
       }
     }
   ]

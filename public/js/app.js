@@ -880,7 +880,7 @@ document.addEventListener('keydown', (e) => {
   function addAnswers(results) {
     const m = document.createElement('div'); m.className = 'message assistant message-ab';
     const part = (label, how, r) => {
-      const ids = r.selected_leaf_ids || r.retrieved_ids || [];
+      const ids = [...new Set((r.evidence || []).map(e => e.section_id))];
       const html = parseMarkdown(r.answer || '').replace(/\[([a-z0-9_]+(?:\.[a-z0-9_]+)+)\]/g, '<span class="ab-cite" title="Source section">$1</span>');
       return `<div class="ab-answer"><div class="ab-label"><b>${label}</b> · ${how}</div>` +
         `<div class="message-content">${html}</div>` +
