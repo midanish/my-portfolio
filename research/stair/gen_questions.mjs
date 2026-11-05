@@ -1,15 +1,15 @@
 // Phase 5, step 1: build a synthetic query -> leaf training set, like STAIR's
-// stage A (the paper used Mixtral 8x7B; here the same GLM model as the site).
+// stage A (the paper used Mixtral 8x7B; here the site's Workers AI chat model).
 // Every generated question inherits the leaf it was written from.
 // Leakage control: drop any generated question too similar to a labelled
 // evaluation question (eval/gold.json), so the final test stays untouched.
 //
-//   node --env-file=.env research/stair/gen_questions.mjs
+//   node research/stair/gen_questions.mjs   (needs `npx wrangler login`)
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { parseKb, embed, chat, dot, tokenize } from '../../lib/rag.mjs';
+import { cloudflareEnv } from '../../scripts/cloudflare-env.mjs';
 
-const env = process.env;
-if (!env.HF_TOKEN) { console.error('HF_TOKEN is not set'); process.exit(1); }
+const env = cloudflareEnv();
 const root = new URL('../../', import.meta.url);
 const { version, sections } = parseKb(await readFile(new URL('content/kb.md', root), 'utf8'));
 const leaves = sections.filter(s => s.isLeaf);

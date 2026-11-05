@@ -1,8 +1,9 @@
 // Runs the labelled questions through Bot A, Bot B and the v1 full-context bot,
 // and scores retrieval and answers separately.
 //
-//   node --env-file=.env scripts/eval.mjs --split dev            (while developing)
-//   node --env-file=.env scripts/eval.mjs --split heldout        (final report only)
+//   node scripts/eval.mjs --split dev            (while developing)
+//   node scripts/eval.mjs --split heldout        (final report only)
+// Needs `npx wrangler login` (Workers AI); see scripts/cloudflare-env.mjs.
 //   add --retrieval-only to skip answer generation (cheaper)
 //
 // Writes eval/results-<split>.json and, for answers, a blind review sheet
@@ -10,15 +11,17 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import {
   prepareIndex, embed, retrieveHybrid, routeLeaves, passagesForLeaves,
-  answerMessages, chat, verifyCitations, isRefusal,
+  answerMessages, chat, verifyCitations, isRefusal, runAi,
 } from '../lib/rag.mjs';
+import { cloudflareEnv } from './cloudflare-env.mjs';
 import { onRequestPost as v1Chat } from '../functions/api/chat.js';
 
 const args = process.argv.slice(2);
 const split = args.includes('--split') ? args[args.indexOf('--split') + 1] : 'dev';
 const withAnswers = !args.includes('--retrieval-only');
-const env = process.env;
-if (!env.HF_TOKEN) { console.error('HF_TOKEN is not set. Put it in .env and run with --env-file=.env'); process.exit(1); }
+const env = cloudflareEnv();
+// The unchanged v1 function reaches Workers AI through an "AI" binding; give it one.
+const v1Env = { ...env, HF_TOKEN: '', AI: { run: (model, inputs) => runAi(model, inputs, env) } };
 
 const root = new URL('../', import.meta.url);
 const idx = prepareIndex(JSON.parse(await readFile(new URL('public/data/kb/index.json', root), 'utf8')));
@@ -103,7 +106,7 @@ for (const q of questions) {
     const tV = Date.now();
     const res = await v1Chat({
       request: new Request('http://local/api/chat', { method: 'POST', body: JSON.stringify({ message: q.question }) }),
-      env,
+      env: v1Env,
     });
     const v1 = await res.json();
     row.v1 = { answer: v1.response, latency_ms: Date.now() - tV };

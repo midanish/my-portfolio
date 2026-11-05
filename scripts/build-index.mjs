@@ -1,10 +1,12 @@
 // Builds public/data/kb/index.json from content/kb.md.
-// Run: node --env-file=.env scripts/build-index.mjs
+// Run: node scripts/build-index.mjs   (needs `npx wrangler login` for Workers AI)
 // Re-run whenever content/kb.md changes (and whenever EMBED_MODEL changes:
 // vectors from different embedding models are not comparable).
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { parseKb, chunkLeaves, passageSearchText, embed, EMBED_MODEL } from '../lib/rag.mjs';
+import { cloudflareEnv } from './cloudflare-env.mjs';
 
+const env = cloudflareEnv();
 const md = await readFile(new URL('../content/kb.md', import.meta.url), 'utf8');
 const { version, sections } = parseKb(md);
 const leaves = sections.filter(s => s.isLeaf);
@@ -13,7 +15,7 @@ const passages = chunkLeaves(sections);
 const vecs = [];
 for (let i = 0; i < passages.length; i += 16) {
   const batch = passages.slice(i, i + 16).map(passageSearchText);
-  vecs.push(...(await embed(batch, process.env)));
+  vecs.push(...(await embed(batch, env)));
 }
 passages.forEach((p, i) => { p.vec = vecs[i].map(x => Math.round(x * 1e5) / 1e5); });
 

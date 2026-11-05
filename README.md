@@ -6,7 +6,7 @@ A macOS-styled portfolio site with two AI features:
 2. **Two-bot comparison (v2, `/compare.html` + `/api/compare`)** — one question, two answers side by side, from the same knowledge base:
    - **Bot A · Standard RAG:** BM25 keyword search + embedding search over short passages, merged with Reciprocal Rank Fusion, top 5 passages.
    - **Bot B · Structure-aware RAG (STAIR-inspired):** a model chooses up to 3 sections from the knowledge base's table of contents; the IDs are checked against the real list (embedding fallback if none are valid); those sections are read (max 5 passages).
-   - Both use the same answer model (GLM-4.7-Flash), prompt, evidence budget and citation check. **Only retrieval differs.**
+   - Both use the same answer model (Llama 3.1 8B on Cloudflare Workers AI), prompt, evidence budget and citation check. **Only retrieval differs.**
 
 Results, method and limits: [`docs/two-bot-methodology.md`](docs/two-bot-methodology.md). What v1 really did before this work: [`docs/baseline.md`](docs/baseline.md).
 
@@ -29,7 +29,7 @@ Results, method and limits: [`docs/two-bot-methodology.md`](docs/two-bot-methodo
 
 ```bash
 npm install
-cp .env.example .env      # then put your Hugging Face token in HF_TOKEN
+npx wrangler login        # scripts and local dev use Workers AI through this login
 ```
 
 | Command | What it does |
@@ -47,7 +47,7 @@ When you change the knowledge base, bump `version` in `content/kb.md` and `sourc
 Pushing to `main` triggers an automatic Cloudflare build and deploy.
 
 - Production branch: `main` · Build command: none · Output directory: `public` · Functions: auto-detected from `/functions`
-- Runtime secret: `HF_TOKEN` in Cloudflare → Workers & Pages → my-portfolio → Settings → Environment variables (used by both `/api/chat` and `/api/compare`). Optional: `CHAT_MODEL`.
+- Models run on Cloudflare Workers AI: add a **Workers AI binding named `AI`** in Cloudflare → Workers & Pages → my-portfolio → Settings → Bindings. `/api/chat` falls back to Hugging Face (`HF_TOKEN`) if the binding is missing. Optional: `CHAT_MODEL`.
 
 ## Limits worth knowing
 

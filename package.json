@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "dev:cloudflare": "npx wrangler pages dev public --compatibility-date=2024-01-01",
+    "dev:cloudflare": "npx wrangler pages dev public --compatibility-date=2024-01-01 --ai AI",
     "deploy": "npx wrangler pages deploy public --project-name=my-portfolio",
     "test": "node --test \"scripts/*.test.mjs\"",
-    "build:index": "node --env-file=.env scripts/build-index.mjs",
-    "eval": "node --env-file=.env scripts/eval.mjs",
+    "build:index": "node scripts/build-index.mjs",
+    "eval": "node scripts/eval.mjs",
     "smoke": "node scripts/smoke.mjs"
   },
   "keywords": [

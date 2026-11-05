@@ -64,7 +64,7 @@
     <section class="explain" id="how">
       <h2>How the comparison works</h2>
       <ul>
-        <li><b>What stays the same:</b> the knowledge base (version shown under each answer), the answer model (GLM-4.7-Flash), the answer prompt and settings, a limit of 5 evidence passages, and the citation check that removes any citation the bot was not given.</li>
+        <li><b>What stays the same:</b> the knowledge base (version shown under each answer), the answer model (Llama 3.1 8B on Cloudflare Workers AI), the answer prompt and settings, a limit of 5 evidence passages, and the citation check that removes any citation the bot was not given.</li>
         <li><b>What differs:</b> only retrieval. Bot A searches passages directly. Bot B first navigates the table of contents, the way a reader uses a book’s contents page.</li>
         <li><b>Why “STAIR-inspired”:</b> the <a href="https://arxiv.org/abs/2609.03874" target="_blank" rel="noopener">STAIR paper</a> fine-tunes a model to output a valid section and restricts its output to real section IDs. Bot B uses a general model plus an ID check instead, so it is a simpler prototype, not a reproduction. A fine-tuned version is tested offline in the methodology report.</li>
         <li><b>No live scores here:</b> one question is not a test. Quality is measured on a labelled question set; see the <a href="https://github.com/midanish/my-portfolio/blob/main/docs/two-bot-methodology.md" target="_blank" rel="noopener">methodology report</a>.</li>
