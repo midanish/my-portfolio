@@ -249,7 +249,7 @@
   // Real metrics only (sourced from portfolio.json) — no fabrication.
   function projectMeta(title) {
     const t = title.toLowerCase();
-    if (t.includes('rag chatbot')) return { confidence: 'rag-bot · GLM-4.7-Flash', status: 'Live', featured: true };
+    if (t.includes('rag chatbot')) return { confidence: 'RAG vs STAIR · Llama 3.1 8B', status: 'Live', featured: true };
     if (t.includes('food image classification')) return { confidence: 'food-cls · 95% acc', status: 'Live' };
     if (t.includes('biometric fingerprint')) return { confidence: 'auth · $5k saved', status: 'Demo' };
     if (t.includes('storage management')) return { confidence: 'inventory · −90% err', status: 'Case study' };
