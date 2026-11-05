@@ -1,0 +1,4567 @@
+{
+  "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "toc_version": "public_v1",
+  "n_leaves": 34,
+  "base_free": {
+    "summary": {
+      "dev": {
+        "n": 50,
+        "recall_at_1": 0.48,
+        "recall_at_3": 0.48,
+        "all_gold_in_top3": 0.28,
+        "mrr_at_3": 0.48,
+        "questions_with_invalid_id": 10
+      },
+      "heldout": {
+        "n": 14,
+        "recall_at_1": 0.357,
+        "recall_at_3": 0.357,
+        "all_gold_in_top3": 0.214,
+        "mrr_at_3": 0.357,
+        "questions_with_invalid_id": 5
+      },
+      "seconds_per_question": 0.59
+    },
+    "rows": [
+      {
+        "id": "f01",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f02",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "None of the provided sections directly mention an SDK used by IQMETRIC for fingerprint matching."
+        ],
+        "invalid": [
+          "None of the provided sections directly mention an SDK used by IQMETRIC for fingerprint matching."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "f03",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f04",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "f05",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.degree"
+        ],
+        "ranked": [
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "f06",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f07",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "TCP Chat App connects on port 9000."
+        ],
+        "invalid": [
+          "TCP Chat App connects on port 9000."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "f08",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.app"
+        ],
+        "ranked": [
+          "projects.food.app"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f09",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "None"
+        ],
+        "invalid": [
+          "None"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "f10",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "experience.nxp.quality"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f11",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "None of the provided projects or sections mention specific details about which version of PyTorch Mobile"
+        ],
+        "invalid": [
+          "None of the provided projects or sections mention specific details about which version of PyTorch Mobile"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "f12",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p01",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p02",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.login_control"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p03",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p04",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p05",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "skills.ai_ml"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p06",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.greatech.commissioning"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p07",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p08",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.dental.mobile",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "No"
+        ],
+        "invalid": [
+          "No"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p09",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.experiments"
+        ],
+        "ranked": [
+          "skills.ai_ml"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p10",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p11",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p12",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "profile.contact"
+        ],
+        "ranked": [
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c01",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c02",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c03",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.aerodyne.detection",
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.aerodyne.detection"
+        ],
+        "invalid": [
+          "projects.aerodyne.detection"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c04",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c05",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c06",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.storage.overview",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c07",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c08",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c09",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c10",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.coursework.classification"
+        ],
+        "ranked": [
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "m01",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m02",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "m03",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m04",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.dataset",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m05",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "experience.nxp.quality",
+          "education.awards"
+        ],
+        "ranked": [
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "m06",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m07",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m08",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "education.degree",
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "r02",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "No relevant information is provided in this section."
+        ],
+        "invalid": [
+          "No relevant information is provided in this section."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "r07",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.nxp.ocr"
+        ],
+        "ranked": [
+          "skills.ai_ml"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "r08",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "projects.dental.limitations"
+        ],
+        "ranked": [
+          "No relevant information is provided in the given text."
+        ],
+        "invalid": [
+          "No relevant information is provided in the given text."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "v01",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots"
+        ],
+        "ranked": [
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "v02",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "No"
+        ],
+        "invalid": [
+          "No"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "v03",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v04",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "v05",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "No"
+        ],
+        "invalid": [
+          "No"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h01",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h02",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h03",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h04",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "None of the provided sections directly address an image library connecting an endoscope to a phone."
+        ],
+        "invalid": [
+          "None of the provided sections directly address an image library connecting an endoscope to a phone."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h05",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h06",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.experiments",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "h07",
+        "split": "heldout",
+        "type": "missing",
+        "gold": [
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.model"
+        ],
+        "invalid": [
+          "projects.dental.model"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h08",
+        "split": "heldout",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "h09",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h10",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h11",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "No relevant information provided in the given text."
+        ],
+        "invalid": [
+          "No relevant information provided in the given text."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h13",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h14",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "TCP Chat Application - Image Transmission Technique"
+        ],
+        "invalid": [
+          "TCP Chat Application - Image Transmission Technique"
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h15",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "No matching section found."
+        ],
+        "invalid": [
+          "No matching section found."
+        ],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      }
+    ]
+  },
+  "base_constrained": {
+    "summary": {
+      "dev": {
+        "n": 50,
+        "recall_at_1": 0.66,
+        "recall_at_3": 0.76,
+        "all_gold_in_top3": 0.68,
+        "mrr_at_3": 0.703,
+        "questions_with_invalid_id": 0
+      },
+      "heldout": {
+        "n": 14,
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.857,
+        "all_gold_in_top3": 0.714,
+        "mrr_at_3": 0.655,
+        "questions_with_invalid_id": 0
+      },
+      "seconds_per_question": 0.53
+    },
+    "rows": [
+      {
+        "id": "f01",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f02",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f03",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost",
+          "experience.nxp.ocr",
+          "experience.nxp.quality"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f04",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.data"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f05",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.degree"
+        ],
+        "ranked": [
+          "education.degree",
+          "profile.summary",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f06",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5",
+          "education.certificates",
+          "education.awards"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f07",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "profile.contact",
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f08",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.app"
+        ],
+        "ranked": [
+          "projects.food.app",
+          "projects.food.results",
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f09",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.certificates",
+          "profile.contact",
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f10",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f11",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.greatech.commissioning",
+          "experience.aerodyne.data"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "f12",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview",
+          "projects.food.results",
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p01",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p02",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control",
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "p03",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p04",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.iqmetric.login_control",
+          "experience.aerodyne.detection"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p05",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "skills.ai_ml",
+          "experience.greatech.vision_systems",
+          "skills.data_platforms"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p06",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.greatech.commissioning"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p07",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p08",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.dental.mobile",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.iqmetric.login_control",
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "p09",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.experiments"
+        ],
+        "ranked": [
+          "skills.ai_ml",
+          "education.awards",
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p10",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview",
+          "experience.greatech.commissioning",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p11",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "profile.summary",
+          "profile.contact",
+          "skills.programming"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p12",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "profile.contact"
+        ],
+        "ranked": [
+          "profile.contact",
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c01",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control",
+          "skills.ai_ml"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c02",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.food.dataset",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c03",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.aerodyne.detection",
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.iqmetric.login_control",
+          "projects.food.model",
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c04",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c05",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c06",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.storage.overview",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.nxp.quality",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c07",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "skills.ai_ml",
+          "experience.greatech.commissioning"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c08",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c09",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "c10",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.coursework.classification"
+        ],
+        "ranked": [
+          "projects.food.model",
+          "skills.ai_ml",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "m01",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.model",
+          "projects.food.results",
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m02",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost",
+          "projects.iqmetric.login_control"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 0.5
+      },
+      {
+        "id": "m03",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.overview",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m04",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.dataset",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "education.awards",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m05",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "experience.nxp.quality",
+          "education.awards"
+        ],
+        "ranked": [
+          "profile.contact",
+          "experience.nxp.quality",
+          "education.awards"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "m06",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m07",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.limitations",
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m08",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "education.degree",
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree",
+          "education.awards",
+          "education.certificates"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r02",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection",
+          "projects.iqmetric.overview",
+          "experience.aerodyne.data"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r07",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.nxp.ocr"
+        ],
+        "ranked": [
+          "experience.nxp.ocr",
+          "skills.ai_ml",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r08",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "projects.dental.limitations"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "education.awards",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "v01",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v02",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.overview",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v03",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v04",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v05",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "skills.ai_ml",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h01",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h02",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "h03",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview",
+          "profile.summary",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h04",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "skills.ai_ml",
+          "skills.data_platforms",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h05",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.greatech.vision_systems",
+          "experience.nxp.quality"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 0.5
+      },
+      {
+        "id": "h06",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.experiments",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.experiments",
+          "projects.food.results",
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h07",
+        "split": "heldout",
+        "type": "missing",
+        "gold": [
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "projects.food.model",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h08",
+        "split": "heldout",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h09",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree",
+          "profile.summary",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h10",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "profile.contact",
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h11",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "profile.summary",
+          "experience.nxp.ocr",
+          "experience.nxp.quality"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "h13",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "h14",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "profile.contact",
+          "profile.summary"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h15",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "skills.ai_ml",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 0.3333333333333333
+      }
+    ]
+  },
+  "tuned_free": {
+    "summary": {
+      "dev": {
+        "n": 50,
+        "recall_at_1": 0.86,
+        "recall_at_3": 0.86,
+        "all_gold_in_top3": 0.56,
+        "mrr_at_3": 0.86,
+        "questions_with_invalid_id": 0
+      },
+      "heldout": {
+        "n": 14,
+        "recall_at_1": 0.714,
+        "recall_at_3": 0.714,
+        "all_gold_in_top3": 0.5,
+        "mrr_at_3": 0.714,
+        "questions_with_invalid_id": 0
+      },
+      "seconds_per_question": 0.5
+    },
+    "rows": [
+      {
+        "id": "f01",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f02",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f03",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f04",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "f05",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.degree"
+        ],
+        "ranked": [
+          "education.degree"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f06",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f07",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f08",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.app"
+        ],
+        "ranked": [
+          "projects.food.app"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f09",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.certificates"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f10",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "experience.nxp.quality"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f11",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f12",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p01",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p02",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.login_control"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p03",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.login_control"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p04",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p05",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "experience.aerodyne.data"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p06",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.greatech.commissioning"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "p07",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p08",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.dental.mobile",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "p09",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.experiments"
+        ],
+        "ranked": [
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p10",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p11",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p12",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "profile.contact"
+        ],
+        "ranked": [
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c01",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c02",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c03",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.aerodyne.detection",
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c04",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c05",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c06",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.storage.overview",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c07",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c08",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c09",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c10",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.coursework.classification"
+        ],
+        "ranked": [
+          "projects.coursework.classification"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m01",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m02",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "m03",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m04",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.dataset",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m05",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "experience.nxp.quality",
+          "education.awards"
+        ],
+        "ranked": [
+          "experience.nxp.quality"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m06",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m07",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m08",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "education.degree",
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "r02",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r07",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.nxp.ocr"
+        ],
+        "ranked": [
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r08",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "projects.dental.limitations"
+        ],
+        "ranked": [
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "v01",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "v02",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v03",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v04",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "v05",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h01",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h02",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h03",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h04",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h05",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h06",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.experiments",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "h07",
+        "split": "heldout",
+        "type": "missing",
+        "gold": [
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h08",
+        "split": "heldout",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "h09",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h10",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h11",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h13",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h14",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h15",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      }
+    ]
+  },
+  "tuned_constrained": {
+    "summary": {
+      "dev": {
+        "n": 50,
+        "recall_at_1": 0.84,
+        "recall_at_3": 0.96,
+        "all_gold_in_top3": 0.86,
+        "mrr_at_3": 0.887,
+        "questions_with_invalid_id": 0
+      },
+      "heldout": {
+        "n": 14,
+        "recall_at_1": 0.643,
+        "recall_at_3": 0.857,
+        "all_gold_in_top3": 0.786,
+        "mrr_at_3": 0.75,
+        "questions_with_invalid_id": 0
+      },
+      "seconds_per_question": 0.67
+    },
+    "rows": [
+      {
+        "id": "f01",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "projects.coursework.classification",
+          "projects.coursework.yolov5"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f02",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f03",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.iqmetric.overview",
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f04",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data",
+          "education.certificates"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f05",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.degree"
+        ],
+        "ranked": [
+          "education.degree",
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f06",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5",
+          "projects.coursework.classification",
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f07",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "profile.summary",
+          "profile.contact"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f08",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.food.app"
+        ],
+        "ranked": [
+          "projects.food.app",
+          "projects.food.results",
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f09",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.certificates",
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f10",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "experience.nxp.quality",
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f11",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "f12",
+        "split": "dev",
+        "type": "simple",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview",
+          "projects.dental.overview",
+          "projects.coursework.classification"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p01",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "experience.aerodyne.data",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p02",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p03",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.login_control",
+          "projects.portfolio_bot.v1",
+          "projects.storage.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p04",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.iqmetric.login_control",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p05",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.aerodyne.data"
+        ],
+        "ranked": [
+          "experience.aerodyne.data",
+          "experience.greatech.commissioning",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p06",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.greatech.commissioning"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.commissioning",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "p07",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p08",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.dental.mobile",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p09",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.food.experiments"
+        ],
+        "ranked": [
+          "projects.food.experiments",
+          "projects.food.results",
+          "projects.coursework.classification"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p10",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview",
+          "projects.dental.overview",
+          "projects.coursework.classification"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p11",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "experience.greatech.commissioning"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "p12",
+        "split": "dev",
+        "type": "paraphrase",
+        "gold": [
+          "profile.contact"
+        ],
+        "ranked": [
+          "profile.contact",
+          "experience.nxp.vent_hole",
+          "experience.nxp.ocr"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c01",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "projects.food.model",
+          "projects.food.results",
+          "projects.food.app"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "c02",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "c03",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.aerodyne.detection",
+          "projects.coursework.yolov5"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5",
+          "experience.aerodyne.detection",
+          "projects.food.model"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c04",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c05",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "projects.tcp_chat.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c06",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.storage.overview",
+          "projects.iqmetric.biometrics"
+        ],
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.nxp.quality",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "c07",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning",
+          "experience.aerodyne.detection"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "c08",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "projects.coursework.classification",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "c09",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "c10",
+        "split": "dev",
+        "type": "comparison",
+        "gold": [
+          "projects.coursework.classification"
+        ],
+        "ranked": [
+          "projects.coursework.classification",
+          "projects.coursework.yolov5",
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m01",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.model",
+          "projects.food.results",
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m02",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost"
+        ],
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.biometrics"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "m03",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m04",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.dataset",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.results",
+          "projects.food.experiments"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m05",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "experience.nxp.quality",
+          "education.awards"
+        ],
+        "ranked": [
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "m06",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m07",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.limitations",
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "m08",
+        "split": "dev",
+        "type": "multi_hop",
+        "gold": [
+          "education.degree",
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree",
+          "education.certificates",
+          "education.awards"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r02",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r07",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "experience.nxp.ocr"
+        ],
+        "ranked": [
+          "experience.nxp.ocr",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "r08",
+        "split": "dev",
+        "type": "missing",
+        "gold": [
+          "projects.dental.limitations"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "v01",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v02",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v03",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.food.results"
+        ],
+        "ranked": [
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.food.app"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v04",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.dental.mobile"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "v05",
+        "split": "dev",
+        "type": "version_trap",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.commissioning",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h01",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.food.dataset"
+        ],
+        "ranked": [
+          "projects.food.dataset",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h02",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.iqmetric.login_control"
+        ],
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "h03",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "projects.storage.overview"
+        ],
+        "ranked": [
+          "projects.storage.overview",
+          "projects.dental.overview",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h04",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.dental.mobile"
+        ],
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.iqmetric.biometrics",
+          "projects.dental.limitations"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h05",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole",
+          "experience.greatech.commissioning"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h06",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.food.experiments",
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.food.experiments",
+          "projects.food.results",
+          "projects.food.dataset"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 0,
+        "rr": 1.0
+      },
+      {
+        "id": "h07",
+        "split": "heldout",
+        "type": "missing",
+        "gold": [
+          "projects.dental.overview"
+        ],
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.food.results"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h08",
+        "split": "heldout",
+        "type": "version_trap",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h09",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "education.certificates"
+        ],
+        "ranked": [
+          "education.degree",
+          "education.certificates",
+          "education.awards"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "h10",
+        "split": "heldout",
+        "type": "paraphrase",
+        "gold": [
+          "experience.nxp.vent_hole"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.commissioning",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h11",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "experience.nxp.quality"
+        ],
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.commissioning",
+          "experience.greatech.vision_systems"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 0,
+        "all3": 0,
+        "rr": 0.0
+      },
+      {
+        "id": "h13",
+        "split": "heldout",
+        "type": "comparison",
+        "gold": [
+          "projects.food.model"
+        ],
+        "ranked": [
+          "projects.coursework.yolov5",
+          "projects.food.model",
+          "projects.dental.overview"
+        ],
+        "invalid": [],
+        "hit1": 0,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 0.5
+      },
+      {
+        "id": "h14",
+        "split": "heldout",
+        "type": "simple",
+        "gold": [
+          "projects.tcp_chat.overview"
+        ],
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "projects.coursework.yolov5",
+          "projects.coursework.classification"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      },
+      {
+        "id": "h15",
+        "split": "heldout",
+        "type": "multi_hop",
+        "gold": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "invalid": [],
+        "hit1": 1,
+        "hit3": 1,
+        "all3": 1,
+        "rr": 1.0
+      }
+    ]
+  }
+}

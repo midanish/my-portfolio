@@ -39,3 +39,10 @@ build/
 # Temporary files
 *.tmp
 *.temp
+
+# Phase 5 research environment and model outputs
+research/stair/.venv/
+research/stair/out/
+.dev.vars
+research/stair/*.log
+eval/blind-*-key.json

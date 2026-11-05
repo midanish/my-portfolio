@@ -1,7 +1,9 @@
+import { CHAT_MODEL } from '../../lib/rag.mjs';
+
 // Cloudflare Pages Function for the portfolio chat API.
-// Smarter version: feeds the whole portfolio as grounded context and uses the
-// chat-completions API. Set an HF token in the Pages env (HF_TOKEN) to enable
-// the LLM; otherwise it falls back to a grounded keyword response.
+// Feeds the whole portfolio as grounded context to the chat model (Workers AI via
+// the "AI" binding, else Hugging Face with HF_TOKEN); otherwise it falls back to a
+// grounded keyword response.
 // Note: stateless (single-turn). For multi-turn memory, back it with Cloudflare KV.
 
 export async function onRequestPost(context) {
@@ -22,7 +24,9 @@ export async function onRequestPost(context) {
       { role: 'user', content: message },
     ];
 
-    let response_text = await generateWithHuggingFace(messages, context.env);
+    // Workers AI first (the "AI" binding); the Hugging Face path is kept as a fallback.
+    let response_text = await generateWithWorkersAI(messages, context.env)
+      || await generateWithHuggingFace(messages, context.env);
 
     // Fallback to a grounded retrieval response if the model is unavailable.
     if (!response_text || response_text.trim().length < 2) {
@@ -118,6 +122,19 @@ Style: warm, confident, concise (2–5 sentences). Refer to him as "${first}". U
 
 PROFILE DATA:
 ${knowledgeBase}`;
+}
+
+// Call Cloudflare Workers AI through the Pages "AI" binding (same model as /api/compare).
+async function generateWithWorkersAI(messages, env = {}) {
+  if (!env.AI || typeof env.AI.run !== 'function') return null;
+  try {
+    const out = await env.AI.run(CHAT_MODEL, { messages, max_tokens: 600, temperature: 0.6, top_p: 0.9 });
+    const content = typeof out?.response === 'string' ? out.response : out?.choices?.[0]?.message?.content;
+    return (content && content.trim()) || null;
+  } catch (error) {
+    console.error('Workers AI call failed:', error);
+    return null;
+  }
 }
 
 // Call the Hugging Face chat-completions router.

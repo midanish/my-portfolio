@@ -1,0 +1,269 @@
+{
+  "version": "public_v1",
+  "leaves": [
+    {
+      "id": "profile.summary",
+      "path": [
+        "Profile",
+        "Summary"
+      ]
+    },
+    {
+      "id": "profile.contact",
+      "path": [
+        "Profile",
+        "Contact"
+      ]
+    },
+    {
+      "id": "skills.programming",
+      "path": [
+        "Skills",
+        "Programming and software development"
+      ]
+    },
+    {
+      "id": "skills.ai_ml",
+      "path": [
+        "Skills",
+        "AI, machine learning and computer vision"
+      ]
+    },
+    {
+      "id": "skills.data_platforms",
+      "path": [
+        "Skills",
+        "Data, APIs and platforms"
+      ]
+    },
+    {
+      "id": "experience.nxp.quality",
+      "path": [
+        "Work experience",
+        "NXP Semiconductors Malaysia — Test Back-End Process Engineer (Dec 2024 to present)",
+        "Process engineering and quality results"
+      ]
+    },
+    {
+      "id": "experience.nxp.ocr",
+      "path": [
+        "Work experience",
+        "NXP Semiconductors Malaysia — Test Back-End Process Engineer (Dec 2024 to present)",
+        "OCR automation project"
+      ]
+    },
+    {
+      "id": "experience.nxp.vent_hole",
+      "path": [
+        "Work experience",
+        "NXP Semiconductors Malaysia — Test Back-End Process Engineer (Dec 2024 to present)",
+        "Vent-hole foreign-material inspection"
+      ]
+    },
+    {
+      "id": "experience.greatech.vision_systems",
+      "path": [
+        "Work experience",
+        "Greatech Integration — Vision Engineer (Feb 2024 to Nov 2024)",
+        "Production machine-vision systems"
+      ]
+    },
+    {
+      "id": "experience.greatech.commissioning",
+      "path": [
+        "Work experience",
+        "Greatech Integration — Vision Engineer (Feb 2024 to Nov 2024)",
+        "Feasibility studies and commissioning"
+      ]
+    },
+    {
+      "id": "experience.aerodyne.detection",
+      "path": [
+        "Work experience",
+        "Aerodyne Group — AI Specialist Apprentice (Aug 2023 to Jan 2024)",
+        "YOLOv8 defect detection on electric poles"
+      ]
+    },
+    {
+      "id": "experience.aerodyne.data",
+      "path": [
+        "Work experience",
+        "Aerodyne Group — AI Specialist Apprentice (Aug 2023 to Jan 2024)",
+        "Datasets, annotation and dashboards"
+      ]
+    },
+    {
+      "id": "projects.iqmetric.overview",
+      "path": [
+        "Projects",
+        "Biometric login system for vision scanners (IQMETRIC, Jun 2026)",
+        "What it does"
+      ]
+    },
+    {
+      "id": "projects.iqmetric.biometrics",
+      "path": [
+        "Projects",
+        "Biometric login system for vision scanners (IQMETRIC, Jun 2026)",
+        "Face and fingerprint technology"
+      ]
+    },
+    {
+      "id": "projects.iqmetric.login_control",
+      "path": [
+        "Projects",
+        "Biometric login system for vision scanners (IQMETRIC, Jun 2026)",
+        "Login control and audit trail"
+      ]
+    },
+    {
+      "id": "projects.iqmetric.cost",
+      "path": [
+        "Projects",
+        "Biometric login system for vision scanners (IQMETRIC, Jun 2026)",
+        "Cost compared with the vendor option"
+      ]
+    },
+    {
+      "id": "projects.portfolio_bot.v1",
+      "path": [
+        "Projects",
+        "Portfolio AI assistant (Jan 2026 onward)",
+        "Version 1: full-context assistant"
+      ]
+    },
+    {
+      "id": "projects.portfolio_bot.two_bots",
+      "path": [
+        "Projects",
+        "Portfolio AI assistant (Jan 2026 onward)",
+        "Version 2: two retrieval bots side by side"
+      ]
+    },
+    {
+      "id": "projects.portfolio_bot.evaluation",
+      "path": [
+        "Projects",
+        "Portfolio AI assistant (Jan 2026 onward)",
+        "How the two bots are evaluated"
+      ]
+    },
+    {
+      "id": "projects.food.dataset",
+      "path": [
+        "Projects",
+        "Food image classification (Dec 2025)",
+        "Dataset"
+      ]
+    },
+    {
+      "id": "projects.food.model",
+      "path": [
+        "Projects",
+        "Food image classification (Dec 2025)",
+        "Model and training"
+      ]
+    },
+    {
+      "id": "projects.food.experiments",
+      "path": [
+        "Projects",
+        "Food image classification (Dec 2025)",
+        "Earlier model experiments"
+      ]
+    },
+    {
+      "id": "projects.food.results",
+      "path": [
+        "Projects",
+        "Food image classification (Dec 2025)",
+        "Results and limitations"
+      ]
+    },
+    {
+      "id": "projects.food.app",
+      "path": [
+        "Projects",
+        "Food image classification (Dec 2025)",
+        "Streamlit app"
+      ]
+    },
+    {
+      "id": "projects.dental.overview",
+      "path": [
+        "Projects",
+        "Portable dental image analysis app (final-year project, Jul 2023)",
+        "Overview and award"
+      ]
+    },
+    {
+      "id": "projects.dental.mobile",
+      "path": [
+        "Projects",
+        "Portable dental image analysis app (final-year project, Jul 2023)",
+        "Mobile architecture"
+      ]
+    },
+    {
+      "id": "projects.dental.limitations",
+      "path": [
+        "Projects",
+        "Portable dental image analysis app (final-year project, Jul 2023)",
+        "Known limitations and planned fixes"
+      ]
+    },
+    {
+      "id": "projects.storage.overview",
+      "path": [
+        "Projects",
+        "Engineering room storage management system (Dec 2025)",
+        "Borrow-and-return tracking"
+      ]
+    },
+    {
+      "id": "projects.coursework.classification",
+      "path": [
+        "Projects",
+        "Deep-learning coursework (2022)",
+        "Fashion-MNIST and fruit classification"
+      ]
+    },
+    {
+      "id": "projects.coursework.yolov5",
+      "path": [
+        "Projects",
+        "Deep-learning coursework (2022)",
+        "YOLOv5 object detection"
+      ]
+    },
+    {
+      "id": "projects.tcp_chat.overview",
+      "path": [
+        "Projects",
+        "Two-way TCP chat application",
+        "Socket chat with images"
+      ]
+    },
+    {
+      "id": "education.degree",
+      "path": [
+        "Education and credentials",
+        "Degree"
+      ]
+    },
+    {
+      "id": "education.certificates",
+      "path": [
+        "Education and credentials",
+        "Certificates"
+      ]
+    },
+    {
+      "id": "education.awards",
+      "path": [
+        "Education and credentials",
+        "Awards"
+      ]
+    }
+  ]
+}

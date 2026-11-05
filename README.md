@@ -1,264 +1,60 @@
-# Portfolio with RAG Chat System
+# Iqmal Danish — Portfolio, AI Assistant and Two-Bot RAG Comparison
 
-A macOS Sequoia-styled portfolio website with an AI-powered chatbot that answers questions about the resume using Retrieval-Augmented Generation (RAG) with Transformers.js.
+A macOS-styled portfolio site with two AI features:
 
-## Features
+1. **Portfolio assistant (v1, `/api/chat`)** — answers questions about Iqmal by giving the model the *whole* profile every time. There is no retrieval step; the profile is small enough to fit.
+2. **Two-bot comparison (v2, `/compare.html` + `/api/compare`)** — one question, two answers side by side, from the same knowledge base:
+   - **Bot A · Standard RAG:** BM25 keyword search + embedding search over short passages, merged with Reciprocal Rank Fusion, top 5 passages.
+   - **Bot B · Structure-aware RAG (STAIR-inspired):** a model chooses up to 3 sections from the knowledge base's table of contents; the IDs are checked against the real list (embedding fallback if none are valid); those sections are read (max 5 passages).
+   - Both use the same answer model (Llama 3.1 8B on Cloudflare Workers AI), prompt, evidence budget and citation check. **Only retrieval differs.**
 
-- **macOS Sequoia Design**: Beautiful glassmorphism UI with light/dark theme support
-- **RAG Chat System**: AI chatbot that only answers questions based on portfolio data
-- **Transformers.js Integration**: Uses Hugging Face Transformers.js for model inference
-- **Vector Search**: TF-IDF based vector similarity for retrieving relevant information
-- **Guardrails**: Ensures bot never answers questions outside of portfolio scope
-- **Responsive**: Works on all devices
+Results, method and limits: [`docs/two-bot-methodology.md`](docs/two-bot-methodology.md). What v1 really did before this work: [`docs/baseline.md`](docs/baseline.md).
 
-## Tech Stack
+## Project layout
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Backend**: Node.js, Express
-- **AI/ML**: @xenova/transformers (JavaScript port of Hugging Face Transformers)
-- **RAG**: Custom TF-IDF vector store
-- **UI**: macOS Sequoia glassmorphism design
+| Path | What it is |
+|---|---|
+| `public/` | Static site (served as-is by Cloudflare Pages) |
+| `functions/api/chat.js` | v1 assistant (unchanged; kept as the baseline) |
+| `functions/api/compare.js` | v2 endpoint: input limits, per-visitor rate limit, runs both bots |
+| `lib/rag.mjs` | All retrieval, routing, answer and citation logic — shared by the site and the evaluation |
+| `content/kb.md` | Knowledge base (public sources only, each section names its source) |
+| `public/data/kb/index.json` | Built index: sections, passages, embeddings (`npm run build:index`) |
+| `eval/gold.json` | Hand-labelled questions with the section that should answer each |
+| `scripts/eval.mjs` | Scores retrieval and answers for both bots + v1 control |
+| `research/stair/` | Phase 5: LoRA fine-tuned section retriever with constrained decoding (offline; results in `research/stair/results.json`) |
+| `server.js` | Older local Express server (v1 only; not used by the live site) |
 
 ## Setup
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+npx wrangler login        # scripts and local dev use Workers AI through this login
+```
 
-2. **(Optional) Enable the AI assistant** — set a Hugging Face token so the
-   chatbot can use the LLM. Without it, the bot still answers using a grounded
-   fallback, but the LLM gives much smarter, synthesized answers:
-   ```bash
-   # PowerShell:  $env:HF_TOKEN = "hf_xxx"
-   # bash:        export HF_TOKEN=hf_xxx
-   # Optional:    set CHAT_MODEL to override the default (zai-org/GLM-4.7-Flash)
-   ```
-   Get a free token at https://huggingface.co/settings/tokens.
+| Command | What it does |
+|---|---|
+| `npm test` | Offline tests (no token needed) |
+| `npm run build:index` | Rebuild `public/data/kb/index.json` after editing `content/kb.md` |
+| `npm run eval -- --split dev` | Run the labelled questions (use `--split heldout` only for final results) |
+| `npm run dev:cloudflare` | Run the site + functions locally with Wrangler (reads `.dev.vars` for the token) |
+| `npm run smoke [-- <url>]` | Ask a few known questions against a running site |
 
-3. **Start the server**:
-   ```bash
-   npm start
-   ```
-   On boot it logs whether a token was detected (`Auth: HF token detected` vs
-   `no token … using grounded retrieval fallback`).
-
-4. **Open in browser**:
-   ```
-   http://localhost:3000
-   ```
+When you change the knowledge base, bump `version` in `content/kb.md` and `source_version` in `eval/gold.json`, rebuild the index and re-run the evaluation.
 
 ## Deployment (Cloudflare Pages — Git auto-build)
 
-Deployed on Cloudflare Pages with **Git integration**: pushing to `main`
-triggers an automatic Cloudflare build & deploy — no GitHub Action needed.
+Pushing to `main` triggers an automatic Cloudflare build and deploy.
 
-Cloudflare Pages project settings:
-- **Production branch:** `main`
-- **Build command:** *(none — static site)*
-- **Build output directory:** `public`
-- **Functions:** auto-detected from the `/functions` directory
+- Production branch: `main` · Build command: none · Output directory: `public` · Functions: auto-detected from `/functions`
+- Models run on Cloudflare Workers AI: add a **Workers AI binding named `AI`** in Cloudflare → Workers & Pages → my-portfolio → Settings → Bindings. `/api/chat` falls back to Hugging Face (`HF_TOKEN`) if the binding is missing. Optional: `CHAT_MODEL`.
 
-**Chatbot token (runtime):** the chat Function reads `HF_TOKEN` from the Pages
-environment. Set it in Cloudflare → Workers & Pages → **my-portfolio → Settings
-→ Environment variables → Production** → add `HF_TOKEN` (and optionally
-`CHAT_MODEL`), then redeploy. Without it, the bot uses its grounded fallback.
+## Limits worth knowing
 
-For local dev, the token comes from your `.env` instead (see Setup).
-
-## AI Chat System
-
-The assistant answers questions about the portfolio using a grounded LLM:
-
-### How it works
-
-1. **Full-portfolio grounding** — the entire `portfolio.json` is compiled into a
-   compact knowledge base and passed to the model as context. Because the
-   portfolio is small, there's no lossy retrieval step, so the bot never "misses"
-   a fact and can answer synthesis questions ("Is he a fit for an AI role?",
-   "What's his strongest project?", "Summarize his experience").
-2. **Chat completions** — uses the Hugging Face chat-completions API
-   (`hf.chatCompletion`, model `CHAT_MODEL`, default `zai-org/GLM-4.7-Flash`)
-   with a system prompt that enforces grounding (no fabrication), an inviting
-   recruiter-friendly tone, markdown formatting, and on-topic scope.
-3. **Multi-turn memory** — the last few exchanges per session are sent as real
-   message turns, so follow-ups like "tell me more" resolve naturally.
-4. **Grounded fallback** — if no `HF_TOKEN` is set or the API errors, it falls
-   back to a TF-IDF retrieval response built from the same data, so the chat
-   always works.
-
-> Set `HF_TOKEN` to enable the LLM (see Setup). Override the model with
-> `CHAT_MODEL` if you prefer a different served model (e.g. `zai-org/GLM-4.6`).
-> The Cloudflare function (`functions/api/chat.js`) mirrors this and reads
-> `HF_TOKEN` from the Pages environment.
-
-## Chat API
-
-### POST /api/chat
-
-Send a message to get a response:
-
-```bash
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"What are Iqmal skills?"}'
-```
-
-Response:
-```json
-{
-  "response": "Programming Skills: Python, C/C++, C#, JavaScript...",
-  "relevant_chunks": [
-    "Programming Skills: Python, C/C++, C#, JavaScript...",
-    "AI / Machine Learning: PyTorch, TensorFlow..."
-  ]
-}
-```
-
-## Guardrails & Semantic Understanding
-
-The chat system includes advanced guardrails and semantic understanding:
-
-### Features
-
-1. **Semantic Intent Recognition**: Understands various phrasings of the same question
-   - "What skills do you have?" / "Can you code in Python?" / "What programming languages?"
-   - "Tell me about your experience" / "Where have you worked?" / "What's your background?"
-
-2. **Off-Topic Detection**: Politely rejects non-portfolio questions
-   - Weather, news, jokes, general knowledge, math problems, etc.
-   - Multiple pattern matching layers for comprehensive detection
-
-3. **Context-Aware Responses**: Tailors response introduction based on question intent
-   - Skills questions → "Here are the relevant skills:"
-   - Experience questions → "Here is the relevant work experience:"
-   - Education questions → "Here is the educational background:"
-
-4. **Greeting Handling**: Responds appropriately to greetings (Hello, Hi, Hey, etc.)
-
-5. **No Hallucinations**: Never makes up information not in the portfolio data
-
-### Examples
-
-**Portfolio Question (Accepted)**:
-```
-User: "Can you do machine learning?"
-Bot: "Here are the relevant skills:
-
-AI / Machine Learning: Pandas, PyTorch, TensorFlow, Keras, OpenCV..."
-```
-
-**Off-Topic Question (Rejected)**:
-```
-User: "What's the weather like today?"
-Bot: "I appreciate your question, but I'm specifically designed to discuss this portfolio.
-I can help you learn about skills, work experience, projects, education, or other
-professional qualifications. What would you like to know?"
-```
-
-**Greeting**:
-```
-User: "Hello"
-Bot: "Hello! I'm here to help you learn about this portfolio. Feel free to ask about
-skills, work experience, projects, education, or anything else you'd like to know!"
-```
-
-## Data Source
-
-The RAG system learns from: `data/portfolio.json`
-
-Chunks are created from:
-- Personal information
-- Skills (programming, databases, AI/ML, tools)
-- Experience/Work history
-- Projects
-- Education
-- Certificates
-- Awards
-
-## Testing
-
-Test the semantic AI and guardrails:
-
-```bash
-# Test 1: Skills question with various phrasings
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"What skills do you have?"}'
-
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Can you code in Python?"}'
-
-# Test 2: Experience question
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Tell me about your experience"}'
-
-# Test 3: Education question
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Where did you study?"}'
-
-# Test 4: Off-topic question (should be politely rejected)
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"What is the weather today?"}'
-
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Tell me a joke"}'
-
-# Test 5: Greeting
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Hello"}'
-
-# Test 6: Semantic understanding of AI/ML capabilities
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message":"Do you know machine learning?"}'
-```
-
-## Architecture
-
-```
-User Query
-    ↓
-Intent Classification
-(Greeting / Personal / Skills / Experience / Projects / Education / Off-topic)
-    ↓
-Off-topic Check → [REJECT with polite message]
-    ↓
-Greeting Check → [Return greeting message]
-    ↓
-Vector Search (TF-IDF with stopword filtering)
-    ↓
-Retrieve Top-K Chunks
-    ↓
-Relevance Validation (Score threshold check)
-    ↓
-Context-Aware Response Generation
-(Intent-based introduction + Retrieved chunks)
-    ↓
-Answer
-```
-
-## Future Enhancements
-
-- [ ] Full GLM-4.7-Flash-GGUF model integration when supported by Transformers.js
-- [ ] Add streaming responses
-- [ ] Implement more advanced embeddings (sentence-transformers via Transformers.js)
-- [ ] Add conversation memory/context
-- [ ] Improve vector store with FAISS (if available for Node.js)
-- [ ] Add multi-turn conversation support
+- The rate limit (8 questions per minute per visitor) is kept in memory per Cloudflare instance, so it is best-effort, not a hard quota.
+- `/api/compare` makes about four model calls per question (one embedding, one routing, two answers).
+- Bot B is a prompted router with an ID check, not the paper's fine-tuned STAIR retriever. The fine-tuned version is tested offline only (`research/stair/`).
 
 ## License
 
 MIT
-
-## Credits
-
-- **UI**: macOS Sequoia design language
-- **Transformers**: @xenova/transformers (JavaScript port of Hugging Face Transformers)
-- **Model**: unsloth/GLM-4.7-Flash-GGUF (when fully integrated)

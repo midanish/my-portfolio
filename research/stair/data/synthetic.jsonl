@@ -1,0 +1,406 @@
+{"question":"What is Iqmal Danish's background?","leaf_id":"profile.summary","split":"train"}
+{"question":"Can you tell me about Iqmal Danish's experience?","leaf_id":"profile.summary","split":"train"}
+{"question":"What technologies does Iqmal Danish work with?","leaf_id":"profile.summary","split":"train"}
+{"question":"What kind of projects has Iqmal Danish worked on?","leaf_id":"profile.summary","split":"train"}
+{"question":"Where is Iqmal Danish based?","leaf_id":"profile.summary","split":"train"}
+{"question":"What kind of role is Iqmal Danish looking for?","leaf_id":"profile.summary","split":"train"}
+{"question":"What fields does Iqmal Danish combine in his work?","leaf_id":"profile.summary","split":"train"}
+{"question":"What languages does Iqmal Danish code in?","leaf_id":"profile.summary","split":"train"}
+{"question":"Can you describe Iqmal Danish's expertise?","leaf_id":"profile.summary","split":"dev"}
+{"question":"How much experience does Iqmal Danish have?","leaf_id":"profile.summary","split":"train"}
+{"question":"What industries has Iqmal Danish worked with?","leaf_id":"profile.summary","split":"train"}
+{"question":"What skills does Iqmal Danish bring to the table?","leaf_id":"profile.summary","split":"train"}
+{"question":"What's your email address?","leaf_id":"profile.contact","split":"train"}
+{"question":"Can I find you on LinkedIn?","leaf_id":"profile.contact","split":"train"}
+{"question":"How do you share your work online?","leaf_id":"profile.contact","split":"train"}
+{"question":"Where can I find your projects on GitHub?","leaf_id":"profile.contact","split":"train"}
+{"question":"What's your preferred way to connect on the web?","leaf_id":"profile.contact","split":"train"}
+{"question":"Can you provide a link to your online portfolio?","leaf_id":"profile.contact","split":"train"}
+{"question":"How can someone reach you for professional purposes?","leaf_id":"profile.contact","split":"train"}
+{"question":"What's your LinkedIn profile link?","leaf_id":"profile.contact","split":"train"}
+{"question":"Where do you showcase your work?","leaf_id":"profile.contact","split":"train"}
+{"question":"Can I see your projects on a platform called GitHub?","leaf_id":"profile.contact","split":"train"}
+{"question":"Can you give me your online portfolio URL?","leaf_id":"profile.contact","split":"train"}
+{"question":"What's the URL of your GitHub profile?","leaf_id":"profile.contact","split":"dev"}
+{"question":"What programming languages are you proficient in?","leaf_id":"skills.programming","split":"train"}
+{"question":"What software development frameworks do you have experience with?","leaf_id":"skills.programming","split":"train"}
+{"question":"How do you typically approach building desktop applications?","leaf_id":"skills.programming","split":"train"}
+{"question":"Are you familiar with C++ and what's its use in your work?","leaf_id":"skills.programming","split":"train"}
+{"question":"Can you mention any other programming languages you've learned?","leaf_id":"skills.programming","split":"train"}
+{"question":"What role does Node.js play in your work?","leaf_id":"skills.programming","split":"train"}
+{"question":"Do you use any JavaScript frameworks in your projects?","leaf_id":"skills.programming","split":"dev"}
+{"question":"Have you worked with PowerFX before?","leaf_id":"skills.programming","split":"train"}
+{"question":"Are there any specific areas where you prefer to use C# and .NET?","leaf_id":"skills.programming","split":"train"}
+{"question":"What's the reason behind using native C++ for vision code?","leaf_id":"skills.programming","split":"train"}
+{"question":"Can you name some other development tools you've worked with?","leaf_id":"skills.programming","split":"train"}
+{"question":"Have you ever used Git for version control in your projects?","leaf_id":"skills.programming","split":"train"}
+{"question":"What deep learning frameworks are you proficient in?","leaf_id":"skills.ai_ml","split":"dev"}
+{"question":"Can you tell us about your experience with object detection?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"How do you stay up-to-date with the latest advancements in computer vision?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"What are some of the image classification models you've worked with?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"What role does OpenCV play in your classical machine vision workflow?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"Have you had any experience with OCR technology?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"What tools do you use for data annotation?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"Can you walk us through your experience with predictive modelling?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"How do you approach unsupervised learning?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"Can you tell us about your experience with LLM APIs?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"What is your experience with retrieval-augmented generation (RAG)?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"How do you think prompt engineering fits into the larger picture of NLP?","leaf_id":"skills.ai_ml","split":"train"}
+{"question":"Can you name the databases you're familiar with?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"What kinds of APIs have you developed in the past?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Can you walk me through your experience with cloud-based platforms?","leaf_id":"skills.data_platforms","split":"dev"}
+{"question":"What do you think are the key benefits of using Microsoft Power Platform?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Have you had experience with any Microsoft-specific tools, like SharePoint?","leaf_id":"skills.data_platforms","split":"dev"}
+{"question":"What tools do you use for data analysis and visualization?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Are you comfortable working with a wide range of platforms, including cloudflare and IBM Watson?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Have you used any open-source tools, such as Jupyter Notebook or Google Colab?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Can you tell me a bit about your experience with mobile app development using Android Studio?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Have you used any design tools, like AutoCAD or SolidWorks?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"What experience do you have with visual studio and its variants?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"Have you worked with any microcontrollers or single-board computers, like the Raspberry Pi?","leaf_id":"skills.data_platforms","split":"train"}
+{"question":"What specific accomplishment can you highlight from your current role at NXP Semiconductors Malaysia?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"Can you tell us about a recent quality achievement you've made as a Test Back-End Process Engineer?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"What steps do you take to manage and resolve quality issues in your current position?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"How do you ensure that you're meeting or exceeding quality standards in your work as a Test Back-End Process Engineer?","leaf_id":"experience.nxp.quality","split":"dev"}
+{"question":"Can you describe a particularly challenging quality issue you've faced and how you overcame it?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"What role does problem-solving play in your daily work at NXP Semiconductors Malaysia?","leaf_id":"experience.nxp.quality","split":"dev"}
+{"question":"How do you contribute to cross-functional coordination in your current role?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"What are some key metrics or results that you're measured on in your position as a Test Back-End Process Engineer?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"Can you walk us through a time when you had to lead a complex project with high stakes, such as the 1.4 million units of high-risk metal-lid TPMS lots?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"What recognition have you received for your work at NXP Semiconductors Malaysia, and how does it make you feel?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"How do you balance the need for efficiency with the need for quality in your work as a Test Back-End Process Engineer?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"Can you tell us about a safety incident that you were able to prevent or mitigate during your time at NXP Semiconductors Malaysia?","leaf_id":"experience.nxp.quality","split":"train"}
+{"question":"What is Iqmal's current role at NXP Semiconductors Malaysia?","leaf_id":"experience.nxp.ocr","split":"dev"}
+{"question":"What project does Iqmal lead at NXP?","leaf_id":"experience.nxp.ocr","split":"dev"}
+{"question":"Can you tell me more about Iqmal's experience in automation?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What kind of collaboration does Iqmal engage in for the OCR Automation Project?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"How does Iqmal's project contribute to the semiconductor industry?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What is the focus of Iqmal's work on the Smart Factory integration?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What is the current status of Iqmal's OCR Automation Project?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What can you say about Iqmal's impact on production workflows at NXP?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What specific goal is Iqmal working towards with the OCR Automation Project?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"How does Iqmal's project relate to the integration of IT and equipment vendors?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What does Iqmal's project aim to achieve in terms of vision-driven automation?","leaf_id":"experience.nxp.ocr","split":"train"}
+{"question":"What steps is Iqmal taking to implement the OCR Automation Project?","leaf_id":"experience.nxp.ocr","split":"dev"}
+{"question":"What was the main goal of the project you worked on at NXP Semiconductors Malaysia?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"What innovative approach did you use to improve the inspection process?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"What was the outcome of implementing machine-vision automation in your project?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"How much time and resources did the manual pre-bake inspection step account for annually?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"Can you explain the type of image processing used in the foreign-material detection system?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"What type of detection system was implemented, was it AI-powered or not?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"What benefits did the implementation of machine-vision automation bring to the team?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"How many operator hours were saved by implementing the automated check?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"Can you describe the classical image processing approach used in the detection system?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"What was the specific area of improvement for the inspection process?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"What kind of cost savings did the company experience as a result of the project?","leaf_id":"experience.nxp.vent_hole","split":"train"}
+{"question":"How did the implementation of machine-vision automation impact the workload of the operators?","leaf_id":"experience.nxp.vent_hole","split":"dev"}
+{"question":"What was Iqmal's role at Greatech Integration?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"Can you describe Iqmal's projects at Greatech Integration?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"How long did Iqmal work at Greatech Integration?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"What programming languages was Iqmal proficient in at Greatech Integration?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"Which specific libraries did Iqmal use for image processing?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"What type of equipment was Iqmal's machine-vision system used on?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"What industry standards did Iqmal's inspection system adhere to?","leaf_id":"experience.greatech.vision_systems","split":"dev"}
+{"question":"Was Iqmal's work at Greatech Integration mainly focused on development or both development and implementation?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"Can you elaborate on the types of products that Iqmal's machine-vision system inspected?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"What were some of the key applications of Iqmal's machine-vision system?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"In what location was Iqmal working at Greatech Integration?","leaf_id":"experience.greatech.vision_systems","split":"train"}
+{"question":"What was the main focus of Iqmal's work at Greatech Integration?","leaf_id":"experience.greatech.vision_systems","split":"dev"}
+{"question":"What specific tasks did Iqmal Danish perform during his time as Vision Engineer?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"How did Iqmal Danish ensure the chosen vision hardware and software solutions would be viable?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"Can you describe Iqmal Danish's experience with vision hardware and software selection?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"What was Iqmal Danish's role in deploying and optimizing the applications?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"Did Iqmal Danish have any experience with factory and customer site commissioning?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"How did Iqmal Danish's work align with ISO standards?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"What specific skills or expertise did Iqmal Danish use during his time as Vision Engineer?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"How did Iqmal Danish's experience with vision evaluation and feasibility studies prepare him for real-world scenarios?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"What was the scope of Iqmal Danish's work in terms of application support?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"Can you elaborate on Iqmal Danish's experience with software architecture and user-interface work?","leaf_id":"experience.greatech.commissioning","split":"dev"}
+{"question":"How did Iqmal Danish ensure the applications were optimized end-to-end?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"What was Iqmal Danish's focus in terms of ongoing production support?","leaf_id":"experience.greatech.commissioning","split":"train"}
+{"question":"What specific AI model did you work with at Aerodyne Group?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"What skills were you utilizing while working on the YOLOv8 model?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"How did you refine your dataset?","leaf_id":"experience.aerodyne.detection","split":"dev"}
+{"question":"What was your primary goal with the defect detection project?","leaf_id":"experience.aerodyne.detection","split":"dev"}
+{"question":"Can you tell us more about the iterative model development process you went through?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"In what environment were you working on the YOLOv8 model?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"What kind of machine-learning experiments did you conduct to improve detection performance?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"Did you encounter any challenges while working with the YOLOv8 model?","leaf_id":"experience.aerodyne.detection","split":"dev"}
+{"question":"What was the outcome of your efforts on the defect detection project?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"How did your work on the YOLOv8 model contribute to the larger project goals at Aerodyne Group?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"What specific results or metrics can you share from your work on the defect detection project?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"How did you ensure the accuracy of the defect classification on electric poles?","leaf_id":"experience.aerodyne.detection","split":"train"}
+{"question":"How did you prepare the datasets for training and evaluation at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"What specific techniques did you apply to the datasets during your time at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"What tools did you use for annotating and curating the datasets in your role at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"How did you use predictive modelling at Aerodyne Group, and what insights did you gain?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"Can you describe the Power BI dashboards you created for communicating insights at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"What was your experience like working on the AI and Data Specialist Program with Aerodyne Group and Yayasan Peneraju?","leaf_id":"experience.aerodyne.data","split":"dev"}
+{"question":"How did your apprenticeship at Aerodyne Group contribute to your skills in AI and data analysis?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"What were some key challenges you faced while working on datasets and dashboards at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"How did you ensure the quality and accuracy of the datasets during your time at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"What specific skills or knowledge did you gain from building and managing Power BI dashboards at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"Can you walk me through the process of building a Power BI dashboard from start to finish, as you experienced it at Aerodyne Group?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"How did your work at Aerodyne Group prepare you for future roles or opportunities in AI and data analysis?","leaf_id":"experience.aerodyne.data","split":"train"}
+{"question":"What kind of biometric features does IQMETRIC utilize?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"Can you walk me through the process of how IQMETRIC works?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"How does IQMETRIC compare to vendor solutions?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"What is the primary goal of developing IQMETRIC?","leaf_id":"projects.iqmetric.overview","split":"dev"}
+{"question":"Does IQMETRIC require any specific hardware to function?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"What type of recognition does IQMETRIC use for facial features?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"Is IQMETRIC a vendor-agnostic solution?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"Can you elaborate on the benefits of using a multi-modal biometric system?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"Did IQMETRIC replace any existing systems within NXP?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"What makes IQMETRIC an independent solution as opposed to a vendor solution?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"Can IQMETRIC be integrated with existing production systems?","leaf_id":"projects.iqmetric.overview","split":"train"}
+{"question":"How secure is the login process in IQMETRIC compared to traditional methods?","leaf_id":"projects.iqmetric.overview","split":"dev"}
+{"question":"What programming languages are used to develop the biometric login system?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"What SDK is used for fingerprint matching in the system?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"Can you explain the relationship between the C# application and the native C++ code?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"What is the primary purpose of using OpenCV in the system?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"Which part of the system handles the user interface and workflow?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"Is there a specific reason for separating the user interface and the vision and matching work into different languages?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"Can you provide more details about the DigitalPersona SDK used in the system?","leaf_id":"projects.iqmetric.biometrics","split":"dev"}
+{"question":"What is the role of native C++ code in the system?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"How does the system leverage OpenCV for face detection and recognition?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"What is the overall architecture of the system?","leaf_id":"projects.iqmetric.biometrics","split":"dev"}
+{"question":"Are there any other programming languages used in the system aside from C++ and C#?","leaf_id":"projects.iqmetric.biometrics","split":"train"}
+{"question":"Can you elaborate on the workflow handled by the C# application?","leaf_id":"projects.iqmetric.biometrics","split":"dev"}
+{"question":"What does the biometric login system for vision scanners do?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"How does the system prevent unauthorized manual entry?","leaf_id":"projects.iqmetric.login_control","split":"dev"}
+{"question":"Can you explain how credentials are stored?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What happens after a successful biometric match?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What is the purpose of logging user actions?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"How does the system ensure user actions are traceable?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What type of store is used to keep credentials?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What is the role of the login window in the system?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What happens to keyboard input during the login process?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"How does the system ensure audit-readiness?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What information is logged during user access?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"Can you provide an example of how user actions are logged?","leaf_id":"projects.iqmetric.login_control","split":"train"}
+{"question":"What was the price of the vendor solution for the vision scanner?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"How much did your in-house system save per machine compared to the vendor option?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"Can you elaborate on the cost savings of the in-house system?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"How does the in-house system compare to the vendor option in terms of pricing?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"What was the approximate cost of the vendor solution?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"What were the total cost savings of the in-house system compared to the vendor option?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"Did your in-house system have a significant cost advantage over the vendor option?","leaf_id":"projects.iqmetric.cost","split":"dev"}
+{"question":"What was the price difference between the in-house system and the vendor option?","leaf_id":"projects.iqmetric.cost","split":"dev"}
+{"question":"How much did the in-house system cost per machine?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"Can you provide a rough estimate of the cost savings of the in-house system?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"How did the in-house system compare to the vendor option in terms of affordability?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"What was the primary advantage of using the in-house system in terms of cost?","leaf_id":"projects.iqmetric.cost","split":"train"}
+{"question":"What is the deployment environment of the full-context assistant?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"How does the assistant approach question-answering?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"What is the role of the GLM-4.7-Flash model in this version?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"Is the model retrieval-based or not?","leaf_id":"projects.portfolio_bot.v1","split":"dev"}
+{"question":"How does the assistant handle model unavailability?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"Is the assistant a multi-turn or single-turn interface?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"Can the assistant maintain a conversation state?","leaf_id":"projects.portfolio_bot.v1","split":"dev"}
+{"question":"What is the primary function of the Cloudflare Pages Function in this setup?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"How does the assistant access the Hugging Face router's API?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"What kind of fallback does the assistant use when the model is unavailable?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"What is the significance of the GLM-4.7-Flash model in this context?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"How does this version serve as a baseline for comparison?","leaf_id":"projects.portfolio_bot.v1","split":"train"}
+{"question":"What are the key features of Version 2 of the AI assistant?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"What inspired the development of Bot B's structure-aware RAG?","leaf_id":"projects.portfolio_bot.two_bots","split":"dev"}
+{"question":"How do Bot A and Bot B differ in their retrieval methods?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"What is the primary goal of the comparison page in Version 2?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"What is the significance of the STAIR paper in Bot B's design?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"Can you explain the process of merging rankings in Bot A's retrieval method?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"What types of documents do both Bot A and Bot B use?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"How do the retrieval methods of Bot A and Bot B impact the overall answer quality?","leaf_id":"projects.portfolio_bot.two_bots","split":"dev"}
+{"question":"What is the purpose of the section ID check in Bot B's structure-aware RAG?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"What is the advantage of using the same evidence budget for both Bot A and Bot B?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"How do Bot A and Bot B handle citation checks in their retrieval processes?","leaf_id":"projects.portfolio_bot.two_bots","split":"dev"}
+{"question":"What is the result of passing the same top five passages to the answer model for both Bot A and Bot B?","leaf_id":"projects.portfolio_bot.two_bots","split":"train"}
+{"question":"What methods are used to evaluate the two bots?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"Can you describe how the bots are compared?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"How do you measure the performance of the answer retrieval?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"What metrics are used to score the answers?","leaf_id":"projects.portfolio_bot.evaluation","split":"dev"}
+{"question":"Are there any questions held out for final evaluation?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"How is a separate offline experiment conducted?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"What is the goal of the offline experiment?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"Can you explain the LoRA used in the offline experiment?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"What language model is used for the offline experiment?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"What is the STAIR method, and how is it related to the offline experiment?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"What is the purpose of the project's methodology report?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"Are the results of the offline experiment and project methodology report publicly available?","leaf_id":"projects.portfolio_bot.evaluation","split":"train"}
+{"question":"What is the total number of images in the dataset?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"Can you describe the size of the images in the dataset?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"How are the images resized for the models?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"What is the split of the dataset for training and validation?","leaf_id":"projects.food.dataset","split":"dev"}
+{"question":"Are there any classes with a significantly lower number of images compared to others?","leaf_id":"projects.food.dataset","split":"dev"}
+{"question":"How many images are used for training and validation in total?","leaf_id":"projects.food.dataset","split":"dev"}
+{"question":"What is the size of the smallest and largest images in the dataset?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"Why was the data split 80/20?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"What are the six classes used in the dataset?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"Are the images resized to improve model performance?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"What is the average size of the images in the dataset?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"How does the small number of images in the BagelSandwich class affect model training?","leaf_id":"projects.food.dataset","split":"train"}
+{"question":"What model architecture was used for the food image classification task?","leaf_id":"projects.food.model","split":"dev"}
+{"question":"Can you elaborate on the pre-trained model used in this project?","leaf_id":"projects.food.model","split":"train"}
+{"question":"What specific classifier was replaced in the pre-trained model?","leaf_id":"projects.food.model","split":"train"}
+{"question":"How many parameters are in the output layer of the final model?","leaf_id":"projects.food.model","split":"train"}
+{"question":"What deep learning framework was used for fine-tuning the model?","leaf_id":"projects.food.model","split":"train"}
+{"question":"Can you describe the process of transfer learning in this project?","leaf_id":"projects.food.model","split":"train"}
+{"question":"What techniques were employed for data augmentation during fine-tuning?","leaf_id":"projects.food.model","split":"train"}
+{"question":"Why was MobileNetV2 chosen for this project, and what specific features made it suitable?","leaf_id":"projects.food.model","split":"train"}
+{"question":"What type of normalisation was applied to the input images during fine-tuning?","leaf_id":"projects.food.model","split":"train"}
+{"question":"Was the pre-trained model fine-tuned on the same dataset it was pre-trained on?","leaf_id":"projects.food.model","split":"train"}
+{"question":"What's the relationship between the chosen model and its ability to perform fast inference?","leaf_id":"projects.food.model","split":"train"}
+{"question":"Are there any specific hardware requirements for running the final model?","leaf_id":"projects.food.model","split":"train"}
+{"question":"What models were tested in the earlier notebook?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"How did Convolutional networks perform on the training images?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What led to choosing a specific type of network for the final app?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What is the maximum accuracy achieved by ResNet18?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What were the results for VGG16 with frozen features?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What can be concluded about the performance of Convolutional networks?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"How did the models perform on new test images?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What happened to the models when they were trained from scratch?","leaf_id":"projects.food.experiments","split":"dev"}
+{"question":"What type of network was chosen for the final app?","leaf_id":"projects.food.experiments","split":"dev"}
+{"question":"What was the performance of VGG19?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What was the range of accuracy for Convolutional networks?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What was the accuracy of ResNet18 on validation?","leaf_id":"projects.food.experiments","split":"train"}
+{"question":"What was the accuracy of the MobileNetV2 model in classifying validation images?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What type of result is the 95% accuracy mentioned?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What was the source of the 100 images used for validation?","leaf_id":"projects.food.results","split":"train"}
+{"question":"Why did the model always pick one of the six classes even for photos of other foods?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What is a planned improvement for the app?","leaf_id":"projects.food.results","split":"train"}
+{"question":"Who is responsible for writing all the files in the public repository?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What is a limitation of the model's performance?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What is a potential issue with the accuracy of the model?","leaf_id":"projects.food.results","split":"train"}
+{"question":"How did the model handle images that were not in the six classes?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What is a possible solution to improve the model's performance?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What is a characteristic of the public repository?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What is an example of a missing feature in the app?","leaf_id":"projects.food.results","split":"train"}
+{"question":"What kind of interface was used to serve the classifier?","leaf_id":"projects.food.app","split":"train"}
+{"question":"Can users interact with the app directly?","leaf_id":"projects.food.app","split":"dev"}
+{"question":"What can users see when they upload a food photo to the app?","leaf_id":"projects.food.app","split":"train"}
+{"question":"What's the purpose of the Model Info page?","leaf_id":"projects.food.app","split":"train"}
+{"question":"Is there a way for users to view the dataset analysis in the app?","leaf_id":"projects.food.app","split":"train"}
+{"question":"Can users view the predicted class for a food photo uploaded through the app?","leaf_id":"projects.food.app","split":"train"}
+{"question":"What metric is used to measure the confidence level of the predicted class?","leaf_id":"projects.food.app","split":"train"}
+{"question":"How does the Streamlit app help users understand the classifier's performance?","leaf_id":"projects.food.app","split":"dev"}
+{"question":"What features does the Dataset Analysis page offer?","leaf_id":"projects.food.app","split":"train"}
+{"question":"What kind of information does the Prediction page display?","leaf_id":"projects.food.app","split":"train"}
+{"question":"Can users get a sense of the classifier's reliability through the app?","leaf_id":"projects.food.app","split":"train"}
+{"question":"What project did Iqmal work on for his final year?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"How did Iqmal ensure his project was connected to the real world?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What type of camera was used for the dental image analysis?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What is CNN in the context of Iqmal's project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"Did Iqmal have any significant wins with his project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What was the primary goal of Iqmal's project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What was the name of the application built by Iqmal?","leaf_id":"projects.dental.overview","split":"dev"}
+{"question":"What percentage of accuracy did Iqmal achieve with his project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"Who collaborated with Iqmal to validate his project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What was the name of the department where Iqmal's project won an award?","leaf_id":"projects.dental.overview","split":"dev"}
+{"question":"What type of device did Iqmal use for his project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What was unique about the connection requirements of Iqmal's project?","leaf_id":"projects.dental.overview","split":"train"}
+{"question":"What programming language was used for the Android app?","leaf_id":"projects.dental.mobile","split":"dev"}
+{"question":"What library was used to connect the USB endoscope to the phone as a camera?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"How does the trained model run on the phone?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What is the advantage of not sending the image off the device?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What library is used to run the trained MobileNetV2 model on the phone?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What was the version of the AndroidUSBCamera library used?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What version of PyTorch Mobile was used for the project?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What is shown on the screen after the image is processed?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What type of camera is the USB endoscope connected as on the phone?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"How is the image processed by the app?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What was the main goal of using PyTorch Mobile in this project?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What is the name of the model used in the app?","leaf_id":"projects.dental.mobile","split":"train"}
+{"question":"What were the limitations of your portable dental image analysis app?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"How did the app handle model output?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"What was the 'Confidence Score' actually measuring?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"How was the app dealing with model loading?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"Was the model running on a background thread or the main thread?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"How did the app handle camera image resizing?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"What features are you planning to add to the app for improvement?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"Can your app be used for making clinical diagnoses?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"What were the two output classes labelled in the public app code?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"How can the output be made more interpretable?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"Are there any clinically approved diagnostic tools in the app?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"What changes would improve the app's performance and user experience?","leaf_id":"projects.dental.limitations","split":"train"}
+{"question":"What is the main goal of Iqmal's engineering room storage management system?","leaf_id":"projects.storage.overview","split":"dev"}
+{"question":"How does Iqmal track items in the system?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"What is the primary tool used to build the inventory system?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"Can you describe the process of returning an item?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"What happens when an item is overdue?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"How does the system handle stock levels?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"What is the data store used in the system?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"How does Iqmal control access to the system?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"What problem did Iqmal's system solve?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"How effective was the system in reducing errors?","leaf_id":"projects.storage.overview","split":"dev"}
+{"question":"Can you name a specific tool used in the system?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"What is the benefit of using a barcode to track items?","leaf_id":"projects.storage.overview","split":"train"}
+{"question":"What is the highest accuracy achieved by a CNN architecture on Fashion-MNIST?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"How accurate was AlexNet on the fruit-classification dataset?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What did Iqmal find out about training accuracy in one of his experiments?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"Can you explain the purpose of these experiments?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"How accurate was a ResNet-50 model after the fruit-classification dataset was cleaned up?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What CNN architecture reached 92.71% accuracy on Fashion-MNIST?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What was the impact of a counting bug on a model's reported accuracy?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"How does Iqmal's experiment with Fashion-MNIST compare to AlexNet?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What ResNet-50 model was used in the experiment with the fruit-classification dataset?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What was the maximum training accuracy reported by AlexNet?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What lesson did Iqmal learn from one of his experiments?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"Can you provide more context about the fruit-classification dataset used in the experiment?","leaf_id":"projects.coursework.classification","split":"train"}
+{"question":"What kind of object detection model did you use for your coursework?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"Did you train the model on a GPU or a CPU?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"What was the final precision achieved by the model?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"Can you walk me through the training process of the YOLOv5s object detector?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"What happened to the training after it reached the 18th epoch?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"What was the mAP@0.5 value when the model stopped training?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"How many planned epochs were there for the YOLOv5s model?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"Did you achieve the desired level of precision with the YOLOv5s model?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"Can you explain the performance metrics you used to evaluate the model's performance?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"What was the highest recall value you achieved with the model?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"How did you handle the training process to stop at the 18th epoch?","leaf_id":"projects.coursework.yolov5","split":"train"}
+{"question":"What type of validation data did the YOLOv5s object detector use for evaluation?","leaf_id":"projects.coursework.yolov5","split":"dev"}
+{"question":"What type of application is Iqmal Danish's project?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What is the purpose of Iqmal Danish's project?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What platform is Iqmal Danish's project built on?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What is the target address for Iqmal Danish's chat application?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What is the main function of Iqmal Danish's application?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"How does Iqmal Danish's application handle disconnections?","leaf_id":"projects.tcp_chat.overview","split":"dev"}
+{"question":"What type of communication is Iqmal Danish's project based on?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What is the format of messages in Iqmal Danish's application?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What is unique about the messages in Iqmal Danish's application?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"How does Iqmal Danish's application handle image data?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What is the inspiration behind Iqmal Danish's project?","leaf_id":"projects.tcp_chat.overview","split":"train"}
+{"question":"What degree did you earn from the International Islamic University Malaysia?","leaf_id":"education.degree","split":"train"}
+{"question":"Can you tell me about your academic background in engineering?","leaf_id":"education.degree","split":"train"}
+{"question":"You studied Mechatronics, right? What did that entail?","leaf_id":"education.degree","split":"train"}
+{"question":"Where did you earn your Bachelor's degree?","leaf_id":"education.degree","split":"train"}
+{"question":"I see you're an engineering graduate. Which specific field did you focus on?","leaf_id":"education.degree","split":"train"}
+{"question":"You have a background in robotics. How did that fit into your studies?","leaf_id":"education.degree","split":"dev"}
+{"question":"Did you participate in any notable academic programs during your time at IIUM?","leaf_id":"education.degree","split":"train"}
+{"question":"How did you manage to make the Dean's List twice during your studies?","leaf_id":"education.degree","split":"train"}
+{"question":"Can you describe your academic journey in Mechatronics engineering?","leaf_id":"education.degree","split":"train"}
+{"question":"What specific courses did you take in Mechatronics?","leaf_id":"education.degree","split":"train"}
+{"question":"How did you balance your coursework with extracurricular activities, such as taking robotics courses?","leaf_id":"education.degree","split":"train"}
+{"question":"You were in the Dean's List twice. What does that say about your academic performance?","leaf_id":"education.degree","split":"train"}
+{"question":"What are some notable certificates you've earned?","leaf_id":"education.certificates","split":"train"}
+{"question":"Can you tell me about your AI-related certifications?","leaf_id":"education.certificates","split":"train"}
+{"question":"What kind of professional certificate did you obtain from IBM?","leaf_id":"education.certificates","split":"train"}
+{"question":"When did you become a Registered Graduate Engineer?","leaf_id":"education.certificates","split":"train"}
+{"question":"Are you proficient in Deep Learning and Computer Vision?","leaf_id":"education.certificates","split":"train"}
+{"question":"What's one of the most recent certificates you've acquired?","leaf_id":"education.certificates","split":"train"}
+{"question":"I heard you have a certificate from Aerodyne Group. What's the program name?","leaf_id":"education.certificates","split":"train"}
+{"question":"Have you received any awards or certifications from the government?","leaf_id":"education.certificates","split":"train"}
+{"question":"Can you share some of your notable educational achievements?","leaf_id":"education.certificates","split":"dev"}
+{"question":"How many certifications related to AI do you have?","leaf_id":"education.certificates","split":"train"}
+{"question":"Can you describe your experiences with AI engineering certificates?","leaf_id":"education.certificates","split":"train"}
+{"question":"When was the last time you obtained a certificate related to engineering?","leaf_id":"education.certificates","split":"train"}
+{"question":"What awards have you received for academic excellence?","leaf_id":"education.awards","split":"dev"}
+{"question":"Can you tell us about the prestigious awards you've won?","leaf_id":"education.awards","split":"train"}
+{"question":"What notable recognitions have you received in your academic journey?","leaf_id":"education.awards","split":"train"}
+{"question":"Have you received any awards for your overall performance in university?","leaf_id":"education.awards","split":"train"}
+{"question":"What recognition did you receive for your final year project?","leaf_id":"education.awards","split":"train"}
+{"question":"Can you share with us your experience of being on the Dean's List?","leaf_id":"education.awards","split":"train"}
+{"question":"You've won several awards in your academic career, can you name a few?","leaf_id":"education.awards","split":"train"}
+{"question":"What awards did you receive for your technical skills?","leaf_id":"education.awards","split":"dev"}
+{"question":"Can you name the awards you've won for your academic achievements?","leaf_id":"education.awards","split":"train"}
+{"question":"Have you received any awards for being the best in your department?","leaf_id":"education.awards","split":"train"}
+{"question":"Can you tell us about the award you received for your overall performance in university?","leaf_id":"education.awards","split":"train"}
+{"question":"What recognition have you received for your hard work in academics?","leaf_id":"education.awards","split":"train"}

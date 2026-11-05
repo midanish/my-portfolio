@@ -1,0 +1,2519 @@
+{
+  "summary": {
+    "split": "dev",
+    "source_version": "public_v1",
+    "embed_model": "@cf/baai/bge-small-en-v1.5",
+    "run_at": "2026-11-05T07:13:17.939Z",
+    "overall": {
+      "bot_a_standard_rag": {
+        "n": 60,
+        "retrieval_scored": 50,
+        "recall_at_1": 0.72,
+        "recall_at_3": 0.92,
+        "all_gold_in_top3": 0.82,
+        "mrr_at_3": 0.817
+      },
+      "bot_b_structure_aware": {
+        "n": 60,
+        "retrieval_scored": 50,
+        "recall_at_1": 0.84,
+        "recall_at_3": 0.94,
+        "all_gold_in_top3": 0.9,
+        "mrr_at_3": 0.89,
+        "router_fallbacks": 0,
+        "invalid_ids_generated": 0
+      }
+    },
+    "by_type": {
+      "simple": {
+        "bot_a": {
+          "n": 12,
+          "retrieval_scored": 12,
+          "recall_at_1": 0.917,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 0.917,
+          "mrr_at_3": 0.958
+        },
+        "bot_b": {
+          "n": 12,
+          "retrieval_scored": 12,
+          "recall_at_1": 1,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 1,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      },
+      "paraphrase": {
+        "bot_a": {
+          "n": 12,
+          "retrieval_scored": 12,
+          "recall_at_1": 0.667,
+          "recall_at_3": 0.833,
+          "all_gold_in_top3": 0.833,
+          "mrr_at_3": 0.75
+        },
+        "bot_b": {
+          "n": 12,
+          "retrieval_scored": 12,
+          "recall_at_1": 0.917,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 0.917,
+          "mrr_at_3": 0.958,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      },
+      "comparison": {
+        "bot_a": {
+          "n": 10,
+          "retrieval_scored": 10,
+          "recall_at_1": 0.4,
+          "recall_at_3": 0.8,
+          "all_gold_in_top3": 0.6,
+          "mrr_at_3": 0.583
+        },
+        "bot_b": {
+          "n": 10,
+          "retrieval_scored": 10,
+          "recall_at_1": 0.6,
+          "recall_at_3": 0.7,
+          "all_gold_in_top3": 0.6,
+          "mrr_at_3": 0.65,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      },
+      "multi_hop": {
+        "bot_a": {
+          "n": 8,
+          "retrieval_scored": 8,
+          "recall_at_1": 0.625,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 0.75,
+          "mrr_at_3": 0.813
+        },
+        "bot_b": {
+          "n": 8,
+          "retrieval_scored": 8,
+          "recall_at_1": 0.75,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 0.875,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      },
+      "missing": {
+        "bot_a": {
+          "n": 8,
+          "retrieval_scored": 3,
+          "recall_at_1": 1,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 1
+        },
+        "bot_b": {
+          "n": 8,
+          "retrieval_scored": 3,
+          "recall_at_1": 0.667,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 0.833,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      },
+      "version_trap": {
+        "bot_a": {
+          "n": 5,
+          "retrieval_scored": 5,
+          "recall_at_1": 1,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 1
+        },
+        "bot_b": {
+          "n": 5,
+          "retrieval_scored": 5,
+          "recall_at_1": 1,
+          "recall_at_3": 1,
+          "all_gold_in_top3": 1,
+          "mrr_at_3": 1,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      },
+      "context": {
+        "bot_a": {
+          "n": 5,
+          "retrieval_scored": 0,
+          "recall_at_1": null,
+          "recall_at_3": null,
+          "all_gold_in_top3": null,
+          "mrr_at_3": null
+        },
+        "bot_b": {
+          "n": 5,
+          "retrieval_scored": 0,
+          "recall_at_1": null,
+          "recall_at_3": null,
+          "all_gold_in_top3": null,
+          "mrr_at_3": null,
+          "router_fallbacks": 0,
+          "invalid_ids_generated": 0
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "f01",
+      "type": "simple",
+      "question": "How many images are in the food classification dataset?",
+      "gold": [
+        "projects.food.dataset"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.app",
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.food.model"
+        ],
+        "retrieval_ms": 817,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.dataset"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 997,
+        "retrieval_ms": 1446,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f02",
+      "type": "simple",
+      "question": "Which SDK does IQMETRIC use for fingerprint matching?",
+      "gold": [
+        "projects.iqmetric.biometrics"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost",
+          "projects.iqmetric.login_control",
+          "projects.dental.limitations"
+        ],
+        "retrieval_ms": 276,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.biometrics"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1001,
+        "retrieval_ms": 5112,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f03",
+      "type": "simple",
+      "question": "What did the vendor biometric solution cost per machine?",
+      "gold": [
+        "projects.iqmetric.cost"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control",
+          "experience.nxp.vent_hole"
+        ],
+        "retrieval_ms": 223,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.iqmetric.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 770,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f04",
+      "type": "simple",
+      "question": "Where did Iqmal do his AI apprenticeship and when?",
+      "gold": [
+        "experience.aerodyne.detection",
+        "experience.aerodyne.data"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "profile.summary",
+          "experience.aerodyne.data",
+          "education.certificates",
+          "experience.aerodyne.detection",
+          "skills.ai_ml"
+        ],
+        "retrieval_ms": 245,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1012,
+        "retrieval_ms": 814,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f05",
+      "type": "simple",
+      "question": "Which university did Iqmal graduate from?",
+      "gold": [
+        "education.degree"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "education.degree",
+          "education.certificates",
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "profile.contact"
+        ],
+        "retrieval_ms": 238,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "education.degree",
+          "education.certificates",
+          "education.awards"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1005,
+        "retrieval_ms": 795,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f06",
+      "type": "simple",
+      "question": "What mAP@0.5 did the YOLOv5 coursework model reach?",
+      "gold": [
+        "projects.coursework.yolov5"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.coursework.yolov5",
+          "experience.aerodyne.detection",
+          "projects.coursework.classification",
+          "projects.food.results",
+          "projects.portfolio_bot.v1"
+        ],
+        "retrieval_ms": 309,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.coursework.yolov5"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1009,
+        "retrieval_ms": 876,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f07",
+      "type": "simple",
+      "question": "What port does the TCP chat app connect on?",
+      "gold": [
+        "projects.tcp_chat.overview"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "projects.dental.mobile",
+          "projects.portfolio_bot.v1",
+          "projects.dental.overview",
+          "projects.food.app"
+        ],
+        "retrieval_ms": 190,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.tcp_chat.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1006,
+        "retrieval_ms": 682,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f08",
+      "type": "simple",
+      "question": "What pages does the food classifier's Streamlit app have?",
+      "gold": [
+        "projects.food.app"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.app",
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.food.results",
+          "projects.food.experiments"
+        ],
+        "retrieval_ms": 208,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.app"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 999,
+        "retrieval_ms": 740,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f09",
+      "type": "simple",
+      "question": "When did Iqmal get the IBM AI Engineering certificate?",
+      "gold": [
+        "education.certificates"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "education.certificates",
+          "profile.summary",
+          "experience.nxp.quality",
+          "projects.storage.overview",
+          "education.degree"
+        ],
+        "retrieval_ms": 227,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "education.certificates"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 999,
+        "retrieval_ms": 661,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f10",
+      "type": "simple",
+      "question": "What QFN yield did Iqmal achieve at NXP?",
+      "gold": [
+        "experience.nxp.quality"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "projects.storage.overview",
+          "experience.nxp.vent_hole",
+          "education.awards"
+        ],
+        "retrieval_ms": 228,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.quality"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1001,
+        "retrieval_ms": 657,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f11",
+      "type": "simple",
+      "question": "Which version of PyTorch Mobile does the dental app use?",
+      "gold": [
+        "projects.dental.mobile"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.iqmetric.biometrics",
+          "projects.food.model"
+        ],
+        "retrieval_ms": 192,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.mobile"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1001,
+        "retrieval_ms": 699,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "f12",
+      "type": "simple",
+      "question": "How much error reduction did the storage management system give?",
+      "gold": [
+        "projects.storage.overview"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.storage.overview",
+          "projects.food.experiments",
+          "projects.iqmetric.cost",
+          "projects.portfolio_bot.v1",
+          "projects.food.results"
+        ],
+        "retrieval_ms": 168,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.storage.overview",
+          "projects.coursework.classification",
+          "projects.coursework.yolov5"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1015,
+        "retrieval_ms": 756,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p01",
+      "type": "paraphrase",
+      "question": "How many pictures of food did he train on?",
+      "gold": [
+        "projects.food.dataset"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.experiments",
+          "projects.food.model",
+          "projects.food.app",
+          "projects.food.results"
+        ],
+        "retrieval_ms": 207,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.food.experiments"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 820,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p02",
+      "type": "paraphrase",
+      "question": "How does the scanner login stop people from just typing a password?",
+      "gold": [
+        "projects.iqmetric.login_control"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost",
+          "projects.tcp_chat.overview"
+        ],
+        "retrieval_ms": 157,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1011,
+        "retrieval_ms": 754,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      }
+    },
+    {
+      "id": "p03",
+      "type": "paraphrase",
+      "question": "Is there a record of who logged into the machines?",
+      "gold": [
+        "projects.iqmetric.login_control"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.login_control",
+          "projects.storage.overview",
+          "projects.iqmetric.overview",
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "retrieval_ms": 168,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.login_control",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1009,
+        "retrieval_ms": 499,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p04",
+      "type": "paraphrase",
+      "question": "How much cheaper was building the face and fingerprint login in-house?",
+      "gold": [
+        "projects.iqmetric.cost"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.cost",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control",
+          "projects.food.experiments"
+        ],
+        "retrieval_ms": 175,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.iqmetric.biometrics"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1010,
+        "retrieval_ms": 681,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p05",
+      "type": "paraphrase",
+      "question": "What labelling tools did he use to prepare training data?",
+      "gold": [
+        "experience.aerodyne.data"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.aerodyne.data",
+          "projects.coursework.yolov5",
+          "projects.food.model",
+          "projects.food.experiments",
+          "skills.data_platforms"
+        ],
+        "retrieval_ms": 173,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.aerodyne.data",
+          "projects.food.dataset",
+          "projects.coursework.classification"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1014,
+        "retrieval_ms": 830,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p06",
+      "type": "paraphrase",
+      "question": "Did he ever work on site setting up inspection machines for customers?",
+      "gold": [
+        "experience.greatech.commissioning"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection",
+          "experience.greatech.commissioning",
+          "experience.aerodyne.data"
+        ],
+        "retrieval_ms": 168,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.greatech.commissioning",
+          "experience.greatech.vision_systems"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1014,
+        "retrieval_ms": 476,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p07",
+      "type": "paraphrase",
+      "question": "Which manual check was eliminated thanks to the vent-hole camera inspection?",
+      "gold": [
+        "experience.nxp.vent_hole"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "projects.iqmetric.login_control",
+          "experience.aerodyne.detection",
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "retrieval_ms": 189,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.vent_hole"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1004,
+        "retrieval_ms": 616,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p08",
+      "type": "paraphrase",
+      "question": "Does the tooth-scanning app need an internet connection?",
+      "gold": [
+        "projects.dental.mobile",
+        "projects.dental.overview"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.mobile",
+          "projects.tcp_chat.overview",
+          "projects.storage.overview",
+          "projects.dental.limitations"
+        ],
+        "retrieval_ms": 244,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1006,
+        "retrieval_ms": 697,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p09",
+      "type": "paraphrase",
+      "question": "Why did the networks trained from zero do badly on the food photos?",
+      "gold": [
+        "projects.food.experiments"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.experiments",
+          "projects.food.dataset",
+          "projects.food.results",
+          "projects.food.model",
+          "projects.food.app"
+        ],
+        "retrieval_ms": 209,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.experiments",
+          "projects.food.results"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1007,
+        "retrieval_ms": 749,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p10",
+      "type": "paraphrase",
+      "question": "Can people check out tools from the engineering room with a barcode?",
+      "gold": [
+        "projects.storage.overview"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.storage.overview",
+          "education.degree",
+          "experience.nxp.vent_hole",
+          "skills.data_platforms",
+          "skills.ai_ml"
+        ],
+        "retrieval_ms": 153,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.storage.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1007,
+        "retrieval_ms": 689,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p11",
+      "type": "paraphrase",
+      "question": "How does the first version of the website assistant know about him without searching?",
+      "gold": [
+        "projects.portfolio_bot.v1"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation",
+          "projects.iqmetric.login_control",
+          "projects.dental.mobile"
+        ],
+        "retrieval_ms": 164,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "skills.ai_ml",
+          "skills.data_platforms"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1016,
+        "retrieval_ms": 614,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "p12",
+      "type": "paraphrase",
+      "question": "What's his way of getting in touch?",
+      "gold": [
+        "profile.contact"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.tcp_chat.overview",
+          "projects.portfolio_bot.v1",
+          "projects.iqmetric.login_control",
+          "projects.portfolio_bot.two_bots",
+          "profile.contact"
+        ],
+        "retrieval_ms": 223,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      },
+      "b": {
+        "ranked": [
+          "profile.contact"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 995,
+        "retrieval_ms": 678,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "c01",
+      "type": "comparison",
+      "question": "What is the difference between the food classifier and IQMETRIC?",
+      "gold": [
+        "projects.food.model",
+        "projects.iqmetric.biometrics"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.app",
+          "projects.food.dataset",
+          "projects.iqmetric.overview",
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "retrieval_ms": 144,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.dataset",
+          "projects.iqmetric.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 548,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      }
+    },
+    {
+      "id": "c02",
+      "type": "comparison",
+      "question": "Which of his projects used MobileNetV2?",
+      "gold": [
+        "projects.food.model",
+        "projects.dental.overview"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.results",
+          "projects.food.model",
+          "projects.dental.mobile",
+          "projects.dental.overview",
+          "skills.ai_ml"
+        ],
+        "retrieval_ms": 214,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.model",
+          "projects.coursework.classification"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1004,
+        "retrieval_ms": 775,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "type": "comparison",
+      "question": "Compare the object detection he did at Aerodyne with his YOLOv5 coursework.",
+      "gold": [
+        "experience.aerodyne.detection",
+        "projects.coursework.yolov5"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.coursework.yolov5",
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data",
+          "skills.ai_ml",
+          "projects.coursework.classification"
+        ],
+        "retrieval_ms": 226,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.aerodyne.detection",
+          "projects.coursework.yolov5"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1019,
+        "retrieval_ms": 687,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "c04",
+      "type": "comparison",
+      "question": "How do the two bots on his portfolio differ from the original chatbot?",
+      "gold": [
+        "projects.portfolio_bot.two_bots",
+        "projects.portfolio_bot.v1"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "projects.tcp_chat.overview",
+          "profile.contact"
+        ],
+        "retrieval_ms": 203,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.v1"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1022,
+        "retrieval_ms": 692,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "type": "comparison",
+      "question": "Which projects run AI directly on a device without the cloud?",
+      "gold": [
+        "projects.dental.mobile"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.dental.overview",
+          "profile.summary",
+          "projects.dental.mobile",
+          "experience.aerodyne.data",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "retrieval_ms": 189,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.3333333333333333
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.two_bots",
+          "projects.food.app"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1016,
+        "retrieval_ms": 673,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "type": "comparison",
+      "question": "Which of his NXP projects use Microsoft Power Platform and which use C#?",
+      "gold": [
+        "projects.storage.overview",
+        "projects.iqmetric.biometrics"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "skills.data_platforms",
+          "projects.storage.overview",
+          "skills.programming",
+          "projects.iqmetric.biometrics",
+          "experience.nxp.ocr"
+        ],
+        "retrieval_ms": 185,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.nxp.vent_hole",
+          "experience.nxp.quality"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1020,
+        "retrieval_ms": 625,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      }
+    },
+    {
+      "id": "c07",
+      "type": "comparison",
+      "question": "How did his work at Greatech differ from his work at Aerodyne?",
+      "gold": [
+        "experience.greatech.vision_systems",
+        "experience.aerodyne.detection"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "experience.greatech.commissioning",
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data",
+          "education.certificates"
+        ],
+        "retrieval_ms": 152,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1018,
+        "retrieval_ms": 769,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "type": "comparison",
+      "question": "Which project results are validation figures rather than independent test results?",
+      "gold": [
+        "projects.food.results"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.results",
+          "projects.portfolio_bot.evaluation",
+          "projects.food.experiments",
+          "projects.dental.limitations",
+          "projects.coursework.classification"
+        ],
+        "retrieval_ms": 187,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.results",
+          "projects.dental.limitations",
+          "projects.coursework.classification"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1013,
+        "retrieval_ms": 713,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "c09",
+      "type": "comparison",
+      "question": "Which of his vision systems are classical image processing rather than trained neural networks?",
+      "gold": [
+        "experience.nxp.vent_hole"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "skills.ai_ml",
+          "projects.food.experiments",
+          "profile.summary",
+          "experience.greatech.vision_systems",
+          "projects.coursework.yolov5"
+        ],
+        "retrieval_ms": 238,
+        "scores": {
+          "hit1": 0,
+          "hit3": 0,
+          "all3": 0,
+          "rr": 0
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.greatech.vision_systems",
+          "experience.nxp.vent_hole"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1016,
+        "retrieval_ms": 668,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "type": "comparison",
+      "question": "Compare ResNet-50's results on Fashion-MNIST and on the fruit dataset.",
+      "gold": [
+        "projects.coursework.classification"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.coursework.classification",
+          "projects.food.experiments",
+          "projects.coursework.yolov5",
+          "projects.food.results",
+          "projects.food.app"
+        ],
+        "retrieval_ms": 174,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.coursework.classification",
+          "projects.coursework.yolov5"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1016,
+        "retrieval_ms": 580,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "m01",
+      "type": "multi_hop",
+      "question": "What model did the food classifier use, and how accurate was it?",
+      "gold": [
+        "projects.food.model",
+        "projects.food.results"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.app",
+          "projects.food.model",
+          "projects.food.experiments",
+          "projects.food.dataset",
+          "projects.food.results"
+        ],
+        "retrieval_ms": 211,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.model",
+          "projects.food.results"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1006,
+        "retrieval_ms": 588,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "m02",
+      "type": "multi_hop",
+      "question": "What technology does IQMETRIC use and how much did it save?",
+      "gold": [
+        "projects.iqmetric.biometrics",
+        "projects.iqmetric.cost"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control",
+          "projects.food.experiments"
+        ],
+        "retrieval_ms": 201,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost",
+          "projects.iqmetric.biometrics"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1019,
+        "retrieval_ms": 684,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      }
+    },
+    {
+      "id": "m03",
+      "type": "multi_hop",
+      "question": "What won the Best Overall Final Year Project award and what hardware did it use?",
+      "gold": [
+        "projects.dental.overview",
+        "projects.dental.mobile"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "education.awards",
+          "projects.dental.overview",
+          "experience.nxp.ocr",
+          "projects.dental.mobile",
+          "skills.data_platforms"
+        ],
+        "retrieval_ms": 193,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 0,
+          "rr": 0.5
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1011,
+        "retrieval_ms": 667,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "m04",
+      "type": "multi_hop",
+      "question": "How big was the food dataset and what augmentation was used to train on it?",
+      "gold": [
+        "projects.food.dataset",
+        "projects.food.model"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.model",
+          "projects.food.app",
+          "projects.food.dataset",
+          "projects.coursework.classification",
+          "projects.food.experiments"
+        ],
+        "retrieval_ms": 222,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.model"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 650,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "m05",
+      "type": "multi_hop",
+      "question": "Which award did he win at NXP and what quality results led up to it?",
+      "gold": [
+        "experience.nxp.quality",
+        "education.awards"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.nxp.quality",
+          "education.awards",
+          "experience.nxp.ocr",
+          "projects.coursework.classification",
+          "projects.iqmetric.overview"
+        ],
+        "retrieval_ms": 160,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.quality",
+          "experience.nxp.ocr",
+          "education.awards"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1017,
+        "retrieval_ms": 740,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "m06",
+      "type": "multi_hop",
+      "question": "How are the two portfolio bots built and how are they evaluated?",
+      "gold": [
+        "projects.portfolio_bot.two_bots",
+        "projects.portfolio_bot.evaluation"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1",
+          "experience.aerodyne.data",
+          "projects.dental.overview"
+        ],
+        "retrieval_ms": 150,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.two_bots"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1020,
+        "retrieval_ms": 585,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      }
+    },
+    {
+      "id": "m07",
+      "type": "multi_hop",
+      "question": "What are the known problems in the dental app and how is its model run on the phone?",
+      "gold": [
+        "projects.dental.limitations",
+        "projects.dental.mobile"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations",
+          "projects.dental.overview",
+          "projects.food.app",
+          "projects.food.results"
+        ],
+        "retrieval_ms": 202,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.limitations",
+          "projects.dental.mobile",
+          "projects.dental.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1021,
+        "retrieval_ms": 668,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "m08",
+      "type": "multi_hop",
+      "question": "What did he study at university and which certificate shows AI training after graduating?",
+      "gold": [
+        "education.degree",
+        "education.certificates"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "education.certificates",
+          "education.degree",
+          "experience.aerodyne.data",
+          "skills.ai_ml",
+          "profile.summary"
+        ],
+        "retrieval_ms": 186,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "education.degree",
+          "education.certificates"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1006,
+        "retrieval_ms": 608,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "r01",
+      "type": "missing",
+      "question": "How many engineers did Iqmal manage at NXP?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.nxp.quality",
+          "projects.storage.overview",
+          "education.awards",
+          "education.certificates"
+        ],
+        "retrieval_ms": 159
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.quality"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1000,
+        "retrieval_ms": 617
+      }
+    },
+    {
+      "id": "r02",
+      "type": "missing",
+      "question": "What was the mAP of the Aerodyne pole detection model?",
+      "gold": [
+        "experience.aerodyne.detection"
+      ],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data",
+          "projects.coursework.yolov5",
+          "education.certificates",
+          "projects.portfolio_bot.v1"
+        ],
+        "retrieval_ms": 152,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.aerodyne.detection",
+          "experience.aerodyne.data"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1013,
+        "retrieval_ms": 590,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "r03",
+      "type": "missing",
+      "question": "How does IQMETRIC stop someone using a video of a face to log in?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.cost",
+          "projects.dental.overview"
+        ],
+        "retrieval_ms": 312
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.biometrics",
+          "projects.iqmetric.login_control"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1015,
+        "retrieval_ms": 856
+      }
+    },
+    {
+      "id": "r04",
+      "type": "missing",
+      "question": "What salary is Iqmal expecting?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.nxp.quality",
+          "profile.contact",
+          "experience.aerodyne.detection",
+          "projects.dental.overview"
+        ],
+        "retrieval_ms": 160
+      },
+      "b": {
+        "ranked": [
+          "profile.summary",
+          "experience.nxp.quality",
+          "projects.iqmetric.cost"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1007,
+        "retrieval_ms": 693
+      }
+    },
+    {
+      "id": "r05",
+      "type": "missing",
+      "question": "How many machines is IQMETRIC deployed on?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.cost",
+          "experience.aerodyne.detection",
+          "profile.summary",
+          "projects.iqmetric.login_control"
+        ],
+        "retrieval_ms": 244
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.iqmetric.login_control",
+          "projects.iqmetric.cost"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1015,
+        "retrieval_ms": 665
+      }
+    },
+    {
+      "id": "r06",
+      "type": "missing",
+      "question": "Has Iqmal worked with Kubernetes?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "experience.nxp.ocr",
+          "experience.aerodyne.detection",
+          "experience.nxp.quality",
+          "projects.dental.overview",
+          "experience.greatech.vision_systems"
+        ],
+        "retrieval_ms": 165
+      },
+      "b": {
+        "ranked": [
+          "skills.data_platforms",
+          "experience.nxp.quality"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1002,
+        "retrieval_ms": 569
+      }
+    },
+    {
+      "id": "r07",
+      "type": "missing",
+      "question": "What was the final rollout result of the OCR automation project?",
+      "gold": [
+        "experience.nxp.ocr"
+      ],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "experience.nxp.ocr",
+          "projects.dental.overview",
+          "projects.food.results",
+          "skills.ai_ml",
+          "projects.dental.mobile"
+        ],
+        "retrieval_ms": 194,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.ocr"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1001,
+        "retrieval_ms": 605,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "r08",
+      "type": "missing",
+      "question": "Which hospitals approved the dental app for diagnosis?",
+      "gold": [
+        "projects.dental.limitations"
+      ],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.dental.limitations",
+          "projects.dental.overview",
+          "projects.dental.mobile",
+          "projects.food.results",
+          "projects.food.app"
+        ],
+        "retrieval_ms": 192,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1005,
+        "retrieval_ms": 781,
+        "scores": {
+          "hit1": 0,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 0.5
+        }
+      }
+    },
+    {
+      "id": "v01",
+      "type": "version_trap",
+      "question": "Does the portfolio chatbot use retrieval?",
+      "gold": [
+        "projects.portfolio_bot.v1",
+        "projects.portfolio_bot.two_bots"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.v1",
+          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.two_bots",
+          "profile.contact",
+          "skills.ai_ml"
+        ],
+        "retrieval_ms": 156,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.v1"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1015,
+        "retrieval_ms": 600,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "v02",
+      "type": "version_trap",
+      "question": "Did the dental app use TensorFlow on the phone?",
+      "gold": [
+        "projects.dental.mobile"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "skills.ai_ml",
+          "projects.iqmetric.biometrics"
+        ],
+        "retrieval_ms": 196,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.mobile",
+          "projects.dental.limitations",
+          "projects.dental.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1012,
+        "retrieval_ms": 695,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "v03",
+      "type": "version_trap",
+      "question": "Is the food classifier 95% accurate in production?",
+      "gold": [
+        "projects.food.results"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.food.results",
+          "projects.food.app",
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.food.experiments"
+        ],
+        "retrieval_ms": 168,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.food.results",
+          "projects.food.model",
+          "projects.food.dataset"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 592,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "v04",
+      "type": "version_trap",
+      "question": "Does the dental app detect caries?",
+      "gold": [
+        "projects.dental.limitations",
+        "projects.dental.overview"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "projects.dental.overview",
+          "projects.dental.limitations",
+          "projects.dental.mobile",
+          "projects.food.app",
+          "projects.food.results"
+        ],
+        "retrieval_ms": 194,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "projects.dental.limitations",
+          "projects.dental.overview",
+          "projects.dental.mobile"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1010,
+        "retrieval_ms": 638,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "v05",
+      "type": "version_trap",
+      "question": "Is the vent-hole detection a deep learning model?",
+      "gold": [
+        "experience.nxp.vent_hole"
+      ],
+      "must_refuse": false,
+      "a": {
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "projects.coursework.yolov5",
+          "skills.ai_ml",
+          "projects.coursework.classification",
+          "experience.aerodyne.detection"
+        ],
+        "retrieval_ms": 221,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      },
+      "b": {
+        "ranked": [
+          "experience.nxp.vent_hole",
+          "skills.ai_ml"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1006,
+        "retrieval_ms": 676,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        }
+      }
+    },
+    {
+      "id": "x01",
+      "type": "context",
+      "question": "What about the other one?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.two_bots",
+          "projects.food.results",
+          "experience.greatech.vision_systems",
+          "skills.ai_ml",
+          "projects.portfolio_bot.evaluation"
+        ],
+        "retrieval_ms": 155
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.food.dataset",
+          "projects.dental.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 589
+      }
+    },
+    {
+      "id": "x02",
+      "type": "context",
+      "question": "And how accurate was it?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.evaluation",
+          "projects.coursework.classification",
+          "projects.food.results",
+          "projects.food.experiments",
+          "projects.dental.limitations"
+        ],
+        "retrieval_ms": 270
+      },
+      "b": {
+        "ranked": [
+          "projects.food.results",
+          "projects.iqmetric.cost"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1000,
+        "retrieval_ms": 1414
+      }
+    },
+    {
+      "id": "x03",
+      "type": "context",
+      "question": "Tell me more about the second project you mentioned.",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.portfolio_bot.evaluation",
+          "projects.dental.overview",
+          "experience.nxp.ocr",
+          "experience.nxp.quality",
+          "education.awards"
+        ],
+        "retrieval_ms": 173
+      },
+      "b": {
+        "ranked": [
+          "projects.food.dataset",
+          "projects.food.model",
+          "projects.food.experiments"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1008,
+        "retrieval_ms": 571
+      }
+    },
+    {
+      "id": "x04",
+      "type": "context",
+      "question": "Which tools did he use for that?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "skills.data_platforms",
+          "projects.portfolio_bot.two_bots",
+          "projects.iqmetric.biometrics",
+          "skills.ai_ml",
+          "experience.aerodyne.data"
+        ],
+        "retrieval_ms": 180
+      },
+      "b": {
+        "ranked": [
+          "skills.ai_ml",
+          "projects.iqmetric.overview",
+          "projects.iqmetric.biometrics"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1011,
+        "retrieval_ms": 497
+      }
+    },
+    {
+      "id": "x05",
+      "type": "context",
+      "question": "Why did he choose it over the alternative?",
+      "gold": [],
+      "must_refuse": true,
+      "a": {
+        "ranked": [
+          "projects.iqmetric.overview",
+          "projects.portfolio_bot.two_bots",
+          "projects.tcp_chat.overview",
+          "projects.portfolio_bot.evaluation",
+          "experience.greatech.commissioning"
+        ],
+        "retrieval_ms": 155
+      },
+      "b": {
+        "ranked": [
+          "projects.iqmetric.cost",
+          "projects.food.results"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1003,
+        "retrieval_ms": 455
+      }
+    }
+  ]
+}
