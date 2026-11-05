@@ -31,7 +31,10 @@ def prompt_ids(tokenizer, toc_str, question):
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": f"TABLE OF CONTENTS:\n{toc_str}\n\nQUESTION: {question}"},
     ]
-    return tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=True)
+    # Render to text first, then encode: apply_chat_template(tokenize=True) returns
+    # different types across transformers versions; this always gives a list of ints.
+    text = tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
+    return tokenizer.encode(text, add_special_tokens=False)
 
 
 def target_ids(tokenizer, leaf_id):

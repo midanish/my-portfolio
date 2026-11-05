@@ -35,7 +35,7 @@ valid_ids = {l["id"] for l in toc["leaves"]}
 assert all(r["leaf_id"] in valid_ids for r in rows), "synthetic data refers to an unknown leaf"
 
 tok = AutoTokenizer.from_pretrained(BASE_MODEL)
-model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, torch_dtype=torch.bfloat16).to(device)
+model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=torch.bfloat16).to(device)
 model.gradient_checkpointing_enable()
 model.enable_input_require_grads()
 model = get_peft_model(model, LoraConfig(

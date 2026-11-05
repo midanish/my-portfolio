@@ -99,7 +99,7 @@ def run(model, name, constrained):
     return {"summary": summary, "rows": rows}
 
 
-base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, torch_dtype=torch.bfloat16).to(device).eval()
+base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=torch.bfloat16).to(device).eval()
 results = {"base_model": BASE_MODEL, "toc_version": toc["version"], "n_leaves": len(leaf_ids)}
 results["base_free"] = run(base, "base_free", constrained=False)
 results["base_constrained"] = run(base, "base_constrained", constrained=True)
