@@ -876,7 +876,7 @@ document.addEventListener('keydown', (e) => {
     }
   }
 
-  // One reply, two answers: A = standard search, B = searches by section.
+  // One reply, two answers: A = standard RAG, B = STAIR-style (picks sections from the table of contents).
   function addAnswers(results) {
     const m = document.createElement('div'); m.className = 'message assistant message-ab';
     const part = (label, how, r) => {
@@ -886,7 +886,7 @@ document.addEventListener('keydown', (e) => {
         `<div class="message-content">${html}</div>` +
         `<div class="ab-meta">${(r.latency_ms / 1000).toFixed(1)} s · ${ids.length} sections used</div></div>`;
     };
-    m.innerHTML = part('Answer A', 'standard search', results.hybrid_rag) + part('Answer B', 'searches by section', results.structure_rag);
+    m.innerHTML = part('Answer A', 'RAG', results.hybrid_rag) + part('Answer B', 'STAIR-style', results.structure_rag);
     chatMessages.appendChild(m); chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
