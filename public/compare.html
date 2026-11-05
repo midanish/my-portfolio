@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ask one question and compare two retrieval methods side by side: standard RAG and structure-aware RAG inspired by the STAIR paper.">
+  <title>Two-Bot RAG Comparison | Iqmal Danish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    // Same theme rule as the main site (localStorage 'theme', else system).
+    try {
+      const t = localStorage.getItem('theme');
+      if (t ? t === 'light' : !matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="/css/compare.css?v=1">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <a class="back" href="/">← Back to portfolio</a>
+      <p class="eyebrow">Retrieval experiment · same documents, same answer model</p>
+      <h1>Ask once, compare two retrievers</h1>
+      <p class="lede">Both bots answer from the same knowledge base about Iqmal, with the same answer model, prompt and evidence budget. Only the way they find evidence differs. Open “Evidence” under each answer to see exactly what the model was given.</p>
+    </header>
+
+    <form id="askForm" class="ask" autocomplete="off">
+      <label for="question" class="sr-only">Your question about Iqmal</label>
+      <input id="question" name="question" type="text" maxlength="400" placeholder="e.g. Which projects used MobileNetV2?" required>
+      <button id="askBtn" type="submit">Compare</button>
+    </form>
+    <div class="chips" id="examples">
+      <button type="button" class="chip">What is the difference between the food classifier and IQMETRIC?</button>
+      <button type="button" class="chip">How does the scanner login stop people from just typing a password?</button>
+      <button type="button" class="chip">How many engineers did Iqmal manage?</button>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section class="panels" aria-label="Answers">
+      <article class="panel" id="panelA">
+        <header>
+          <span class="tag">Bot A</span>
+          <h2>Standard RAG</h2>
+          <p class="how">Keyword (BM25) + embedding search over short passages, merged with Reciprocal Rank Fusion, top 5 passages.</p>
+        </header>
+        <div class="answer" data-empty="Ask a question to see Bot A's answer."></div>
+        <div class="meta"></div>
+        <details class="evidence"><summary>Evidence</summary><ol></ol></details>
+      </article>
+      <article class="panel" id="panelB">
+        <header>
+          <span class="tag tag-b">Bot B</span>
+          <h2>Structure-aware RAG <small>(STAIR-inspired)</small></h2>
+          <p class="how">A model picks up to 3 sections from the table of contents; the IDs are checked against the real list; those sections are read.</p>
+        </header>
+        <div class="answer" data-empty="Ask a question to see Bot B's answer."></div>
+        <div class="meta"></div>
+        <details class="evidence"><summary>Evidence</summary><ol></ol></details>
+      </article>
+    </section>
+
+    <section class="explain" id="how">
+      <h2>How the comparison works</h2>
+      <ul>
+        <li><b>What stays the same:</b> the knowledge base (version shown under each answer), the answer model (GLM-4.7-Flash), the answer prompt and settings, a limit of 5 evidence passages, and the citation check that removes any citation the bot was not given.</li>
+        <li><b>What differs:</b> only retrieval. Bot A searches passages directly. Bot B first navigates the table of contents, the way a reader uses a book’s contents page.</li>
+        <li><b>Why “STAIR-inspired”:</b> the <a href="https://arxiv.org/abs/2609.03874" target="_blank" rel="noopener">STAIR paper</a> fine-tunes a model to output a valid section and restricts its output to real section IDs. Bot B uses a general model plus an ID check instead, so it is a simpler prototype, not a reproduction. A fine-tuned version is tested offline in the methodology report.</li>
+        <li><b>No live scores here:</b> one question is not a test. Quality is measured on a labelled question set; see the <a href="https://github.com/midanish/my-portfolio/blob/main/docs/two-bot-methodology.md" target="_blank" rel="noopener">methodology report</a>.</li>
+        <li><b>“Not supported”</b> means the knowledge base does not contain the answer, and the bot is designed to say so instead of guessing.</li>
+      </ul>
+    </section>
+  </main>
+  <script src="/js/compare.js?v=1"></script>
+</body>
+</html>

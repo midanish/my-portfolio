@@ -84,14 +84,15 @@
       "technologies": ["C++", "C#/.NET", "DigitalPersona SDK", "OpenCV", "SQLite"]
     },
     {
-      "title": "Portfolio RAG Chatbot with AI Assistant",
+      "title": "Portfolio RAG Chatbot: Two-Bot Retrieval Comparison",
       "date": "Jan 2026",
-      "description": "Intelligent chatbot integrated into portfolio website using RAG architecture for contextual Q&A",
+      "description": "Website assistant grounded in this portfolio, plus a side-by-side comparison of standard RAG and STAIR-inspired structure-aware retrieval",
       "highlights": [
-        "Implemented a Retrieval-Augmented Generation (RAG) system using the GLM-4.7-Flash model for accurate, context-aware responses",
-        "Built a full-stack chatbot with Node.js backend, session management, and real-time conversation handling"
+        "Version 1: a Cloudflare Pages Function passes the full profile to GLM-4.7-Flash (Hugging Face router) with grounding rules and a keyword fallback",
+        "Version 2: two retrieval bots answer the same question from the same knowledge base — hybrid BM25 + embedding search with rank fusion vs a table-of-contents section router with ID validation — using the same answer model, evidence budget and citation checks",
+        "Evaluated on a hand-labelled question set (retrieval recall and MRR, correct refusals, citation validity, latency), plus an offline LoRA fine-tuned section retriever with constrained decoding"
       ],
-      "technologies": ["Node.js", "GLM-4.7-Flash", "RAG", "Transformers.js", "Express", "LLM"]
+      "technologies": ["Cloudflare Pages Functions", "GLM-4.7-Flash", "RAG", "BM25", "bge-small embeddings", "LoRA", "Qwen2.5"]
     },
     {
       "title": "Food Image Classification",
