@@ -1,0 +1,294 @@
+{
+  "base": "http://localhost:8788",
+  "run_at": "2026-11-05T07:14:18.941Z",
+  "results": [
+    {
+      "question": "Which projects used MobileNetV2?",
+      "v1": {
+        "status": 200,
+        "ms": 3599,
+        "body": {
+          "response": "Iqmal used MobileNetV2 in two projects: \n\n* **Food Image Classification (Dec 2025)**: a Streamlit application that uses a fine-tuned MobileNetV2 model to classify food images into 6 categories with 95% accuracy.\n* **CNN Deep Learning Portable Dental Caries Detection (Jul 2023)**: an award-winning portable dental caries detection system using deep learning, where MobileNetV2 was used to achieve 80% detection accuracy.",
+          "sessionId": "cloudflare-session"
+        }
+      },
+      "v2": {
+        "status": 200,
+        "ms": 1831,
+        "body": {
+          "run_id": "4b381aea-22be-4dcc-b3ef-759e82ff21f3",
+          "question": "Which projects used MobileNetV2?",
+          "source_version": "public_v1",
+          "prompt_version": "v1",
+          "results": {
+            "hybrid_rag": {
+              "retrieved_ids": [
+                "projects.food.results",
+                "projects.food.model",
+                "projects.dental.mobile",
+                "projects.dental.overview",
+                "skills.ai_ml"
+              ],
+              "evidence": [
+                {
+                  "section_id": "projects.food.results",
+                  "path": "Projects > Food image classification (Dec 2025) > Results and limitations",
+                  "text": "The final MobileNetV2 model classified 95 of the 100 validation images correctly (95%). This is a validation figure, not an independent test result: the same 100 images were used while choosing the model, and there is no separate untouched test set. The app always picks one of the six classes, even for photos of other foods, so an \"unsupported image\" option is a planned improvement. The public repository is a fork of another repository, so not every file in it was written by Iqmal."
+                },
+                {
+                  "section_id": "projects.food.model",
+                  "path": "Projects > Food image classification (Dec 2025) > Model and training",
+                  "text": "The final model is MobileNetV2 pretrained on ImageNet, with its classifier replaced by a six-class output layer (about 2.2 million parameters). It is fine-tuned with PyTorch using transfer learning and data augmentation: random horizontal flips, rotation of up to 15 degrees and colour jitter, with ImageNet normalisation. MobileNetV2 was chosen because its depthwise-separable convolutions make it light enough for fast inference on an ordinary CPU."
+                },
+                {
+                  "section_id": "projects.dental.mobile",
+                  "path": "Projects > Portable dental image analysis app (final-year project, Jul 2023) > Mobile architecture",
+                  "text": "The Android app is written in Java. A USB endoscope connects to the phone as a UVC camera through the AndroidUSBCamera library (version 2.3.4). The trained MobileNetV2 model runs on the phone with PyTorch Mobile (version 1.12.1), so the image never leaves the device. The user captures an image, the app runs the model, and the predicted class is shown on screen."
+                },
+                {
+                  "section_id": "projects.dental.overview",
+                  "path": "Projects > Portable dental image analysis app (final-year project, Jul 2023) > Overview and award",
+                  "text": "For his final-year project at IIUM, Iqmal built a portable dental image-analysis application using a CNN (MobileNetV2). It analyses images from a small endoscopic camera on an Android phone, with no computer or cloud connection needed. The project reported 80% accuracy, was validated together with dental professionals, and won Best Overall Final Year Project in the Department of Mechatronics."
+                },
+                {
+                  "section_id": "skills.ai_ml",
+                  "path": "Skills > AI, machine learning and computer vision",
+                  "text": "Deep learning with PyTorch, TensorFlow and Keras; object detection with YOLOv8; image classification with MobileNetV2 and other CNNs; classical machine vision with OpenCV and HALCON; OCR; data annotation with CVAT and Roboflow; Pandas, predictive modelling, and supervised and unsupervised learning. Generative AI skills: LLM APIs, prompt engineering, retrieval-augmented generation (RAG) and NLP."
+                }
+              ],
+              "retrieval_ms": 2,
+              "answer": "Iqmal used MobileNetV2 in his food image classification project [projects.food.model] and his portable dental image analysis app project [projects.dental.mobile].",
+              "citations": [
+                "projects.food.model",
+                "projects.dental.mobile"
+              ],
+              "invalidCitations": [],
+              "tokens": 792,
+              "latency_ms": 1180
+            },
+            "structure_rag": {
+              "selected_leaf_ids": [
+                "projects.food.model",
+                "projects.coursework.classification"
+              ],
+              "router": "llm",
+              "invalid_leaf_ids": [],
+              "evidence": [
+                {
+                  "section_id": "projects.food.model",
+                  "path": "Projects > Food image classification (Dec 2025) > Model and training",
+                  "text": "The final model is MobileNetV2 pretrained on ImageNet, with its classifier replaced by a six-class output layer (about 2.2 million parameters). It is fine-tuned with PyTorch using transfer learning and data augmentation: random horizontal flips, rotation of up to 15 degrees and colour jitter, with ImageNet normalisation. MobileNetV2 was chosen because its depthwise-separable convolutions make it light enough for fast inference on an ordinary CPU."
+                },
+                {
+                  "section_id": "projects.coursework.classification",
+                  "path": "Projects > Deep-learning coursework (2022) > Fashion-MNIST and fruit classification",
+                  "text": "In his deep-learning coursework Iqmal compared CNN architectures. On Fashion-MNIST a custom CNN reached 92.71% accuracy, AlexNet 91.92% and a pretrained ResNet-50 94.17%. On a fruit-classification dataset ResNet-50 reached 94.4%, rising to 99.1% after the dataset was cleaned up. One AlexNet run reported more than 100% training accuracy because of a counting bug, a reminder to sanity-check metrics. These are educational experiments, not production results."
+                }
+              ],
+              "retrieval_ms": 712,
+              "answer": "Iqmal used MobileNetV2 in his project on Food image classification (Dec 2025). \n\n[projects.food.model]",
+              "citations": [
+                "projects.food.model"
+              ],
+              "invalidCitations": [],
+              "tokens": 1459,
+              "latency_ms": 1817
+            }
+          }
+        }
+      }
+    },
+    {
+      "question": "How does the scanner login stop people from just typing a password?",
+      "v1": {
+        "status": 200,
+        "ms": 1087,
+        "body": {
+          "response": "**Secure Login Mechanism**: Iqmal designed the scanner login system to prevent unauthorized manual entry by implementing an **automatic login-window detection**. This feature detects when the login window is displayed and **locks keyboard input**, preventing users from typing a password manually. \n\n**Biometric Match Required**: After a successful **biometric match** (either fingerprint or facial recognition), the system **auto-fills credentials**, allowing authorized users to access the system securely. This ensures that only authorized individuals can gain access to the system, reducing the risk of unauthorized access.",
+          "sessionId": "cloudflare-session"
+        }
+      },
+      "v2": {
+        "status": 200,
+        "ms": 1160,
+        "body": {
+          "run_id": "7483969a-d6f1-4525-8a60-bc8e0d92e446",
+          "question": "How does the scanner login stop people from just typing a password?",
+          "source_version": "public_v1",
+          "prompt_version": "v1",
+          "results": {
+            "hybrid_rag": {
+              "retrieved_ids": [
+                "projects.iqmetric.overview",
+                "projects.iqmetric.login_control",
+                "projects.iqmetric.biometrics",
+                "projects.iqmetric.cost",
+                "projects.tcp_chat.overview"
+              ],
+              "evidence": [
+                {
+                  "section_id": "projects.iqmetric.overview",
+                  "path": "Projects > Biometric login system for vision scanners (IQMETRIC, Jun 2026) > What it does",
+                  "text": "IQMETRIC is a multi-modal biometric login system for production vision scanners, built at NXP. It combines fingerprint and facial recognition so that a person must prove who they are before the scanner's login is unlocked. It was built as an independent, in-house alternative to a vendor solution."
+                },
+                {
+                  "section_id": "projects.iqmetric.login_control",
+                  "path": "Projects > Biometric login system for vision scanners (IQMETRIC, Jun 2026) > Login control and audit trail",
+                  "text": "The application automatically detects the scanner's login window, locks keyboard input, and fills in credentials only after a successful biometric match, which prevents unauthorised manual entry. Credentials are kept in an embedded SQLite store, and every access is logged so that user actions are traceable and audit-ready."
+                },
+                {
+                  "section_id": "projects.iqmetric.biometrics",
+                  "path": "Projects > Biometric login system for vision scanners (IQMETRIC, Jun 2026) > Face and fingerprint technology",
+                  "text": "The system is written in C++ and C#/.NET. Fingerprint matching uses the DigitalPersona SDK. Face detection and recognition use OpenCV. The C# application handles the user interface and workflow, and native C++ code does the vision and matching work."
+                },
+                {
+                  "section_id": "projects.iqmetric.cost",
+                  "path": "Projects > Biometric login system for vision scanners (IQMETRIC, Jun 2026) > Cost compared with the vendor option",
+                  "text": "A vendor solution was priced at about USD 5,000 per machine. The in-house system cost about USD 167 per machine, so it saved roughly USD 5,000 per machine and removed the dependency on the vendor."
+                },
+                {
+                  "section_id": "projects.tcp_chat.overview",
+                  "path": "Projects > Two-way TCP chat application > Socket chat with images",
+                  "text": "This is a small C# WinForms desktop app for two-way text and image chat over TCP, built to learn socket communication. It connects on 127.0.0.1 port 12345, separates messages with newlines, and sends images as Base64 text; images can be pasted from the clipboard. It supports a single client and does not detect disconnections. It is a networking exercise, not an AI chatbot."
+                }
+              ],
+              "retrieval_ms": 0,
+              "answer": "The application automatically detects the scanner's login window, locks keyboard input, and fills in credentials only after a successful biometric match, which prevents unauthorized manual entry [projects.iqmetric.login_control].",
+              "citations": [
+                "projects.iqmetric.login_control"
+              ],
+              "invalidCitations": [],
+              "tokens": 684,
+              "latency_ms": 667
+            },
+            "structure_rag": {
+              "selected_leaf_ids": [
+                "projects.iqmetric.biometrics",
+                "projects.iqmetric.login_control"
+              ],
+              "router": "llm",
+              "invalid_leaf_ids": [],
+              "evidence": [
+                {
+                  "section_id": "projects.iqmetric.biometrics",
+                  "path": "Projects > Biometric login system for vision scanners (IQMETRIC, Jun 2026) > Face and fingerprint technology",
+                  "text": "The system is written in C++ and C#/.NET. Fingerprint matching uses the DigitalPersona SDK. Face detection and recognition use OpenCV. The C# application handles the user interface and workflow, and native C++ code does the vision and matching work."
+                },
+                {
+                  "section_id": "projects.iqmetric.login_control",
+                  "path": "Projects > Biometric login system for vision scanners (IQMETRIC, Jun 2026) > Login control and audit trail",
+                  "text": "The application automatically detects the scanner's login window, locks keyboard input, and fills in credentials only after a successful biometric match, which prevents unauthorised manual entry. Credentials are kept in an embedded SQLite store, and every access is logged so that user actions are traceable and audit-ready."
+                }
+              ],
+              "retrieval_ms": 493,
+              "answer": "The scanner's login window is automatically detected, and keyboard input is locked until a successful biometric match is made. This prevents unauthorized manual entry of credentials. [projects.iqmetric.login_control]",
+              "citations": [
+                "projects.iqmetric.login_control"
+              ],
+              "invalidCitations": [],
+              "tokens": 1412,
+              "latency_ms": 1157
+            }
+          }
+        }
+      }
+    },
+    {
+      "question": "How many engineers did Iqmal manage?",
+      "v1": {
+        "status": 200,
+        "ms": 447,
+        "body": {
+          "response": "Unfortunately, the provided profile data does not mention the number of engineers Iqmal managed.",
+          "sessionId": "cloudflare-session"
+        }
+      },
+      "v2": {
+        "status": 200,
+        "ms": 1249,
+        "body": {
+          "run_id": "2eaace44-611b-42cf-96c3-a70fb52f01bb",
+          "question": "How many engineers did Iqmal manage?",
+          "source_version": "public_v1",
+          "prompt_version": "v1",
+          "results": {
+            "hybrid_rag": {
+              "retrieved_ids": [
+                "education.certificates",
+                "projects.food.dataset",
+                "experience.nxp.quality",
+                "experience.nxp.ocr",
+                "profile.summary"
+              ],
+              "evidence": [
+                {
+                  "section_id": "education.certificates",
+                  "path": "Education and credentials > Certificates",
+                  "text": "AI Engineering Professional Certificate from IBM (August 2024). AI and Data Specialist Program Industry Joint Certificate from Aerodyne Group and Yayasan Peneraju (January 2024). Registered Graduate Engineer with the Board of Engineers Malaysia (BEM, December 2023). Deep Learning and Computer Vision (Proficient) from the Ministry of Education Malaysia (September 2022)."
+                },
+                {
+                  "section_id": "projects.food.dataset",
+                  "path": "Projects > Food image classification (Dec 2025) > Dataset",
+                  "text": "The food classifier uses 497 photos in six classes: ApplePie (93 images), BagelSandwich (45), Bibimbop (92), Bread (90), FriedRice (88) and Pork (89). The classes are imbalanced: BagelSandwich has about half as many images as the others. The photos are large (about 2,200 by 1,760 pixels on average) and are resized to 224 by 224 for the models. The data is split 80/20 into 397 training and 100 validation images."
+                },
+                {
+                  "section_id": "experience.nxp.quality",
+                  "path": "Work experience > NXP Semiconductors Malaysia — Test Back-End Process Engineer (Dec 2024 to present) > Process engineering and quality results",
+                  "text": "At NXP Semiconductors Malaysia in Petaling Jaya, Iqmal works as a Test Back-End Process Engineer. He consistently achieved more than 99.6% QFN yield across key packages by managing QFN and LGA quality issues with structured problem-solving. He led cross-functional coordination on about 1.4 million units of high-risk metal-lid TPMS lots with full traceability, controlled execution and zero quality escapes. He received a Bronze Technical Excellence Award (TEA) for Q3 2025 and was selected to represent his department at Technical Symposium 2025, with zero safety incidents."
+                },
+                {
+                  "section_id": "experience.nxp.ocr",
+                  "path": "Work experience > NXP Semiconductors Malaysia — Test Back-End Process Engineer (Dec 2024 to present) > OCR automation project",
+                  "text": "Iqmal leads the OCR Automation Project at NXP and contributes to the test back-end Smart Factory integration. He works with IT and equipment vendors to bring vision-driven automation into semiconductor production workflows. Public details are limited to this summary; the project was still in qualification at the time of writing, so no final rollout result is claimed here."
+                },
+                {
+                  "section_id": "profile.summary",
+                  "path": "Profile > Summary",
+                  "text": "Muhammad Iqmal Danish bin Hasnan is an engineer with 3 years of experience that combines AI and computer-vision development, production machine vision, and semiconductor manufacturing. He works in Python, C/C++, C#, PyTorch, TensorFlow, OpenCV, HALCON, YOLOv8, MobileNetV2 and RAG/LLM systems, and has deployed real-time vision and automation systems in production. He is looking for an AI Engineer role where industrial domain knowledge, software engineering and applied AI come together in production-scale systems. He is based in Cheras, Selangor, Malaysia."
+                }
+              ],
+              "retrieval_ms": 0,
+              "answer": "Not supported: The information about the number of engineers Iqmal managed is not available in the provided sources.",
+              "citations": [],
+              "invalidCitations": [],
+              "tokens": 829,
+              "latency_ms": 765
+            },
+            "structure_rag": {
+              "selected_leaf_ids": [
+                "experience.nxp.vent_hole",
+                "experience.greatech.vision_systems",
+                "experience.greatech.commissioning"
+              ],
+              "router": "llm",
+              "invalid_leaf_ids": [],
+              "evidence": [
+                {
+                  "section_id": "experience.nxp.vent_hole",
+                  "path": "Work experience > NXP Semiconductors Malaysia — Test Back-End Process Engineer (Dec 2024 to present) > Vent-hole foreign-material inspection",
+                  "text": "Iqmal applied machine-vision automation to foreign-material detection in the vent holes of an LGA product line. The automated check made it possible to remove a manual pre-bake inspection step completely, saving about 0.4 full-time-equivalent of operator work (about USD 8.8K per year). The detection is classical image processing with measured thresholds, not a trained neural network."
+                },
+                {
+                  "section_id": "experience.greatech.vision_systems",
+                  "path": "Work experience > Greatech Integration — Vision Engineer (Feb 2024 to Nov 2024) > Production machine-vision systems",
+                  "text": "At Greatech Integration in Batu Kawan, Penang, Iqmal designed and developed production machine-vision systems in C# and Python using HALCON and other image-processing libraries, including inspection work for pharmaceutical requirements. These were PC-based inspection applications used on automated production equipment."
+                },
+                {
+                  "section_id": "experience.greatech.commissioning",
+                  "path": "Work experience > Greatech Integration — Vision Engineer (Feb 2024 to Nov 2024) > Feasibility studies and commissioning",
+                  "text": "He ran image evaluation and feasibility studies, selecting vision hardware and software approaches that would hold up under real production constraints. He then deployed and optimised the applications end to end: software architecture, user-interface work, commissioning at factory and customer sites, and ongoing production support in line with ISO standards."
+                }
+              ],
+              "retrieval_ms": 552,
+              "answer": "Not supported: The sources do not mention Iqmal managing any engineers.",
+              "citations": [],
+              "invalidCitations": [],
+              "tokens": 1530,
+              "latency_ms": 1246
+            }
+          }
+        }
+      }
+    }
+  ]
+}

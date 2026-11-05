@@ -11,7 +11,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import {
   prepareIndex, embed, retrieveHybrid, routeLeaves, passagesForLeaves,
-  answerMessages, chat, verifyCitations, isRefusal, runAi,
+  answerMessages, chat, verifyCitations, isRefusal, runAi, ANSWER_PROMPT_VERSION, CHAT_MODEL,
 } from '../lib/rag.mjs';
 import { cloudflareEnv } from './cloudflare-env.mjs';
 import { onRequestPost as v1Chat } from '../functions/api/chat.js';
@@ -153,7 +153,7 @@ function summarise(list, bot) {
 
 const types = uniq(rows.map(r => r.type));
 const summary = {
-  split, source_version: idx.version, embed_model: idx.embed_model, run_at: new Date().toISOString(),
+  split, source_version: idx.version, embed_model: idx.embed_model, chat_model: env.CHAT_MODEL || CHAT_MODEL, prompt_version: ANSWER_PROMPT_VERSION, run_at: new Date().toISOString(),
   overall: { bot_a_standard_rag: summarise(rows, 'a'), bot_b_structure_aware: summarise(rows, 'b') },
   by_type: Object.fromEntries(types.map(t => [t, {
     bot_a: summarise(rows.filter(r => r.type === t), 'a'),

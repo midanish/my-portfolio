@@ -22,7 +22,7 @@ Results, method and limits: [`docs/two-bot-methodology.md`](docs/two-bot-methodo
 | `public/data/kb/index.json` | Built index: sections, passages, embeddings (`npm run build:index`) |
 | `eval/gold.json` | Hand-labelled questions with the section that should answer each |
 | `scripts/eval.mjs` | Scores retrieval and answers for both bots + v1 control |
-| `research/stair/` | Phase 5: LoRA fine-tuned section retriever with constrained decoding (offline) |
+| `research/stair/` | Phase 5: LoRA fine-tuned section retriever with constrained decoding (offline; results in `research/stair/results.json`) |
 | `server.js` | Older local Express server (v1 only; not used by the live site) |
 
 ## Setup

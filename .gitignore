@@ -45,3 +45,4 @@ research/stair/.venv/
 research/stair/out/
 .dev.vars
 research/stair/*.log
+eval/blind-*-key.json
