@@ -1,5 +1,5 @@
 ---
-version: public_v1
+version: public_v2
 note: Every leaf section below is written from public sources only (the published resume, this portfolio site, and public GitHub repositories). Each leaf names its source. Nothing here comes from confidential NXP files or internal source code.
 ---
 
@@ -87,14 +87,14 @@ A vendor solution was priced at about USD 5,000 per machine. The in-house system
 
 ### Version 1: full-context assistant {#projects.portfolio_bot.v1}
 <!-- source: github.com/midanish/my-portfolio functions/api/chat.js (tag v1-full-context-bot) -->
-The first version of the portfolio chatbot runs as a Cloudflare Pages Function. For every question it loads the whole portfolio profile, places it in the system prompt, and asks the GLM-4.7-Flash model (through the Hugging Face router's chat-completions API) to answer only from that profile. There is no retrieval step: the model always sees everything. If the model is unavailable, a simple keyword-based fallback answers instead. It is single-turn and stateless. It stays online as the baseline for comparison.
+The first version of the portfolio chatbot ran as a Cloudflare Pages Function. For every question it loaded the whole portfolio profile into the system prompt and asked the GLM-4.7-Flash model (through the Hugging Face router's chat-completions API) to answer only from that profile. There was no retrieval step: the model always saw everything. If the model was unavailable, a simple keyword-based fallback answered instead. It was single-turn and stateless. The site's chat window no longer uses it; its code is kept as the baseline for comparison and now calls Llama 3.1 8B on Cloudflare Workers AI instead of GLM-4.7-Flash.
 
 ### Version 2: two retrieval bots side by side {#projects.portfolio_bot.two_bots}
-<!-- source: github.com/midanish/my-portfolio (branch two-bot-rag) -->
-Version 2 adds a comparison page where one question is answered by two bots at once. Bot A is standard RAG: it searches short passages of this knowledge base with BM25 keyword search and embedding search, merges the two rankings with Reciprocal Rank Fusion, and passes the top five passages to the answer model. Bot B is structure-aware RAG inspired by the STAIR paper: a model picks up to three sections from the knowledge base's table of contents, the choice is checked against the list of real section IDs, and the text of those sections is passed to the same answer model. Both bots use the same documents, the same answer model and prompt, the same evidence budget and the same citation checks, so only the retrieval method differs.
+<!-- source: github.com/midanish/my-portfolio public/js/app.js, lib/rag.mjs -->
+Version 2 is what the site's chat window runs now. Every question is answered by two bots at once, shown in one reply as Answer A (RAG) and Answer B (STAIR-style). Bot A is standard RAG: it searches short passages of this knowledge base with BM25 keyword search and embedding search, merges the two rankings with Reciprocal Rank Fusion, and passes the top five passages to the answer model. Bot B is structure-aware RAG inspired by the STAIR paper: a model picks up to three sections from the knowledge base's table of contents, the choice is checked against the list of real section IDs, and the text of those sections is passed to the same answer model. Both bots use the same documents, the same answer model (Llama 3.1 8B on Cloudflare Workers AI) and prompt, the same evidence budget and the same citation checks, so only the retrieval method differs.
 
 ### How the two bots are evaluated {#projects.portfolio_bot.evaluation}
-<!-- source: github.com/midanish/my-portfolio eval/ and docs/ (branch two-bot-rag) -->
+<!-- source: github.com/midanish/my-portfolio eval/ and docs/ -->
 The two bots are compared on a hand-labelled set of questions, each tagged with the section that should answer it. Retrieval is scored separately from the answer: first-result recall, top-3 recall and mean reciprocal rank for retrieval; citation validity, correct refusals and latency for the answers. Some questions are held out and only run once at the end. A separate offline experiment fine-tunes a small language model (Qwen2.5-1.5B with LoRA) to output a valid section ID directly, closer to the original STAIR method. Results are published in the project's methodology report.
 
 ## Food image classification (Dec 2025) {#projects.food}

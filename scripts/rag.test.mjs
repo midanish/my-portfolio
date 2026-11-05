@@ -14,7 +14,7 @@ const leaves = kb.sections.filter(s => s.isLeaf);
 const passages = chunkLeaves(kb.sections);
 
 test('knowledge base parses with unique IDs, sources and text on every leaf', () => {
-  assert.equal(kb.version, 'public_v1');
+  assert.equal(kb.version, 'public_v2');
   assert.ok(leaves.length >= 30, `only ${leaves.length} leaves`);
   for (const l of leaves) {
     assert.ok(l.text.length > 40, `${l.id} text too short`);
