@@ -1,6 +1,6 @@
 {
   "about": "Hand-labelled questions for comparing the two bots. 'gold' lists the knowledge-base section(s) that contain the answer; an empty list means the knowledge base does not contain the answer and the bot should reply 'Not supported'. Labels were written from content/kb.md before running either bot. 'heldout' questions are run only for the final report, never while tuning.",
-  "source_version": "public_v2",
+  "source_version": "public_v3",
   "questions": [
     {"id": "f01", "split": "dev", "type": "simple", "question": "How many images are in the food classification dataset?", "gold": ["projects.food.dataset"]},
     {"id": "f02", "split": "dev", "type": "simple", "question": "Which SDK does IQMETRIC use for fingerprint matching?", "gold": ["projects.iqmetric.biometrics"]},

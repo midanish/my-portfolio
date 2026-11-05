@@ -1,11 +1,11 @@
 {
   "summary": {
     "split": "heldout",
-    "source_version": "public_v2",
+    "source_version": "public_v3",
     "embed_model": "@cf/baai/bge-small-en-v1.5",
     "chat_model": "@cf/meta/llama-3.1-8b-instruct-fast",
     "prompt_version": "v2",
-    "run_at": "2026-11-05T11:22:07.652Z",
+    "run_at": "2026-11-05T12:59:46.479Z",
     "overall": {
       "bot_a_standard_rag": {
         "n": 15,
@@ -15,11 +15,11 @@
         "all_gold_in_top3": 0.929,
         "mrr_at_3": 0.81,
         "correct_refusals": "2/2",
-        "false_refusals": "2/13",
-        "answers_citing_a_gold_section": 0.727,
+        "false_refusals": "1/13",
+        "answers_citing_a_gold_section": 0.75,
         "invalid_citations_removed": 0,
-        "latency_p50_ms": 716,
-        "latency_p95_ms": 1051,
+        "latency_p50_ms": 773,
+        "latency_p95_ms": 1280,
         "mean_tokens": 933
       },
       "bot_b_structure_aware": {
@@ -35,14 +35,14 @@
         "false_refusals": "1/13",
         "answers_citing_a_gold_section": 1,
         "invalid_citations_removed": 0,
-        "latency_p50_ms": 1198,
-        "latency_p95_ms": 1533,
-        "mean_tokens": 2706
+        "latency_p50_ms": 1257,
+        "latency_p95_ms": 1599,
+        "mean_tokens": 2705
       },
       "v1_full_context": {
         "correct_refusals_note": "v1 has no \"Not supported\" contract, so refusals are judged by humans on the blind sheet",
-        "latency_p50_ms": 812,
-        "latency_p95_ms": 1378
+        "latency_p50_ms": 685,
+        "latency_p95_ms": 1365
       }
     },
     "by_type": {
@@ -58,9 +58,9 @@
           "false_refusals": "0/5",
           "answers_citing_a_gold_section": 0.8,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 671,
-          "latency_p95_ms": 816,
-          "mean_tokens": 942
+          "latency_p50_ms": 828,
+          "latency_p95_ms": 912,
+          "mean_tokens": 939
         },
         "bot_b": {
           "n": 5,
@@ -75,9 +75,9 @@
           "false_refusals": "0/5",
           "answers_citing_a_gold_section": 1,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1162,
-          "latency_p95_ms": 1198,
-          "mean_tokens": 2665
+          "latency_p50_ms": 1217,
+          "latency_p95_ms": 1402,
+          "mean_tokens": 2634
         }
       },
       "paraphrase": {
@@ -92,9 +92,9 @@
           "false_refusals": "0/3",
           "answers_citing_a_gold_section": 1,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 737,
+          "latency_p50_ms": 673,
           "latency_p95_ms": 773,
-          "mean_tokens": 895
+          "mean_tokens": 897
         },
         "bot_b": {
           "n": 3,
@@ -109,9 +109,9 @@
           "false_refusals": "0/3",
           "answers_citing_a_gold_section": 1,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1241,
-          "latency_p95_ms": 1338,
-          "mean_tokens": 2596
+          "latency_p50_ms": 1257,
+          "latency_p95_ms": 1430,
+          "mean_tokens": 2601
         }
       },
       "comparison": {
@@ -123,12 +123,12 @@
           "all_gold_in_top3": 1,
           "mrr_at_3": 0.5,
           "correct_refusals": "0/0",
-          "false_refusals": "1/2",
-          "answers_citing_a_gold_section": 0,
+          "false_refusals": "0/2",
+          "answers_citing_a_gold_section": 0.5,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 462,
-          "latency_p95_ms": 795,
-          "mean_tokens": 933
+          "latency_p50_ms": 746,
+          "latency_p95_ms": 1047,
+          "mean_tokens": 947
         },
         "bot_b": {
           "n": 2,
@@ -143,9 +143,9 @@
           "false_refusals": "0/2",
           "answers_citing_a_gold_section": 1,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1137,
-          "latency_p95_ms": 1327,
-          "mean_tokens": 2822
+          "latency_p50_ms": 1335,
+          "latency_p95_ms": 1389,
+          "mean_tokens": 2864
         }
       },
       "multi_hop": {
@@ -160,9 +160,9 @@
           "false_refusals": "0/2",
           "answers_citing_a_gold_section": 0.5,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 716,
-          "latency_p95_ms": 1051,
-          "mean_tokens": 949
+          "latency_p50_ms": 666,
+          "latency_p95_ms": 1280,
+          "mean_tokens": 958
         },
         "bot_b": {
           "n": 2,
@@ -177,9 +177,9 @@
           "false_refusals": "0/2",
           "answers_citing_a_gold_section": 1,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1481,
-          "latency_p95_ms": 1533,
-          "mean_tokens": 2888
+          "latency_p50_ms": 1211,
+          "latency_p95_ms": 1310,
+          "mean_tokens": 2903
         }
       },
       "missing": {
@@ -194,9 +194,9 @@
           "false_refusals": "0/0",
           "answers_citing_a_gold_section": null,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 668,
-          "latency_p95_ms": 841,
-          "mean_tokens": 934
+          "latency_p50_ms": 633,
+          "latency_p95_ms": 824,
+          "mean_tokens": 942
         },
         "bot_b": {
           "n": 2,
@@ -211,9 +211,9 @@
           "false_refusals": "0/0",
           "answers_citing_a_gold_section": null,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1157,
-          "latency_p95_ms": 1266,
-          "mean_tokens": 2623
+          "latency_p50_ms": 1153,
+          "latency_p95_ms": 1186,
+          "mean_tokens": 2617
         }
       },
       "version_trap": {
@@ -228,9 +228,9 @@
           "false_refusals": "1/1",
           "answers_citing_a_gold_section": null,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1015,
-          "latency_p95_ms": 1015,
-          "mean_tokens": 970
+          "latency_p50_ms": 1001,
+          "latency_p95_ms": 1001,
+          "mean_tokens": 917
         },
         "bot_b": {
           "n": 1,
@@ -245,9 +245,9 @@
           "false_refusals": "1/1",
           "answers_citing_a_gold_section": null,
           "invalid_citations_removed": 0,
-          "latency_p50_ms": 1401,
-          "latency_p95_ms": 1401,
-          "mean_tokens": 2820
+          "latency_p50_ms": 1599,
+          "latency_p95_ms": 1599,
+          "mean_tokens": 2835
         }
       }
     }
@@ -269,7 +269,7 @@
           "projects.food.experiments",
           "projects.coursework.classification"
         ],
-        "retrieval_ms": 295,
+        "retrieval_ms": 293,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -282,8 +282,8 @@
         ],
         "invalidCitations": [],
         "tokens": 920,
-        "answer_ms": 521,
-        "latency_ms": 816,
+        "answer_ms": 535,
+        "latency_ms": 828,
         "refused": false,
         "cites_gold": 1
       },
@@ -297,8 +297,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1953,
-        "retrieval_ms": 649,
+        "router_tokens": 1957,
+        "retrieval_ms": 677,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -310,15 +310,15 @@
           "projects.food.dataset"
         ],
         "invalidCitations": [],
-        "tokens": 2853,
-        "answer_ms": 513,
-        "latency_ms": 1162,
+        "tokens": 2857,
+        "answer_ms": 436,
+        "latency_ms": 1113,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "I'm unable to find any information regarding the number of BagelSandwich photos in the food dataset from the provided data. The Food Image Classification project only mentions that it uses a fine-tuned MobileNetV2 model to classify food images into 6 categories with 95% accuracy, but it does not provide details about the dataset size or composition.",
-        "latency_ms": 812
+        "answer": "I'm unable to find any information about BagelSandwich photos in the provided data. The Food Image Classification project mentioned in the portfolio includes a dataset of food images, but the specific details of the dataset, such as the number of images in each category, are not provided.",
+        "latency_ms": 624
       }
     },
     {
@@ -337,21 +337,21 @@
           "projects.iqmetric.cost",
           "experience.nxp.vent_hole"
         ],
-        "retrieval_ms": 208,
+        "retrieval_ms": 182,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.5
         },
-        "answer": "The application automatically locks keyboard input after detecting the scanner's login window, preventing unauthorized manual entry. [projects.iqmetric.login_control]",
+        "answer": "The application automatically detects the scanner's login window, locks keyboard input, and fills in credentials only after a successful biometric match, which prevents unauthorized manual entry. [projects.iqmetric.login_control]",
         "citations": [
           "projects.iqmetric.login_control"
         ],
         "invalidCitations": [],
-        "tokens": 815,
-        "answer_ms": 565,
-        "latency_ms": 773,
+        "tokens": 828,
+        "answer_ms": 491,
+        "latency_ms": 673,
         "refused": false,
         "cites_gold": 1
       },
@@ -364,28 +364,28 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1960,
-        "retrieval_ms": 621,
+        "router_tokens": 1964,
+        "retrieval_ms": 827,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The application automatically detects the scanner's login window, locks keyboard input, and fills in credentials only after a successful biometric match, which prevents unauthorized manual entry [projects.iqmetric.login_control]. This ensures that a person must go through the biometric check before they can enter credentials.",
+        "answer": "The application automatically detects the scanner's login window, locks keyboard input, and fills in credentials only after a successful biometric match, which prevents unauthorized manual entry [projects.iqmetric.login_control]. This ensures that the biometric check is not bypassed.",
         "citations": [
           "projects.iqmetric.login_control"
         ],
         "invalidCitations": [],
-        "tokens": 2683,
-        "answer_ms": 542,
-        "latency_ms": 1163,
+        "tokens": 2681,
+        "answer_ms": 603,
+        "latency_ms": 1430,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**Security Measures**: Iqmal's Biometric Fingerprint Login System includes several security measures to prevent bypassing the biometric check by entering credentials by hand. \n\n* **Automatic Login-Window Detection**: The system detects and locks the keyboard input until a successful biometric match is made, preventing manual entry of credentials.\n* **Embedded SQLite Credential Store**: User credentials are stored securely in an embedded SQLite database, which provides full access and audit logging for user traceability and audit readiness.\n* **Role-Based Access Control**: The system integrates with SharePoint, which provides role-based access control, reducing the risk of unauthorized access.\n\nThese measures ensure that the biometric check is a critical component of the login process, making it difficult for users to bypass the system by entering credentials manually.",
-        "latency_ms": 1378
+        "answer": "**Security Measures in Place**: Iqmal's biometric fingerprint login system incorporates several security features to prevent unauthorized manual entry. \n\n*   **Automatic Login-Window Detection**: The system detects the login window and locks keyboard input until a successful biometric match is achieved. This prevents users from manually entering credentials.\n*   **Credential Auto-Fill**: After a successful biometric match, the system auto-fills the credentials, eliminating the need for manual entry.\n*   **Embedded SQLite Credential Store**: The system uses an embedded SQLite credential store, which provides full access and audit logging for user traceability and audit readiness. This ensures that all login attempts, whether successful or not, are recorded and can be reviewed for security purposes.",
+        "latency_ms": 888
       }
     },
     {
@@ -404,21 +404,21 @@
           "projects.iqmetric.overview",
           "projects.portfolio_bot.evaluation"
         ],
-        "retrieval_ms": 228,
+        "retrieval_ms": 160,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The borrow-and-return tracking records in Iqmal's engineering room storage management system are stored in SharePoint, which is the data store for the system. [projects.storage.overview]",
+        "answer": "The borrow-and-return tracking records are stored in SharePoint, which is the data store for the inventory system. [projects.storage.overview]",
         "citations": [
           "projects.storage.overview"
         ],
         "invalidCitations": [],
-        "tokens": 908,
-        "answer_ms": 509,
-        "latency_ms": 737,
+        "tokens": 899,
+        "answer_ms": 474,
+        "latency_ms": 634,
         "refused": false,
         "cites_gold": 1
       },
@@ -428,28 +428,28 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1959,
-        "retrieval_ms": 725,
+        "router_tokens": 1963,
+        "retrieval_ms": 764,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The borrow and return records are stored in SharePoint, which serves as the data store for the system. [projects.storage.overview]",
+        "answer": "The borrow and return records are stored in SharePoint, which is the data store for the system. [projects.storage.overview]",
         "citations": [
           "projects.storage.overview"
         ],
         "invalidCitations": [],
-        "tokens": 2401,
-        "answer_ms": 516,
-        "latency_ms": 1241,
+        "tokens": 2404,
+        "answer_ms": 419,
+        "latency_ms": 1183,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**Storage Management System Overview**\nIqmal's Engineering Room Storage Management System utilizes a full-stack approach with Microsoft Power Apps and PowerFX as the front-end, and SharePoint as the backend repository. \n\n**Data Storage**\nBorrow and return records are stored in SharePoint, which serves as the centralized database for the inventory management system. This allows for:\n\n* **Role-based access control**: Securely manage user access and permissions to ensure only authorized personnel can view or modify records.\n* **Automated alerts**: SharePoint integrates with Power Automate to send automated notifications for overdue items and low-stock conditions, streamlining the management process.\n* **Reduced manual errors**: By leveraging SharePoint as the backend repository, manual data entry errors are minimized, and asset traceability is improved.\n\nThis setup enables efficient and secure storage of borrow and return records, facilitating effective inventory management.",
-        "latency_ms": 1259
+        "answer": "**Storage Management System**\n\nThe borrow and return records in the Engineering Room Storage Management System are stored in SharePoint, which serves as the backend repository. This allows for secure, centralized, and easily accessible storage of asset borrowing and return information.",
+        "latency_ms": 685
       }
     },
     {
@@ -468,7 +468,7 @@
           "projects.food.results",
           "projects.food.model"
         ],
-        "retrieval_ms": 178,
+        "retrieval_ms": 266,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -481,8 +481,8 @@
         ],
         "invalidCitations": [],
         "tokens": 924,
-        "answer_ms": 480,
-        "latency_ms": 658,
+        "answer_ms": 567,
+        "latency_ms": 833,
         "refused": false,
         "cites_gold": 1
       },
@@ -494,8 +494,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1952,
-        "retrieval_ms": 610,
+        "router_tokens": 1956,
+        "retrieval_ms": 790,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -507,15 +507,15 @@
           "projects.dental.mobile"
         ],
         "invalidCitations": [],
-        "tokens": 2658,
-        "answer_ms": 559,
-        "latency_ms": 1169,
+        "tokens": 2662,
+        "answer_ms": 612,
+        "latency_ms": 1402,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "Unfortunately, the provided profile data does not specify the exact image library used to connect the endoscope to the phone for the portable dental caries detection system. However, it does mention the use of **OpenCV** in various projects, which is a popular computer vision library that can be used for image processing and analysis.",
-        "latency_ms": 1083
+        "answer": "Unfortunately, the profile data doesn't mention a specific image library that connects the endoscope to the phone in the CNN Deep Learning Portable Dental Caries Detection project. However, it does mention that the project was developed using **TensorFlow** and **MobileNetV2**, which is a deep learning framework and architecture, respectively. \n\nIt's possible that the project utilized a library or framework for image processing and transmission between the endoscope and the phone, but this detail is not specified in the provided profile data.",
+        "latency_ms": 894
       }
     },
     {
@@ -535,21 +535,24 @@
           "profile.summary",
           "projects.coursework.yolov5"
         ],
-        "retrieval_ms": 151,
+        "retrieval_ms": 173,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.5
         },
-        "answer": "Iqmal used HALCON at Greatech Integration as a Vision Engineer, where he designed and developed production machine-vision systems in C# and Python. \n\nHe used YOLOv8 at Aerodyne Group as an AI Specialist Apprentice, where he deployed YOLOv8 object-detection models with PyTorch for real-time defect classification on electric poles from inspection images.",
-        "citations": [],
+        "answer": "Iqmal worked with HALCON at Greatech Integration, where he designed and developed production machine-vision systems using HALCON and other image-processing libraries. \n\nHe worked with YOLOv8 at Aerodyne Group, where he deployed YOLOv8 object-detection models with PyTorch for real-time defect classification on electric poles from inspection images. [experience.greatech.vision_systems] [experience.aerodyne.detection]",
+        "citations": [
+          "experience.greatech.vision_systems",
+          "experience.aerodyne.detection"
+        ],
         "invalidCitations": [],
-        "tokens": 927,
-        "answer_ms": 644,
-        "latency_ms": 795,
+        "tokens": 942,
+        "answer_ms": 874,
+        "latency_ms": 1047,
         "refused": false,
-        "cites_gold": 0
+        "cites_gold": 1
       },
       "b": {
         "ranked": [
@@ -560,29 +563,29 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1970,
-        "retrieval_ms": 551,
+        "router_tokens": 1974,
+        "retrieval_ms": 572,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "Iqmal's job at Greatech Integration involved HALCON, as he designed and developed production machine-vision systems in C# and Python using HALCON and other image-processing libraries [experience.greatech.vision_systems].\n\nHis job at Aerodyne Group involved YOLOv8, as he deployed YOLOv8 object-detection models with PyTorch for real-time defect classification on electric poles from inspection images [experience.aerodyne.detection].",
+        "answer": "Iqmal used HALCON in his role as a Vision Engineer at Greatech Integration, where he designed and developed production machine-vision systems in C# and Python. \n\nHe used YOLOv8 in his role as an AI Specialist Apprentice at Aerodyne Group, where he deployed YOLOv8 object-detection models with PyTorch for real-time defect classification on electric poles from inspection images. [experience.greatech.vision_systems] [experience.aerodyne.detection]",
         "citations": [
           "experience.greatech.vision_systems",
           "experience.aerodyne.detection"
         ],
         "invalidCitations": [],
-        "tokens": 2797,
-        "answer_ms": 776,
-        "latency_ms": 1327,
+        "tokens": 2808,
+        "answer_ms": 763,
+        "latency_ms": 1335,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**Iqmal**'s jobs involved the following:\n\n* **HALCON**: As a Vision Engineer at Greatech Integration (M) Sdn. Bhd. (Feb 2024 - Nov 2024), he designed and developed machine vision systems using C# and Python, leveraging HALCON and image processing libraries.\n* **YOLOv8**: As an AI Specialist Apprentice at Aerodyne Group (Aug 2023 - Jan 2024), he deployed YOLOv8 computer vision models for real-time defect classification on electric poles using PyTorch.",
-        "latency_ms": 872
+        "answer": "**Iqmal's Work Experience**\n\n* In his role as **Vision Engineer at Greatech Integration (M) Sdn. Bhd. (Feb 2024 - Nov 2024)**, he designed and developed machine vision systems using C# and Python, leveraging **HALCON** and image processing libraries to meet project and pharmaceutical inspection requirements.\n* In his role as **AI Specialist Apprentice at Aerodyne Group (Aug 2023 - Jan 2024)**, he deployed **YOLOv8** computer vision models for real-time defect classification on electric poles using PyTorch.",
+        "latency_ms": 786
       }
     },
     {
@@ -602,21 +605,22 @@
           "projects.food.results",
           "projects.food.dataset"
         ],
-        "retrieval_ms": 151,
+        "retrieval_ms": 265,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The earlier notebook compared seven models on the same data and found that transfer-learning models performed significantly better than convolutional networks trained from scratch. Convolutional networks reached only about 33% to 54% accuracy and overfitted, while transfer-learning models did much better. The final model deployed is a pretrained, lightweight network, specifically MobileNetV2, which was chosen for its fast inference on an ordinary CPU. [projects.food.experiments]",
+        "answer": "The earlier notebook compared seven models on the same data and found that transfer-learning models did far better than convolutional networks trained from scratch. Convolutional networks trained from scratch reached only about 33% to 54% accuracy and overfitted. Transfer-learning models, on the other hand, reached high accuracy: VGG16 with frozen features reached about 88% to 92% on test images, VGG19 about 90%, and ResNet18 about 96% on validation.\n\nThe final model deployed was a pretrained, lightweight network, specifically MobileNetV2, which was chosen for its depthwise-separable convolutions making it light enough for fast inference on an ordinary CPU. [projects.food.experiments] [projects.food.model]",
         "citations": [
-          "projects.food.experiments"
+          "projects.food.experiments",
+          "projects.food.model"
         ],
         "invalidCitations": [],
-        "tokens": 974,
-        "answer_ms": 900,
-        "latency_ms": 1051,
+        "tokens": 1035,
+        "answer_ms": 1015,
+        "latency_ms": 1280,
         "refused": false,
         "cites_gold": 1
       },
@@ -630,28 +634,29 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1961,
-        "retrieval_ms": 971,
+        "router_tokens": 1965,
+        "retrieval_ms": 613,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The earlier notebook compared seven models on the same data and found that convolutional networks trained from scratch overfitted and reached only about 33% to 54% accuracy. Transfer-learning models, however, did far better. The final model deployed is MobileNetV2 pretrained on ImageNet, with its classifier replaced by a six-class output layer [projects.food.model].",
+        "answer": "The earlier notebook found that convolutional networks trained from scratch reached only about 33% to 54% accuracy and overfitted, while transfer-learning models did far better. The final model deployed is MobileNetV2 pretrained on ImageNet, with its classifier replaced by a six-class output layer. [projects.food.experiments] [projects.food.model]",
         "citations": [
+          "projects.food.experiments",
           "projects.food.model"
         ],
         "invalidCitations": [],
-        "tokens": 2919,
-        "answer_ms": 562,
-        "latency_ms": 1533,
+        "tokens": 2920,
+        "answer_ms": 697,
+        "latency_ms": 1310,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "Unfortunately, the profile data doesn't mention an earlier food notebook or its findings. It only mentions the \"Food Image Classification\" project (Dec 2025) which is a Streamlit application using a fine-tuned MobileNetV2 model to classify food images into 6 categories with 95% accuracy. There is no mention of an earlier version or its model.",
-        "latency_ms": 693
+        "answer": "Unfortunately, the profile data doesn't mention an \"earlier food notebook.\" However, it does mention the \"Food Image Classification\" project, which is a Streamlit application that uses a **MobileNetV2** model to classify food images into 6 categories with 95% accuracy. This model was the one finally deployed.",
+        "latency_ms": 768
       }
     },
     {
@@ -670,19 +675,19 @@
           "projects.dental.mobile",
           "projects.food.results"
         ],
-        "retrieval_ms": 190,
+        "retrieval_ms": 192,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.5
         },
-        "answer": "Not supported: The sources do not mention recall or plaque images specifically. They do mention that the dental model was validated with dental professionals, but they do not provide recall figures.",
+        "answer": "Not supported: The sources do not mention recall or any specific performance metric for plaque images. They do mention that the model achieved 80% accuracy on dental images in general, but not the recall specifically.",
         "citations": [],
         "invalidCitations": [],
-        "tokens": 962,
-        "answer_ms": 478,
-        "latency_ms": 668,
+        "tokens": 968,
+        "answer_ms": 632,
+        "latency_ms": 824,
         "refused": true,
         "cites_gold": 0
       },
@@ -694,28 +699,26 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1954,
-        "retrieval_ms": 589,
+        "router_tokens": 1958,
+        "retrieval_ms": 664,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.5
         },
-        "answer": "Not supported: The sources do not mention recall, precision, or any other metrics for the dental model. They only mention the accuracy of 80% in [projects.dental.overview].",
-        "citations": [
-          "projects.dental.overview"
-        ],
+        "answer": "Not supported: The sources do not mention recall or any specific performance metrics for plaque images.",
+        "citations": [],
         "invalidCitations": [],
-        "tokens": 2664,
-        "answer_ms": 568,
-        "latency_ms": 1157,
+        "tokens": 2648,
+        "answer_ms": 522,
+        "latency_ms": 1186,
         "refused": true,
-        "cites_gold": 1
+        "cites_gold": 0
       },
       "v1": {
-        "answer": "Unfortunately, the provided data does not mention the recall of the dental model on plaque images. The CNN Deep Learning Portable Dental Caries Detection project only mentions achieving 80% detection accuracy, but it does not provide specific recall metrics for plaque images.",
-        "latency_ms": 642
+        "answer": "Unfortunately, the provided information does not include the recall of the dental model on plaque images. The CNN Deep Learning Portable Dental Caries Detection project is mentioned, but only its overall detection accuracy (80%) is stated.",
+        "latency_ms": 532
       }
     },
     {
@@ -735,21 +738,24 @@
           "projects.food.results",
           "projects.coursework.classification"
         ],
-        "retrieval_ms": 216,
+        "retrieval_ms": 203,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "Not supported: The question refers to \"the current website chatbot\", but it does not specify which one. There are at least two chatbots mentioned in the sources: the first version of the portfolio chatbot and the current version (Version 2). Which one are you referring to?",
-        "citations": [],
+        "answer": "Not supported: The question refers to \"the current website chatbot\", but the sources only mention the chatbot in the context of the portfolio website, specifically in the [projects.portfolio_bot.two_bots] and [projects.portfolio_bot.v1] sections. Could you please clarify which chatbot you are referring to?",
+        "citations": [
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.v1"
+        ],
         "invalidCitations": [],
-        "tokens": 970,
-        "answer_ms": 799,
-        "latency_ms": 1015,
+        "tokens": 917,
+        "answer_ms": 798,
+        "latency_ms": 1001,
         "refused": true,
-        "cites_gold": 0
+        "cites_gold": 1
       },
       "b": {
         "ranked": [
@@ -758,26 +764,26 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1962,
-        "retrieval_ms": 711,
+        "router_tokens": 1966,
+        "retrieval_ms": 864,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "Not supported: The question does not name a specific chatbot or project. Which chatbot or project are you referring to?",
+        "answer": "Not supported: The question refers to \"the current website chatbot\", but it does not specify which one. Iqmal has two versions of his chatbot, and the question does not clarify which one is being referred to.",
         "citations": [],
         "invalidCitations": [],
-        "tokens": 2820,
-        "answer_ms": 690,
-        "latency_ms": 1401,
+        "tokens": 2835,
+        "answer_ms": 735,
+        "latency_ms": 1599,
         "refused": true,
         "cites_gold": 0
       },
       "v1": {
-        "answer": "**Two-Bot Retrieval Comparison**: The current website chatbot, as described in the \"Portfolio RAG Chatbot: Two-Bot Retrieval Comparison\" project, is actually a comparison of two retrieval bots, labelled RAG and STAIR-style. These two bots answer the same question from the same knowledge base, using different retrieval methods. The chatbot you're interacting with now is the result of this comparison, which uses a hybrid approach combining the strengths of both RAG and STAIR-style retrieval.",
-        "latency_ms": 821
+        "answer": "**Version 1 of the chatbot is a single bot**. It's a Cloudflare Pages Function that passes the full profile to a chat model with grounding rules and a keyword fallback. However, **Version 2, the current chatbot, is a comparison of two retrieval bots**, labelled RAG and STAIR-style, that answer the same question from the same knowledge base.",
+        "latency_ms": 830
       }
     },
     {
@@ -796,21 +802,21 @@
           "experience.nxp.ocr",
           "experience.greatech.vision_systems"
         ],
-        "retrieval_ms": 205,
+        "retrieval_ms": 230,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.3333333333333333
         },
-        "answer": "Iqmal is a Registered Graduate Engineer with the Board of Engineers Malaysia (BEM) [education.certificates].",
+        "answer": "Iqmal is registered as a Graduate Engineer with the Board of Engineers Malaysia (BEM) [education.certificates].",
         "citations": [
           "education.certificates"
         ],
         "invalidCitations": [],
-        "tokens": 921,
-        "answer_ms": 467,
-        "latency_ms": 672,
+        "tokens": 922,
+        "answer_ms": 449,
+        "latency_ms": 679,
         "refused": false,
         "cites_gold": 1
       },
@@ -822,8 +828,8 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1950,
-        "retrieval_ms": 666,
+        "router_tokens": 1954,
+        "retrieval_ms": 701,
         "scores": {
           "hit1": 0,
           "hit3": 1,
@@ -835,15 +841,15 @@
           "education.certificates"
         ],
         "invalidCitations": [],
-        "tokens": 2553,
-        "answer_ms": 532,
-        "latency_ms": 1198,
+        "tokens": 2557,
+        "answer_ms": 516,
+        "latency_ms": 1217,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**BEM** (Board of Engineers Malaysia) registered Iqmal as a graduate engineer.",
-        "latency_ms": 476
+        "answer": "**BEM (Board of Engineers Malaysia)** registered Iqmal as a Graduate Engineer.",
+        "latency_ms": 603
       }
     },
     {
@@ -862,21 +868,21 @@
           "projects.coursework.classification",
           "profile.summary"
         ],
-        "retrieval_ms": 186,
+        "retrieval_ms": 230,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The automated vent-hole check freed up about 0.4 full-time-equivalent of operator work, which translates to a yearly savings of about USD 8.8K. [experience.nxp.vent_hole]",
+        "answer": "Iqmal's automated vent-hole check freed up about 0.4 full-time-equivalent of operator work. This translates to a yearly savings of approximately USD 8.8K. [experience.nxp.vent_hole]",
         "citations": [
           "experience.nxp.vent_hole"
         ],
         "invalidCitations": [],
-        "tokens": 962,
-        "answer_ms": 526,
-        "latency_ms": 712,
+        "tokens": 965,
+        "answer_ms": 543,
+        "latency_ms": 773,
         "refused": false,
         "cites_gold": 1
       },
@@ -888,28 +894,28 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1957,
-        "retrieval_ms": 722,
+        "router_tokens": 1961,
+        "retrieval_ms": 525,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "The automated vent-hole check freed up about 0.4 full-time-equivalent of operator work, which translates to a yearly savings of about USD 8.8K. [experience.nxp.vent_hole]",
+        "answer": "The automated vent-hole check made it possible to remove a manual pre-bake inspection step completely, saving about 0.4 full-time-equivalent of operator work. This translates to about USD 8.8K per year. [experience.nxp.vent_hole]",
         "citations": [
           "experience.nxp.vent_hole"
         ],
         "invalidCitations": [],
-        "tokens": 2703,
-        "answer_ms": 616,
-        "latency_ms": 1338,
+        "tokens": 2718,
+        "answer_ms": 732,
+        "latency_ms": 1257,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "Unfortunately, the provided profile data doesn't mention the automated vent-hole check. It seems that this is not a project or work experience listed in Iqmal's profile. If you could provide more context or details, I'd be happy to try and help further.",
-        "latency_ms": 557
+        "answer": "Unfortunately, the provided profile data does not mention the automated vent-hole check or the amount of operator time it freed up. It does mention various projects and achievements, but not this specific one. If you'd like, I can help summarize Iqmal's strengths or highlight his relevant experience.",
+        "latency_ms": 529
       }
     },
     {
@@ -928,7 +934,7 @@
           "projects.food.results",
           "profile.summary"
         ],
-        "retrieval_ms": 171,
+        "retrieval_ms": 169,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -941,43 +947,41 @@
         ],
         "invalidCitations": [],
         "tokens": 1005,
-        "answer_ms": 442,
-        "latency_ms": 613,
+        "answer_ms": 465,
+        "latency_ms": 634,
         "refused": false,
         "cites_gold": 0
       },
       "b": {
         "ranked": [
           "experience.nxp.ocr",
-          "projects.iqmetric.overview",
-          "experience.nxp.quality",
-          "projects.iqmetric.cost",
-          "experience.nxp.vent_hole"
+          "experience.nxp.vent_hole",
+          "experience.nxp.quality"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1961,
-        "retrieval_ms": 600,
+        "router_tokens": 1966,
+        "retrieval_ms": 598,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.3333333333333333
         },
-        "answer": "Iqmal coordinated about 1.4 million units of high-risk metal-lid TPMS lots [experience.nxp.quality].",
+        "answer": "Iqmal led cross-functional coordination on about 1.4 million units of high-risk metal-lid TPMS lots [experience.nxp.quality].",
         "citations": [
           "experience.nxp.quality"
         ],
         "invalidCitations": [],
-        "tokens": 2860,
-        "answer_ms": 529,
-        "latency_ms": 1129,
+        "tokens": 2696,
+        "answer_ms": 541,
+        "latency_ms": 1139,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**Approximately 1.4 million units of high-risk metal lid TPMS lots.**",
-        "latency_ms": 474
+        "answer": "**Approximately 1.4 million units** of high-risk metal lid TPMS lots were coordinated by Iqmal during his time as a Test Back-End Process Engineer at NXP Semiconductors Malaysia.",
+        "latency_ms": 472
       }
     },
     {
@@ -990,17 +994,17 @@
         "ranked": [
           "skills.programming",
           "experience.nxp.ocr",
-          "projects.portfolio_bot.evaluation",
+          "projects.portfolio_bot.two_bots",
           "profile.summary",
-          "projects.dental.overview"
+          "projects.portfolio_bot.evaluation"
         ],
-        "retrieval_ms": 214,
-        "answer": "Not supported: There is no information about Iqmal's preferences among programming languages in the provided sources.",
+        "retrieval_ms": 201,
+        "answer": "Not supported: There is no information about Iqmal's preference for any programming language. The sources only list the languages he is familiar with.",
         "citations": [],
         "invalidCitations": [],
-        "tokens": 906,
-        "answer_ms": 627,
-        "latency_ms": 841,
+        "tokens": 915,
+        "answer_ms": 432,
+        "latency_ms": 633,
         "refused": true,
         "cites_gold": 0
       },
@@ -1012,20 +1016,20 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1950,
-        "retrieval_ms": 635,
-        "answer": "Not supported: There is no information about Iqmal's preferences or dislikes regarding programming languages in the provided sources.",
+        "router_tokens": 1954,
+        "retrieval_ms": 621,
+        "answer": "Not supported: There is no information in the sources about Iqmal's preferences or feelings towards any programming language.",
         "citations": [],
         "invalidCitations": [],
-        "tokens": 2581,
-        "answer_ms": 631,
-        "latency_ms": 1266,
+        "tokens": 2585,
+        "answer_ms": 532,
+        "latency_ms": 1153,
         "refused": true,
         "cites_gold": 0
       },
       "v1": {
-        "answer": "I can't find any information in Iqmal's profile about his least favorite programming language.",
-        "latency_ms": 527
+        "answer": "Unfortunately, I couldn't find any information in Iqmal's profile that indicates a preference for or against any specific programming language. The list of programming languages he is proficient in is quite extensive, including Python, C/C++, C#, and many others. It seems he has a broad range of programming language skills.",
+        "latency_ms": 597
       }
     },
     {
@@ -1040,24 +1044,24 @@
         "ranked": [
           "projects.food.experiments",
           "projects.food.model",
-          "projects.food.results",
           "skills.ai_ml",
+          "projects.food.results",
           "projects.coursework.classification"
         ],
-        "retrieval_ms": 151,
+        "retrieval_ms": 172,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.5
         },
-        "answer": "Not supported: The question does not specify which project or topic it refers to.",
+        "answer": "Iqmal used transfer learning from ImageNet in the food image classification project, where he fine-tuned a pretrained MobileNetV2 model.",
         "citations": [],
         "invalidCitations": [],
-        "tokens": 939,
-        "answer_ms": 311,
-        "latency_ms": 462,
-        "refused": true,
+        "tokens": 952,
+        "answer_ms": 574,
+        "latency_ms": 746,
+        "refused": false,
         "cites_gold": 0
       },
       "b": {
@@ -1070,29 +1074,29 @@
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1956,
-        "retrieval_ms": 533,
+        "router_tokens": 1960,
+        "retrieval_ms": 565,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 1,
           "rr": 1
         },
-        "answer": "Iqmal used transfer learning from ImageNet in two projects: the Portable dental image analysis app [projects.dental.overview] and the Food image classification project [projects.food.model].",
+        "answer": "Iqmal used transfer learning from ImageNet in his food image classification project [projects.food.model] (The final model is MobileNetV2 pretrained on ImageNet, with its classifier replaced by a six-class output layer...), and in his earlier model experiments for the same project [projects.food.experiments] (Transfer-learning models did far better: VGG16 with frozen features reached about 88% to 92% on test images, VGG19 about 90%, and ResNet18 about 96% on validation).",
         "citations": [
-          "projects.dental.overview",
-          "projects.food.model"
+          "projects.food.model",
+          "projects.food.experiments"
         ],
         "invalidCitations": [],
-        "tokens": 2846,
-        "answer_ms": 604,
-        "latency_ms": 1137,
+        "tokens": 2920,
+        "answer_ms": 824,
+        "latency_ms": 1389,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**Transfer Learning from ImageNet**\n\nIqmal utilized transfer learning from ImageNet in the following projects:\n\n* **CNN Deep Learning Portable Dental Caries Detection (Jul 2023)**: This project employed a MobileNetV2 model, which is a pre-trained CNN model that leverages knowledge from the ImageNet dataset. By fine-tuning this model on the dental caries dataset, Iqmal achieved 80% detection accuracy.\n* **Food Image Classification (Dec 2025)**: This project utilized a fine-tuned MobileNetV2 model to classify food images into 6 categories with 95% accuracy. Similar to the dental caries detection project, MobileNetV2 is a pre-trained model that benefits from transfer learning from the ImageNet dataset.",
-        "latency_ms": 1072
+        "answer": "**Transfer Learning in Iqmal's Projects**\n\nIqmal's projects that utilized transfer learning from ImageNet are:\n\n* **Food Image Classification**: This project employed a fine-tuned MobileNetV2 model, which was pre-trained on the ImageNet dataset. The model was then fine-tuned on the food image dataset to achieve 95% accuracy.\n* **CNN Deep Learning Portable Dental Caries Detection**: This project used a pre-trained MobileNetV2 model, which was also trained on the ImageNet dataset. The model was then fine-tuned on the dental caries dataset to achieve 80% detection accuracy.\n\nThese projects demonstrate Iqmal's understanding and application of transfer learning from ImageNet, which is a common practice in computer vision tasks.",
+        "latency_ms": 1190
       }
     },
     {
@@ -1111,32 +1115,7 @@
           "projects.food.experiments",
           "projects.dental.overview"
         ],
-        "retrieval_ms": 150,
-        "scores": {
-          "hit1": 1,
-          "hit3": 1,
-          "all3": 1,
-          "rr": 1
-        },
-        "answer": "In the TCP chat app, images are sent as Base64 text. This means that the images are converted into a text format that can be easily sent over the network. [projects.tcp_chat.overview]",
-        "citations": [
-          "projects.tcp_chat.overview"
-        ],
-        "invalidCitations": [],
-        "tokens": 940,
-        "answer_ms": 521,
-        "latency_ms": 671,
-        "refused": false,
-        "cites_gold": 1
-      },
-      "b": {
-        "ranked": [
-          "projects.tcp_chat.overview"
-        ],
-        "router": "llm",
-        "invalid_ids": [],
-        "router_tokens": 1959,
-        "retrieval_ms": 631,
+        "retrieval_ms": 218,
         "scores": {
           "hit1": 1,
           "hit3": 1,
@@ -1148,15 +1127,40 @@
           "projects.tcp_chat.overview"
         ],
         "invalidCitations": [],
+        "tokens": 924,
+        "answer_ms": 694,
+        "latency_ms": 912,
+        "refused": false,
+        "cites_gold": 1
+      },
+      "b": {
+        "ranked": [
+          "projects.tcp_chat.overview"
+        ],
+        "router": "llm",
+        "invalid_ids": [],
+        "router_tokens": 1963,
+        "retrieval_ms": 709,
+        "scores": {
+          "hit1": 1,
+          "hit3": 1,
+          "all3": 1,
+          "rr": 1
+        },
+        "answer": "In the TCP chat app, images are sent as Base64 text. [projects.tcp_chat.overview]",
+        "citations": [
+          "projects.tcp_chat.overview"
+        ],
+        "invalidCitations": [],
         "tokens": 2399,
-        "answer_ms": 429,
-        "latency_ms": 1060,
+        "answer_ms": 570,
+        "latency_ms": 1279,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "I don't have information about a TCP chat app in Iqmal's profile. However, I can provide some general information about how images are typically sent in chat applications.\n\nIn most cases, images are sent as binary data over a network, which can be achieved using various protocols such as TCP (Transmission Control Protocol) or UDP (User Datagram Protocol). The binary data can be in the form of a file or a stream of pixels.\n\nIf you're referring to the Portfolio RAG Chatbot, it's a Cloudflare Pages Function that interacts with a chat model, but I don't have information about image sending in this context.",
-        "latency_ms": 1223
+        "answer": "I don't see any information about a TCP chat app in Iqmal's profile. However, I can tell you that he has experience with machine vision and computer vision, which might involve image processing and transmission.",
+        "latency_ms": 597
       }
     },
     {
@@ -1176,52 +1180,52 @@
           "projects.iqmetric.biometrics",
           "projects.portfolio_bot.evaluation"
         ],
-        "retrieval_ms": 176,
+        "retrieval_ms": 200,
         "scores": {
           "hit1": 1,
           "hit3": 1,
           "all3": 0,
           "rr": 1
         },
-        "answer": "Bot A uses BM25 keyword search and embedding search. The metrics that judge Bot A are not specified in the sources.",
+        "answer": "Bot A uses BM25 keyword search and embedding search. The metrics that judge Bot A are not explicitly mentioned in the provided sources.",
         "citations": [],
         "invalidCitations": [],
-        "tokens": 923,
-        "answer_ms": 540,
-        "latency_ms": 716,
+        "tokens": 881,
+        "answer_ms": 466,
+        "latency_ms": 666,
         "refused": false,
         "cites_gold": 0
       },
       "b": {
         "ranked": [
           "projects.portfolio_bot.v1",
-          "projects.portfolio_bot.evaluation",
-          "projects.portfolio_bot.two_bots"
+          "projects.portfolio_bot.two_bots",
+          "projects.portfolio_bot.evaluation"
         ],
         "router": "llm",
         "invalid_ids": [],
-        "router_tokens": 1967,
-        "retrieval_ms": 677,
+        "router_tokens": 1980,
+        "retrieval_ms": 729,
         "scores": {
           "hit1": 0,
           "hit3": 1,
           "all3": 1,
           "rr": 0.5
         },
-        "answer": "Bot A uses BM25 keyword search and embedding search. It is judged by first-result recall, top-3 recall, and mean reciprocal rank for retrieval, as well as citation validity, correct refusals, and latency for the answers. [projects.portfolio_bot.evaluation]",
+        "answer": "Bot A uses BM25 keyword search and embedding search. The metrics that judge Bot A's retrieval performance include first-result recall, top-3 recall, and mean reciprocal rank. [projects.portfolio_bot.two_bots]",
         "citations": [
-          "projects.portfolio_bot.evaluation"
+          "projects.portfolio_bot.two_bots"
         ],
         "invalidCitations": [],
-        "tokens": 2856,
-        "answer_ms": 804,
-        "latency_ms": 1481,
+        "tokens": 2886,
+        "answer_ms": 482,
+        "latency_ms": 1211,
         "refused": false,
         "cites_gold": 1
       },
       "v1": {
-        "answer": "**Bot A (RAG-style) Embedding and Keyword Methods**\n\nBot A uses a hybrid BM25 + embedding search with rank fusion method. \n\n**Metrics to Judge Bot A**\n\nBot A's performance is evaluated on a hand-labelled question set, including:\n\n* Retrieval recall\n* Mean Reciprocal Rank (MRR)\n* Correct refusals\n* Citation validity\n* Latency",
-        "latency_ms": 726
+        "answer": "**Bot A: Standard RAG**\n\nBot A, the standard RAG (Reformer-based Anchor Generator) retrieval model, uses a **BM25 (Term Frequency-Inverse Document Frequency) search** as its embedding method, and a **keyword fallback** as its keyword method. \n\nThe metrics used to evaluate Bot A are:\n\n* **Retrieval recall**: measures the proportion of relevant documents retrieved\n* **Mean Reciprocal Rank (MRR)**: measures the average rank of the first relevant document\n* **Correct refusals**: measures the proportion of irrelevant documents correctly rejected\n* **Citation validity**: measures the accuracy of the citations provided\n* **Latency**: measures the time taken for the model to respond",
+        "latency_ms": 1365
       }
     }
   ]
