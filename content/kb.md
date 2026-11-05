@@ -1,5 +1,5 @@
 ---
-version: public_v2
+version: public_v3
 note: Every leaf section below is written from public sources only (the published resume, this portfolio site, and public GitHub repositories). Each leaf names its source. Nothing here comes from confidential NXP files or internal source code.
 ---
 
@@ -91,7 +91,7 @@ The first version of the portfolio chatbot ran as a Cloudflare Pages Function. F
 
 ### Version 2: two retrieval bots side by side {#projects.portfolio_bot.two_bots}
 <!-- source: github.com/midanish/my-portfolio public/js/app.js, lib/rag.mjs -->
-Version 2 is what the site's chat window runs now. Every question is answered by two bots at once, shown in one reply as Answer A (RAG) and Answer B (STAIR-style). RAG stands for retrieval-augmented generation: the bot first retrieves relevant text from this knowledge base, then the answer model writes its reply from that text. Bot A is standard RAG: it searches short passages of this knowledge base with BM25 keyword search and embedding search, merges the two rankings with Reciprocal Rank Fusion, and passes the top five passages to the answer model. Bot B is structure-aware RAG inspired by the STAIR paper: a model picks up to three sections from the knowledge base's table of contents, the choice is checked against the list of real section IDs, and the text of those sections is passed to the same answer model. Both bots use the same documents, the same answer model (Llama 3.1 8B on Cloudflare Workers AI) and prompt, the same evidence budget and the same citation checks, so only the retrieval method differs.
+RAG stands for retrieval-augmented generation: a chatbot first retrieves relevant text from a knowledge base, then a language model writes its reply from that text. Version 2 is what the site's chat window runs now. Every question is answered by two RAG bots at once, shown in one reply as Answer A (RAG) and Answer B (STAIR-style). Bot A is standard RAG: it searches short passages of this knowledge base with BM25 keyword search and embedding search, merges the two rankings with Reciprocal Rank Fusion, and passes the top five passages to the answer model. Bot B is structure-aware RAG inspired by the STAIR paper: a model reads the knowledge base's table of contents, which lists each section's title and opening words, and picks up to three sections; the choice is checked against the list of real section IDs, and the text of those sections, plus neighbouring sections from the same part of the table of contents if there is room, is passed to the same answer model. Both bots use the same documents, the same answer model (Llama 3.1 8B on Cloudflare Workers AI) and prompt, the same evidence budget and the same citation checks, so only the retrieval method differs.
 
 ### How the two bots are evaluated {#projects.portfolio_bot.evaluation}
 <!-- source: github.com/midanish/my-portfolio eval/ and docs/ -->

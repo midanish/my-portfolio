@@ -1,15 +1,15 @@
 # Two-bot RAG comparison: method, results and limits
 
-Run on 5 November 2026 · knowledge base `public_v2` (34 sections, 38 passages) · answer model `@cf/meta/llama-3.1-8b-instruct-fast` · embeddings `@cf/baai/bge-small-en-v1.5` · answer prompt `v2`.
+Run on 5 November 2026 · knowledge base `public_v3` (34 sections, 39 passages) · answer model `@cf/meta/llama-3.1-8b-instruct-fast` · embeddings `@cf/baai/bge-small-en-v1.5` · answer prompt `v2`.
 
 ## The short version
 
-- **After one round of improvements, the structure-aware bot (Bot B) finds evidence better than standard RAG (Bot A), on both question sets.** All needed sections in the top 3: 96% vs 82% on the 60 development questions, and 100% vs 93% on the 15 held-back questions. Right section first: 82% vs 74% (dev) and 71% vs 64% (held-back).
-- **Bot B also refuses answerable questions less often** (6 vs 8 of 47 on dev, 1 vs 2 of 13 held-back).
+- **The structure-aware bot (Bot B) finds evidence better than standard RAG (Bot A), on both question sets.** All needed sections in the top 3: 94% vs 80% on the 60 development questions, and 100% vs 93% on the 15 held-back questions. Right section first: 82% vs 76% (dev) and 71% vs 64% (held-back).
+- **Bot B refuses answerable questions slightly less often on dev** (5 vs 7 of 47); on the held-back questions they tie (1 of 13 each).
 - **Bot B is worse at one thing: vague follow-ups** like "And how accurate was it?" with no earlier conversation. It answered 3 of these 5 about whichever project it guessed, where Bot A refused all 5 (correct refusals 10/13 vs 13/13 on dev).
-- **Bot B costs more:** about 3x the tokens (2,736 vs 899 per question) and about 0.45 s slower, because it makes an extra model call that reads the whole table of contents.
+- **Bot B costs more:** about 3x the tokens (2,736 vs 894 per question) and about 0.4 s slower, because it makes an extra model call that reads the whole table of contents.
 - **Neither bot invented a section ID or kept a fake citation** in the final runs.
-- **Answer-level counts move by one or two questions between identical runs**, because the answer model samples its wording (temperature 0.3). Retrieval scores are stable; treat small differences in refusal counts as noise.
+- **Results move by one or two questions between identical runs.** The answer model samples its wording (temperature 0.3), and Bot B's section picker, although set to temperature 0, does not always pick the same sections either: two repeat dev runs scored Bot B 98% on "all needed sections in top 3" against 94% in the full run below. Bot A's retrieval has no model call and did not change between runs.
 - **This corpus is small** (about one passage per section), and with 14 scored held-back questions one question moves a percentage by 7 points. The result is a fair test of this portfolio, not a general verdict on STAIR.
 
 ## What was compared
@@ -39,7 +39,9 @@ The independent variable is only the retrieval method. Both bots have the same 5
 
 The 15 held-out questions were first run **once**, after all settings were frozen. They were then re-run after the knowledge-base update and after the Bot B improvements described below. Every Bot B change was chosen by looking only at development questions; held-out results were never used to pick a setting. The held-out questions have nonetheless now been run several times, so they are less "unseen" than a fresh test set would be. The 1 synthetic training question too close to a test question was removed from the Phase 5 data.
 
-**Knowledge-base update (`public_v1` → `public_v2`).** The two sections about the chatbot itself were corrected: Version 1 is described in the past tense (it used GLM-4.7-Flash; its code now calls Llama 3.1 8B), and Version 2 is described as what the site's chat window runs, showing Answer A (RAG) and Answer B (STAIR-style) in one reply. One sentence was added saying what RAG stands for, because the answer model kept inventing expansions of the acronym. No other section changed and no test question or label changed. All numbers below are from the re-run on `public_v2`; the earlier `public_v1` run differed by at most one or two questions per metric.
+**Knowledge-base update (`public_v1` → `public_v2`).** The two sections about the chatbot itself were corrected: Version 1 is described in the past tense (it used GLM-4.7-Flash; its code now calls Llama 3.1 8B), and Version 2 is described as what the site's chat window runs, showing Answer A (RAG) and Answer B (STAIR-style) in one reply. One sentence was added saying what RAG stands for, because the answer model kept inventing expansions of the acronym. No other section changed and no test question or label changed. The earlier `public_v1` run differed by at most one or two questions per metric.
+
+**Knowledge-base update (`public_v2` → `public_v3`).** On the live site Bot B answered "What does RAG stand for?" with "Not supported": the definition sat in the middle of the Version 2 section, and Bot B judges sections by their title and opening words, so it picked the profile summary instead. The definition was moved to the first sentence of that section, and the section now also describes Bot B's table-of-contents hints and neighbouring-section step. No section name or ID changed, and no test question or label changed. This question is not in the test set; the fix was checked by asking it directly (Bot B now picks the right section on every try). All numbers below are from the re-run on `public_v3`.
 
 ## Results
 
@@ -47,23 +49,23 @@ Retrieval scores use the first 3 distinct sections each bot handed to the answer
 
 | Metric | Dev A | Dev B | Held-out A | Held-out B |
 |---|---|---|---|---|
-| Right section first (Recall@1) | 74% | **82%** | 64% | **71%** |
-| Right section in top 3 (Recall@3) | 90% | **98%** | 100% | 100% |
-| All needed sections in top 3 | 82% | **96%** | 93% | **100%** |
-| MRR (top 3) | 0.82 | **0.90** | 0.81 | **0.85** |
+| Right section first (Recall@1) | 76% | **82%** | 64% | **71%** |
+| Right section in top 3 (Recall@3) | 90% | **96%** | 100% | 100% |
+| All needed sections in top 3 | 80% | **94%** | 93% | **100%** |
+| MRR (top 3) | 0.83 | **0.89** | 0.81 | **0.85** |
 | Correct "Not supported" | **13/13** | 10/13 | 2/2 | 2/2 |
-| Wrong "Not supported" (answerable) | 8/47 | **6/47** | 2/13 | **1/13** |
-| Answers citing a correct section | 90% | 90% | 73% | **100%** |
-| Median / p95 latency | **0.75 / 1.07 s** | 1.21 / 1.61 s | **0.72 / 1.05 s** | 1.20 / 1.53 s |
-| Tokens per question | **899** | 2,736 | **933** | 2,706 |
+| Wrong "Not supported" (answerable) | 7/47 | **5/47** | 1/13 | 1/13 |
+| Answers citing a correct section | 88% | **91%** | 75% | **100%** |
+| Median / p95 latency | **0.73 / 1.21 s** | 1.14 / 1.98 s | **0.77 / 1.28 s** | 1.26 / 1.60 s |
+| Tokens per question | **894** | 2,736 | **933** | 2,705 |
 | Invalid section IDs named by the router (caught) | — | 0 | — | 0 |
-| Fake citations removed / kept | 1 / 0 | 2 / 0 | 0 / 0 | 0 / 0 |
+| Fake citations removed / kept | 2 / 0 | 2 / 0 | 0 / 0 | 0 / 0 |
 
 Scored questions: 50 dev, 14 held-out. With 14 questions, one question moves a percentage by 7 points.
 
-**By question type (dev, first-hit / top-3):** simple A 100/100 vs B 92/100 · paraphrase 67/83 vs 92/100 · comparison 40/70 vs 60/90 · multi-hop 63/100 vs 88/100. Bot B's biggest gains are on paraphrases, comparisons and multi-hop questions. Wrong refusals by type, A vs B: paraphrase 2 vs 2, comparison 2 vs 1, version trap 4 vs 3. Correct refusals on vague follow-ups: A 5/5, B 2/5.
+**By question type (dev, first-hit / top-3):** simple A 100/100 vs B 92/100 · paraphrase 67/83 vs 92/92 · comparison 50/70 vs 60/90 · multi-hop 63/100 vs 88/100. Bot B's biggest gains are on paraphrases, comparisons and multi-hop questions. Wrong refusals by type, A vs B: paraphrase 2 vs 2, comparison 2 vs 0, version trap 3 vs 3. Correct refusals on vague follow-ups: A 5/5, B 2/5.
 
-**v1 full-context bot (control):** median 0.70 s on dev. It has no "Not supported" rule, so its refusals and correctness need the human review below.
+**v1 full-context bot (control):** median 0.68 s on dev. It has no "Not supported" rule, so its refusals and correctness need the human review below.
 
 ## What changed during development (and why)
 
@@ -95,7 +97,7 @@ Each change below was measured on dev only:
 | Before | 88% | — |
 | Add the opening 18 words of each section to the table of contents | 88% (one question better on first-hit) | yes, with the next change |
 | Fill spare evidence slots with sibling sections, closest to the question first | 92% | yes |
-| Both together | **96%** (same on a repeat run) | **yes** |
+| Both together | **96%** (same on a repeat run; knowledge base `public_v2`) | **yes** |
 | Also let the router answer "no section" for vague follow-ups | 90%, and it still guessed on 3 of 5 vague questions | no, removed |
 
 The cost of the kept changes is the longer table of contents the router reads: about 960 more tokens per question.
@@ -122,10 +124,10 @@ The paper used Mistral-7B, which needs a licence acceptance and is tight on 12 G
 | Untrained Qwen, restricted to real IDs | 66% | 76% | 50% | 86% | 0 |
 | Fine-tuned Qwen, free output | **86%** | 86% | **71%** | 71% | 0 |
 | Fine-tuned Qwen, restricted (STAIR-style) | 84% | **96%** | 64% | 86% | 0 |
-| *Bot A (standard RAG, live)* | 74% | 90% | 64% | **100%** | — |
-| *Bot B (prompted router, live, round 2)* | 82% | **98%** | **71%** | **100%** | 0 |
+| *Bot A (standard RAG, live)* | 76% | 90% | 64% | **100%** | — |
+| *Bot B (prompted router, live, round 2)* | 82% | **96%** | **71%** | **100%** | 0 |
 
-The fine-tuned rows were measured on `public_v1`. The `public_v2` update changed no section names or IDs, which is all this retriever sees, so it was not retrained. The fine-tuned rows are the model's own section picks; the Bot B row also counts the sibling sections it adds, so the two are not a like-for-like comparison of routers.
+The fine-tuned rows were measured on `public_v1`. The `public_v2` and `public_v3` updates changed no section names or IDs, which is all this retriever sees, so it was not retrained. The fine-tuned rows are the model's own section picks; the Bot B row also counts the sibling sections it adds, so the two are not a like-for-like comparison of routers.
 
 **What this shows**
 
